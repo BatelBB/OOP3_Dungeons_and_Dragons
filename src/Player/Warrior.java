@@ -1,6 +1,6 @@
 package Player;
 
-public class Warrior implements Player {
+public class Warrior implements Player, HeroicUnit {
     public Integer abilityCooldown;
     public Integer remainingCooldown = 0;
 
@@ -8,4 +8,8 @@ public class Warrior implements Player {
 
     }
 
+    @Override
+    public void castAbility() {
+
+    }
 }

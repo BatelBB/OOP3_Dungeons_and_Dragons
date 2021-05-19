@@ -6,4 +6,12 @@ public class Unit {
     public Integer healthAmount;
     public Integer attackPoints;
     public Integer defensePoints;
+
+    public String getName(){
+        return null;
+    }
+
+    public String getDescription(){
+        return null;
+    }
 }
