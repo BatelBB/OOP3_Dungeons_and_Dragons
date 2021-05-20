@@ -1,4 +1,4 @@
-package Enemies;
+package BusinessLayer.GameObjects.Enemies;
 
 public class Monster implements Enemy{
     public Integer visionRange;

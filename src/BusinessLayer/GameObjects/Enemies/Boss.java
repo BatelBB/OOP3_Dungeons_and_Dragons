@@ -1,6 +1,6 @@
-package Enemies;
+package BusinessLayer.GameObjects.Enemies;
 
-import Player.HeroicUnit;
+import BusinessLayer.GameObjects.Player.HeroicUnit;
 
 public class Boss implements Enemy, HeroicUnit {
     public Integer visionRange;

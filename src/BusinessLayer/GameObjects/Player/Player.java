@@ -1,4 +1,4 @@
-package Player;
+package BusinessLayer.GameObjects.Player;
 
 import Game_Tiles.Tile;
 

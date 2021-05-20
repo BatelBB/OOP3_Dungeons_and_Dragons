@@ -1,4 +1,4 @@
-package Player;
+package BusinessLayer.GameObjects.Player;
 
 public class Rogue implements Player, HeroicUnit{
     public Integer cost;

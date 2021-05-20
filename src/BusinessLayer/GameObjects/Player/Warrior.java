@@ -1,4 +1,4 @@
-package Player;
+package BusinessLayer.GameObjects.Player;
 
 public class Warrior implements Player, HeroicUnit {
     public Integer abilityCooldown;

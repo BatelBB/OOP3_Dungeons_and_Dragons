@@ -1,9 +1,9 @@
-import Enemies.Monster;
-import Enemies.Trap;
-import Player.Hunter;
-import Player.Mage;
-import Player.Rogue;
-import Player.Warrior;
+import BusinessLayer.GameObjects.Enemies.Monster;
+import BusinessLayer.GameObjects.Enemies.Trap;
+import BusinessLayer.GameObjects.Player.Hunter;
+import BusinessLayer.GameObjects.Player.Mage;
+import BusinessLayer.GameObjects.Player.Rogue;
+import BusinessLayer.GameObjects.Player.Warrior;
 
 public class DnDSimulation {
     public static void main(String[] args) {

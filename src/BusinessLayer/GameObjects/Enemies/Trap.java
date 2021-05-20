@@ -1,4 +1,4 @@
-package Enemies;
+package BusinessLayer.GameObjects.Enemies;
 
 public class Trap implements Enemy{
     public Integer visibilityTime;
