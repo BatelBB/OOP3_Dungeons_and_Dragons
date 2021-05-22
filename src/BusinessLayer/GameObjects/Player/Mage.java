@@ -1,6 +1,11 @@
 package BusinessLayer.GameObjects.Player;
 
-public class Mage implements Player, HeroicUnit{
+import Game_Tiles.Empty;
+import Game_Tiles.Unit;
+import Game_Tiles.Visitor;
+import Game_Tiles.Wall;
+
+public class Mage extends Player implements HeroicUnit{
     public Integer manaPool;
     public Integer currentMana;
     public Integer manaCost;
@@ -14,6 +19,26 @@ public class Mage implements Player, HeroicUnit{
 
     @Override
     public void castAbility() {
+
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void visit(Wall wall) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
+
+    }
+
+    @Override
+    public void visit(Empty empty) {
 
     }
 }

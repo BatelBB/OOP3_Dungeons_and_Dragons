@@ -1,6 +1,11 @@
 package BusinessLayer.GameObjects.Player;
 
-public class Hunter implements Player, HeroicUnit{
+import Game_Tiles.Empty;
+import Game_Tiles.Unit;
+import Game_Tiles.Visitor;
+import Game_Tiles.Wall;
+
+public class Hunter extends Player implements HeroicUnit {
     public Integer range;
     public Integer arrowsCount;
     public Integer ticksCount = 0;
@@ -11,6 +16,26 @@ public class Hunter implements Player, HeroicUnit{
 
     @Override
     public void castAbility() {
+
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void visit(Wall wall) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
+
+    }
+
+    @Override
+    public void visit(Empty empty) {
 
     }
 }
