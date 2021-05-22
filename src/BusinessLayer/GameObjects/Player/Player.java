@@ -1,9 +1,9 @@
 package BusinessLayer.GameObjects.Player;
 
-import Game_Tiles.Tile;
+import Game_Tiles.Unit;
 
 
-public interface Player extends Tile {
+public abstract class Player extends Unit {
     public Integer experience = 0;
     public Integer playerLevel = 1;
 
