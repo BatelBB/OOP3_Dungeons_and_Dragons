@@ -36,9 +36,7 @@ public class Trap extends Enemy{
 
     }
 
-    private double range(Trap trap, Player player){
-        return Math.sqrt(Math.pow((trap.xPos-player.xPos),2)+Math.pow((trap.yPos-player.yPos),2));
-    }
+
 
 
 }
