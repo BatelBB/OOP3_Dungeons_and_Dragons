@@ -23,7 +23,8 @@ public class Boss extends Enemy implements HeroicUnit {
 
     @Override
     public void castAbility() {
-
+        //The boss cast the ability: shooting at the player for an amount equals to the boss
+        //attack points if the player is within vision range (the player will try to defend itself).
     }
 
 
