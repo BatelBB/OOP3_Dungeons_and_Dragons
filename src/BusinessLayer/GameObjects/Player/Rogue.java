@@ -5,7 +5,7 @@ import Game_Tiles.Unit;
 import Game_Tiles.Visitor;
 import Game_Tiles.Wall;
 
-public class Rogue extends Player implements HeroicUnit{
+public class Rogue extends Player {
     public Integer cost;
     public Integer currentEnergy; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
 
@@ -19,14 +19,19 @@ public class Rogue extends Player implements HeroicUnit{
         this.currentEnergy = 100;
     }
 
-    @Override
+    public void onGameTick(){
+        currentEnergy = Math.min(currentEnergy+10, 100);
+    }
+
     public void castAbility() {
+        currentEnergy = currentEnergy - cost;
         if(currentEnergy < cost) {
             //cannot cast ability
             //generate an appropriate error message.
         }
         else{
-            //cast special ability
+            //For each enemy within range < 2, deal damage (reduce health value) equals to the rogue’s
+            //attack points (each enemy will try to defend itself
         }
     }
 
