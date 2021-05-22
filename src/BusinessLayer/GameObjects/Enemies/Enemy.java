@@ -1,5 +1,7 @@
 package BusinessLayer.GameObjects.Enemies;
 
-public interface Enemy {
-    public Integer experienceValue = 0;
+import Game_Tiles.Unit;
+
+public abstract class Enemy extends Unit {
+    Integer experienceValue;
 }
