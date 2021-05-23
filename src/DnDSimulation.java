@@ -6,8 +6,26 @@ import BusinessLayer.GameObjects.Player.Mage;
 import BusinessLayer.GameObjects.Player.Rogue;
 import BusinessLayer.GameObjects.Player.Warrior;
 
+import java.io.File;
+import java.util.Arrays;
+
 public class DnDSimulation {
     public static void main(String[] args) {
+        if(args.length < 1)
+            System.out.println("Error: this program needs a path to the levels directory as an argument.");
+        File levelsPath = new File(args[0]);
+        System.out.println(levelsPath.listFiles().length); //4
+        // levelsPath.listFiles()[0] = level1.txt
+        // levelsPath.listFiles()[1] = level2.txt
+        // levelsPath.listFiles()[2] = level3.txt
+        // levelsPath.listFiles()[3] = level4.txt
+
+//        String levels[] = levelsPath.list();
+//        System.out.println("List of files and directories in the specified directory:");
+//        for(int i=0; i<levels.length; i++) {
+//            System.out.println(levels[i]);
+//        }
+
         Warrior jonSnow = new Warrior("Jon Snow", 300, 30, 4, 3);
         Warrior theHound = new Warrior("The Hound", 400, 20, 6, 5);
 
