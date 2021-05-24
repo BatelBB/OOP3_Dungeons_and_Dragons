@@ -6,14 +6,30 @@ import BusinessLayer.GameObjects.Player.Mage;
 import BusinessLayer.GameObjects.Player.Rogue;
 import BusinessLayer.GameObjects.Player.Warrior;
 
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DnDSimulation {
     public static void main(String[] args) {
         if(args.length < 1)
             System.out.println("Error: this program needs a path to the levels directory as an argument.");
         File levelsPath = new File(args[0]);
+        List<String> lines = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(levelsPath.listFiles()[0]));
+            String next;
+            while ((next = reader.readLine()) != null) {
+                lines.add(next);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println ("File not found " + levelsPath);
+        } catch (IOException e) {
+            System.out.println(e.getMessage() + "\n" + e.getStackTrace());
+        }
+
+
         System.out.println(levelsPath.listFiles().length); //4
         // levelsPath.listFiles()[0] = level1.txt
         // levelsPath.listFiles()[1] = level2.txt
