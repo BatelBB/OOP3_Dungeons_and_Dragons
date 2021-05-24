@@ -17,12 +17,11 @@ public class Game {
     int currentLevel;
     boolean isGame;
 
-    public Game(){
+    public Game(String args){
 
         currentLevel = 0;
         nextLevel = 0;
-        levelPath = System.getProperty("user.dir") + "\\out\\production\\Dungeons and Dragons\\levels_dir";
-        levels = new File(levelPath).listFiles();
+        levels = new File(args).listFiles();
         start();
 
     }
