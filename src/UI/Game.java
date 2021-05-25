@@ -61,16 +61,16 @@ public class Game {
 
 
     private List<String> loadLevel(int level) {
-        String path = System.getProperty("user.dir") + "levels_dir" + "level1";
+        //String path = System.getProperty("user.dir") + "levels_dir" + "level1";
         List<String> lines = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(levels[0]));
+            BufferedReader reader = new BufferedReader(new FileReader(levels[level]));
             String next;
             while ((next = reader.readLine()) != null) {
                 lines.add(next);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found " + path);
+            System.out.println("File not found " + levels[level]);
         } catch (IOException e) {
             System.out.println(e.getMessage() + "\n" + e.getStackTrace());
         }
