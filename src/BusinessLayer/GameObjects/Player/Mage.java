@@ -42,34 +42,29 @@ public class Mage extends Player{
     }
 
     public void levelUp(){
-        experience = experience - 50*playerLevel;
-        playerLevel += 1;
-        healthPool = healthPool + 10*playerLevel;
-        healthAmount = healthPool;
-        attackPoints = attackPoints + 4*playerLevel;
-        defensePoints = defensePoints + playerLevel;
+        levelUpBasic();
         manaPool = manaPool + 25*playerLevel;
         currentMana = Math.min(currentMana + manaPool/4, manaPool);
         spellPower = spellPower+10*playerLevel;
     }
 
     @Override
-    public void accept(Visitor visitor) {
-
+    public boolean accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Override
-    public void visit(Wall wall) {
-
+    public boolean visit(Wall wall) {
+        return wall.visit(this);
     }
 
     @Override
-    public void visit(Unit unit) {
-
+    public boolean visit(Unit unit) {
+        return unit.visit(this);
     }
 
     @Override
-    public void visit(Empty empty) {
-
+    public boolean visit(Empty empty) {
+        return empty.visit(this);
     }
 }
