@@ -1,23 +1,29 @@
 package Game_Tiles;
 
 public class Wall extends Tile{
-    @Override
-    public void accept(Visitor visitor) {
 
+    @Override
+    public String toString() {
+        return "#";
     }
 
     @Override
-    public void visit(Wall wall) {
-
+    public boolean accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Override
-    public void visit(Unit unit) {
-
+    public boolean visit(Wall wall) {
+        return true;
     }
 
     @Override
-    public void visit(Empty empty) {
+    public boolean visit(Unit unit) {
+        return true;
+    }
 
+    @Override
+    public boolean visit(Empty empty) {
+        return true;
     }
 }
