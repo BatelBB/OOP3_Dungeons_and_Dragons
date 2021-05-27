@@ -8,6 +8,7 @@ import BusinessLayer.GameObjects.Player.Mage;
 import BusinessLayer.GameObjects.Player.Player;
 import BusinessLayer.GameObjects.Player.Rogue;
 import BusinessLayer.GameObjects.Player.Warrior;
+import Game_Tiles.Empty;
 import Game_Tiles.Tile;
 import Game_Tiles.Wall;
 
@@ -27,7 +28,7 @@ public class GameController {
         playerHashMap = new HashMap<>();
         bringToLife();
         gameMap = new Tile[map.size()][map.get(0).length()];
-        //start(map, player);
+        start(map, player);
     }
 
     private void bringToLife(){
@@ -55,23 +56,23 @@ public class GameController {
         enemyHashMap.put('Q' ,new Trap("Queen's Trap", 'Q', 250, 50, 10, 100, 3, 7));
         enemyHashMap.put('D' ,new Trap("Death Trap", 'D', 500, 100, 20, 250, 1, 10));
 
+
         //Hunter ygritte = new Hunter("Ygritte", 220, 30, 2, 6);
     }
 
     public void start(List<String> map, int player){
         for (int i = 0; i < map.size(); i++) {
-            if(i == 4)
-                System.out.println("s");
             String line = map.get(i);
             for (int j = 0; j < line.length(); j++){
-                if(line.charAt(j) == '@')
+                if(line.charAt(j) == '.')
+                    gameMap[i][j] = new Empty();
+                else if(line.charAt(j) == '@')
                     gameMap[i][j] = playerHashMap.get(player);
                 else {
                     if (line.charAt(j) == '#')
                         gameMap[i][j] = new Wall();
                     else {
                         gameMap[i][j] = enemyHashMap.get(line.charAt(j));
-                        System.out.println(enemyHashMap.get(line.charAt(j)).xPos);
                     }
                     gameMap[i][j].yPos = i;
                     gameMap[i][j].xPos = j;

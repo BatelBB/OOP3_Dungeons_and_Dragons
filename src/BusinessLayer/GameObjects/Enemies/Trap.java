@@ -36,7 +36,9 @@ public class Trap extends Enemy{
 
     }
 
-
+    public String toString(){
+        return "Im a: " + name;
+    }
 
 
 }

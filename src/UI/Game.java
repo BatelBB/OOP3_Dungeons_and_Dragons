@@ -17,11 +17,11 @@ public class Game {
     int currentLevel;
     boolean isGame;
 
-    public Game(String args){
+    public Game(String levelsPath){
 
         currentLevel = 0;
         nextLevel = 0;
-        levels = new File(args).listFiles();
+        levels = new File(levelsPath).listFiles();
         start();
 
     }
