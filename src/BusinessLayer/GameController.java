@@ -4,13 +4,10 @@ import BusinessLayer.GameObjects.Enemies.Boss;
 import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Enemies.Monster;
 import BusinessLayer.GameObjects.Enemies.Trap;
-import BusinessLayer.GameObjects.Player.Mage;
-import BusinessLayer.GameObjects.Player.Player;
-import BusinessLayer.GameObjects.Player.Rogue;
-import BusinessLayer.GameObjects.Player.Warrior;
-import Game_Tiles.Empty;
-import Game_Tiles.Tile;
-import Game_Tiles.Wall;
+import BusinessLayer.GameObjects.Player.*;
+import BusinessLayer.GameObjects.Game_Tiles.Empty;
+import BusinessLayer.GameObjects.Game_Tiles.Tile;
+import BusinessLayer.GameObjects.Game_Tiles.Wall;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,18 +16,24 @@ public class GameController {
     public HashMap<Character, Enemy> enemyHashMap;
     public HashMap<Integer, Player> playerHashMap;
 
-    public Game_Tiles.Tile[][] gameMap;
+    public BusinessLayer.GameObjects.Game_Tiles.Tile[][] gameMap;
 
     private Player myPlayer;
 
-    public GameController(List<String> map, int player){
+    private List<String> map;
+
+    public GameController(List<String> map){
         enemyHashMap = new HashMap<>();
         playerHashMap = new HashMap<>();
         bringToLife();
+        this.map = map;
         gameMap = new Tile[map.size()][map.get(0).length()];
-        start(map, player);
-    }
 
+    }
+    public void setPlayer(int playerNum) {
+        myPlayer = playerHashMap.get(playerNum);
+        start(map, playerNum);
+    }
     private void bringToLife(){
         playerHashMap.put(1, new Warrior("Jon Snow", 300, 30, 4, 3));
         playerHashMap.put(2, new Warrior("The Hound", 400, 20, 6, 5));
@@ -40,6 +43,8 @@ public class GameController {
 
         playerHashMap.put(5, new Rogue("Arya Stark", 150, 40, 2, 20));
         playerHashMap.put(6, new Rogue("Bronn", 250, 35, 3, 50));
+
+        playerHashMap.put(7, new Hunter("Ygritte", 220, 30, 2, 6));
 
         enemyHashMap.put('s' ,new Monster("Lannister Soldier", 's', 80, 8, 3, 3, 25));
         enemyHashMap.put('k' ,new Monster("Lannister Knight", 'k', 200, 14, 8, 4, 50));
@@ -56,8 +61,6 @@ public class GameController {
         enemyHashMap.put('Q' ,new Trap("Queen's Trap", 'Q', 250, 50, 10, 100, 3, 7));
         enemyHashMap.put('D' ,new Trap("Death Trap", 'D', 500, 100, 20, 250, 1, 10));
 
-
-        //Hunter ygritte = new Hunter("Ygritte", 220, 30, 2, 6);
     }
 
     public void start(List<String> map, int player){
@@ -73,15 +76,26 @@ public class GameController {
                         gameMap[i][j] = new Wall();
                     else {
                         gameMap[i][j] = enemyHashMap.get(line.charAt(j));
+                        //Enemy enemy = enemyHashMap.get(line.charAt(j));
+                        //enemy.setDeathCallback(()->removeEnemy());
                     }
-                    gameMap[i][j].yPos = i;
-                    gameMap[i][j].xPos = j;
+                    gameMap[i][j].getPosition().yPos = i;
+                    gameMap[i][j].getPosition().xPos = j;
                 }
             }
         }
     }
 
     public void play(char input){
-
+        switch (input) {
+            case 'd' -> myPlayer.moveRight();
+            case 's' -> myPlayer.moveDown();
+            case 'a' -> myPlayer.moveLeft();
+            case 'w' -> myPlayer.moveUp();
+            case 'e' -> myPlayer.castAbility();
+            case 'q' -> myPlayer.doNothing();
+        }
     }
+
+
 }
