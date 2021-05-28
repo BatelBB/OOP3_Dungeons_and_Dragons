@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    File[] levels;
+    File[] files;
+    List<File> levels = new ArrayList<>();
     String levelPath;
     GameController gc;
     List<String> map;
@@ -18,21 +19,30 @@ public class Game {
     boolean isGame;
 
     public Game(String levelsPath){
-
         currentLevel = 0;
         nextLevel = 0;
-        levels = new File(levelsPath).listFiles();
+        files = new File(levelsPath).listFiles();
+        for (File file : files) {
+            if (file.getName().contains("level"))
+                levels.add(file);
+        }
         start();
-
     }
 
     public void start(){
         Scanner scanner = new Scanner(System.in);
         map = loadLevel(nextLevel);
-        System.out.println("choose class");
-        player = scanner.nextInt();
-
-        gc = new GameController(map, player);
+        gc = new GameController(map);
+        System.out.println("Select Player:");
+        int playerHasSize = gc.playerHashMap.size();
+        int playerNum = 1;
+        for(int i = 0; i<playerHasSize; i++) {
+            System.out.println(playerNum + ". "+ gc.playerHashMap.get(playerNum).toString());
+            playerNum++;
+        }
+        //player = scanner.nextInt();
+        gc.setPlayer(scanner.nextInt());
+        //gc = new GameController(map, player);
 
         draw(map);
         isGame = true;
@@ -40,10 +50,15 @@ public class Game {
     }
 
     public void update(){
-
-        while(isGame) {
-            char input = getInput();
-            gc.play(input);
+        Scanner scanner = new Scanner(System.in);
+        char ch;
+        while(scanner.hasNext()) {
+            while (isGame) {
+                //char input = getInput();
+                ch = scanner.next().charAt(0);
+                if(ch=='d' || ch == 'q'|| ch == 'w'|| ch == 'a'|| ch == 's'|| ch == 'e')
+                    gc.play(ch);
+            }
         }
     }
 
@@ -64,13 +79,13 @@ public class Game {
         //String path = System.getProperty("user.dir") + "levels_dir" + "level1";
         List<String> lines = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(levels[level]));
+            BufferedReader reader = new BufferedReader(new FileReader(levels.get(level)));
             String next;
             while ((next = reader.readLine()) != null) {
                 lines.add(next);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found " + levels[level]);
+            System.out.println("File not found " + levels.get(level));
         } catch (IOException e) {
             System.out.println(e.getMessage() + "\n" + e.getStackTrace());
         }
