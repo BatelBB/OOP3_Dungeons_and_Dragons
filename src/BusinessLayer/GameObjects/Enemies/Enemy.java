@@ -1,12 +1,26 @@
 package BusinessLayer.GameObjects.Enemies;
 
+import BusinessLayer.GameObjects.Game_Tiles.Position;
 import BusinessLayer.GameObjects.Player.Player;
-import Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.callbacks.EnemyDeathCallback;
 
 public abstract class Enemy extends Unit {
-    Integer experienceValue;
+    protected int experienceValue;
+    protected Position position;
 
-    public double range(Enemy enemy, Player player){
-        return Math.sqrt(Math.pow((enemy.xPos-player.xPos),2)+Math.pow((enemy.yPos-player.yPos),2));
+    protected EnemyDeathCallback enemyDeathCallback;
+
+    protected Enemy(char tile, String name, int healthCapacity, int attack, int defense) {
+        super(tile, name, healthCapacity, attack, defense);
     }
+
+    public int getExperienceValue(){
+        return experienceValue;
+    }
+
+    public void setDeathCallback(EnemyDeathCallback enemyDeathCallback){
+        this.enemyDeathCallback = enemyDeathCallback;
+    }
+
 }
