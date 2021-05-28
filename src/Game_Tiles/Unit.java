@@ -7,6 +7,9 @@ public class Unit extends Tile{
     public Integer attackPoints;
     public Integer defensePoints;
 
+    public Unit(char c){
+        this.tile = c;
+    }
     // Returns the name of the unit. Use it to print the names upon combat engagement on ability cast.
     public String getName(){
         return name;

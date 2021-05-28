@@ -1,7 +1,9 @@
 package Game_Tiles;
 
 public class Wall extends Tile{
-
+public Wall(){
+    this.tile = '#';
+}
     @Override
     public String toString() {
         return "#";

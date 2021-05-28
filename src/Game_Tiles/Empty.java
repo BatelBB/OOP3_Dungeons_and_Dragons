@@ -1,10 +1,13 @@
 package Game_Tiles;
 
-public class Empty extends Tile{
+public class Empty extends Tile {
+    public Empty() {
+        this.tile = '.';
+    }
 
     @Override
     public String toString() {
-        return ".";
+        return String.valueOf(tile);
     }
 
     @Override
