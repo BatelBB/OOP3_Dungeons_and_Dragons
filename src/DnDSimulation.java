@@ -14,8 +14,6 @@ import java.util.List;
 
 public class DnDSimulation {
     public static void main(String[] args) {
-        Game game = new Game(args[0]);
-
-        //System.out.println(System.getProperty("user.dir"));
+        new Game(args[0]);
     }
 }
