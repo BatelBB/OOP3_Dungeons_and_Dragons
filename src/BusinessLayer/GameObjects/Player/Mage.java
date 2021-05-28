@@ -1,9 +1,10 @@
 package BusinessLayer.GameObjects.Player;
 
-import Game_Tiles.Empty;
-import Game_Tiles.Unit;
-import Game_Tiles.Visitor;
-import Game_Tiles.Wall;
+import BusinessLayer.GameObjects.Enemies.Enemy;
+import BusinessLayer.GameObjects.Game_Tiles.Empty;
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Visitor;
+import BusinessLayer.GameObjects.Game_Tiles.Wall;
 
 public class Mage extends Player{
     public Integer manaPool;
@@ -14,6 +15,7 @@ public class Mage extends Player{
     public Integer abilityRange;
 
     public Mage(String name, int health, int attack, int defense, int manaPool, int manaCost, int spellPower, int hitCount, int range){
+        super(name, health, attack, defense);
         this.name = name;
         this.healthAmount = health;
         this.healthPool = health;
@@ -41,30 +43,44 @@ public class Mage extends Player{
         }
     }
 
-    public void levelUp(){
-        levelUpBasic();
-        manaPool = manaPool + 25*playerLevel;
-        currentMana = Math.min(currentMana + manaPool/4, manaPool);
-        spellPower = spellPower+10*playerLevel;
+//    public void levelUp(){
+//        levelUpBasic();
+//        manaPool = manaPool + 25*playerLevel;
+//        currentMana = Math.min(currentMana + manaPool/4, manaPool);
+//        spellPower = spellPower+10*playerLevel;
+//    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
-    public boolean accept(Visitor visitor) {
-        return visitor.visit(this);
+    public void visit(Wall wall) {
     }
 
     @Override
-    public boolean visit(Wall wall) {
-        return wall.visit(this);
+    public void visit(Player player) {
+
     }
 
     @Override
-    public boolean visit(Unit unit) {
-        return unit.visit(this);
+    public void visit(Enemy enemy) {
+
     }
 
     @Override
-    public boolean visit(Empty empty) {
-        return empty.visit(this);
+    public void visit(Unit unit) {
+        unit.visit(this);
+    }
+
+    @Override
+    public void visit(Empty empty) {
+        empty.visit(this);
+    }
+
+    @Override
+    public void processStep() {
+
     }
 }

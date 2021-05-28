@@ -10,6 +10,7 @@ public class Boss extends Enemy implements HeroicUnit {
     public Integer combatTicks; //how long the boss remained in combat, initially 0.
 
     public Boss(String name, char tile, int health, int attack, int defense, int visionRange, int experienceValue) {
+        super(tile, name, health, attack, defense);
         this.name = name;
         this.tile = tile;
         this.healthAmount = health;
@@ -29,14 +30,14 @@ public class Boss extends Enemy implements HeroicUnit {
 
 
     public void monsterMove(Player player) {
-        if (range(this, player) < visionRange) {
+        if (getPosition().range(this, player) < visionRange) {
             if (combatTicks == abilityFrequency) {
                 combatTicks = 0;
                 castAbility();
             } else {
                 combatTicks += 1;
-                int dx = this.xPos - player.xPos;
-                int dy = this.yPos - player.yPos;
+                int dx = this.getPosition().xPos - player.getPosition().xPos;
+                int dy = this.getPosition().yPos - player.getPosition().yPos;
                 if (Math.abs(dx) > Math.abs(dy)) {
                     if (dx > 0)
                         moveLeft();
@@ -64,6 +65,16 @@ public class Boss extends Enemy implements HeroicUnit {
     }
 
     private void moveRight() {
+    }
+
+    @Override
+    public void onDeath() {
+
+    }
+
+    @Override
+    public void processStep() {
+
     }
 }
 

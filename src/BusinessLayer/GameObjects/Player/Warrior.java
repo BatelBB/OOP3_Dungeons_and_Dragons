@@ -1,15 +1,17 @@
 package BusinessLayer.GameObjects.Player;
 
-import Game_Tiles.Empty;
-import Game_Tiles.Unit;
-import Game_Tiles.Visitor;
-import Game_Tiles.Wall;
+import BusinessLayer.GameObjects.Enemies.Enemy;
+import BusinessLayer.GameObjects.Game_Tiles.Empty;
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Visitor;
+import BusinessLayer.GameObjects.Game_Tiles.Wall;
 
 public class Warrior extends Player {
     public Integer abilityCooldown; // Represents the number of game ticks required to pass before the warrior can cast the ability again.
     public Integer remainingCooldown; //Represents the number of ticks remained until the warrior can cast its special ability.
 
     public Warrior(String name, int health, int attack, int defense, int cooldown){
+        super(name, health, attack, defense);
         this.name = name;
         this.healthAmount = health;
         this.healthPool = health;
@@ -33,30 +35,44 @@ public class Warrior extends Player {
         }
     }
 
-    public void levelUp(){
-        levelUpBasic();
-        remainingCooldown = 0;
-        healthPool = healthPool + 5*playerLevel;
-        attackPoints = attackPoints + 2*playerLevel;
-        defensePoints = defensePoints + playerLevel;
-    }
+//    public void levelUp(){
+//        levelUpBasic();
+//        remainingCooldown = 0;
+//        healthPool = healthPool + 5*playerLevel;
+//        attackPoints = attackPoints + 2*playerLevel;
+//        defensePoints = defensePoints + playerLevel;
+//    }
     @Override
-    public boolean accept(Visitor visitor) {
-        return visitor.visit(this);
-    }
-
-    @Override
-    public boolean visit(Wall wall) {
-        return wall.visit(this);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
-    public boolean visit(Unit unit) {
-        return unit.visit(this);
+    public void visit(Wall wall) {
     }
 
     @Override
-    public boolean visit(Empty empty) {
-        return empty.visit(this);
+    public void visit(Player player) {
+
+    }
+
+    @Override
+    public void visit(Enemy enemy) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
+        unit.visit(this);
+    }
+
+    @Override
+    public void visit(Empty empty) {
+        empty.visit(this);
+    }
+
+    @Override
+    public void processStep() {
+
     }
 }

@@ -9,6 +9,7 @@ public class Trap extends Enemy{
     public boolean visible; //indicates whether the trap is currently visible. Initially true
 
     public Trap(String name, char tile, int health, int attack, int defense, int experienceValue, int visibilityTime, int invisibilityTime){
+        super(tile, name, health, attack, defense);
         this.name = name;
         this.tile = tile;
         this.healthAmount = health;
@@ -28,7 +29,7 @@ public class Trap extends Enemy{
             ticksCount = 0;
         else
             ticksCount +=1;
-        if(range(this, player)<2)
+        if(position.range(this, player)<2)
             attack(player);
     }
 
@@ -41,4 +42,13 @@ public class Trap extends Enemy{
     }
 
 
+    @Override
+    public void onDeath() {
+
+    }
+
+    @Override
+    public void processStep() {
+
+    }
 }

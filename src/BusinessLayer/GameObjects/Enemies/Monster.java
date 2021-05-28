@@ -7,6 +7,7 @@ public class Monster extends Enemy{
     public Integer visionRange;
 
     public Monster(String name, char tile, int health, int attack, int defense, int visionRange, int experienceValue){
+        super(tile, name, health, attack, defense);
         this.name = name;
         this.tile = tile;
         this.healthAmount = health;
@@ -16,16 +17,27 @@ public class Monster extends Enemy{
         this.visionRange = visionRange;
         this.experienceValue = experienceValue;
     }
+
+    @Override
+    public void onDeath() {
+
+    }
+
     @Override
     public String description(){
         return name +"\tHealth: "+healthAmount+"/"+healthPool+"\tAttack: "+attackPoints+"\tDefense: "+defensePoints+
                 "\tExperience Value: "+experienceValue+"\tVision Range: "+visionRange;
     }
 
+    @Override
+    public void processStep() {
+
+    }
+
     public void monsterMove(Player player){
-        if(range(this,player) < visionRange){
-            int dx = this.xPos - player.xPos;
-            int dy = this.yPos - player.yPos;
+        if(getPosition().range(this,player) < visionRange){
+            int dx = this.getPosition().xPos - player.getPosition().xPos;
+            int dy = this.getPosition().yPos - player.getPosition().yPos;
             if(Math.abs(dx) > Math.abs(dy)) {
                 if(dx>0)
                     moveLeft();
