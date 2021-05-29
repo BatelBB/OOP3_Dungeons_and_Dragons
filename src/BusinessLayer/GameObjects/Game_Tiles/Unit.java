@@ -2,13 +2,10 @@ package BusinessLayer.GameObjects.Game_Tiles;
 
 import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Player.Player;
-import BusinessLayer.GameObjects.Resource;
+import BusinessLayer.Utils.Resource;
 import BusinessLayer.callbacks.MessageCallback;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
-import java.util.function.Function;
 
 public abstract class Unit extends Tile {
 //    protected static Map<Position, Function<Unit, Movement>> movementMap = new HashMap<Position, Function<Unit, Movement>>(){
