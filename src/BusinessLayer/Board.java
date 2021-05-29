@@ -2,6 +2,7 @@ package BusinessLayer;
 
 import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Enemy.Enemy;
+import BusinessLayer.Tiles.Enemy.Monster;
 import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Player.Warrior;
 import BusinessLayer.Tiles.Resource;
@@ -12,27 +13,46 @@ import ServiceLayer.InputManager;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Board {
     InputManager im;
 
+    public boolean isGame;
 
-    private Tile[][] gameMap;
+    private LinkedList<Tile> gameMap;
+    private char chosenPlayer;
+
+    //private Tile[][] gameMap;
     private LinkedList<Enemy> enemyList;
     private Player player;
 
     private HashMap<Character, Enemy> enemyHashMap;
     private HashMap<Character, Player> playerHashMap;
 
+    private int height;
+    private int width;
+
     public Board(char[][] map){
+        isGame = true;
+        height = map.length;
+        width = map[0].length;
+
         im = new InputManager();
 
+        chosenPlayer = im.getInput("choose wisely");
+
+
         enemyList = new LinkedList<>();
+        gameMap = new LinkedList<>();
 
         enemyHashMap = new HashMap<>();
         playerHashMap = new HashMap<>();
         loadHashMaps();
+        init(map);
 
+        im.updateCLI(gameMap, width, height);
+        update();
     }
 
     private void loadHashMaps(){
@@ -41,8 +61,8 @@ public class Board {
         //tileHashMap.put('#', new Wall('#'));
         //tileHashMap.put('.', new Empty('.'));
 
-        playerHashMap.put('1', new Warrior('1', "Jon Snow", new Resource("Health", 300), 30, 4, 3));
-        playerHashMap.put('2', new Warrior('2', "The Hound", new Resource("Health",400), 20, 6, 5));
+        playerHashMap.put('1', new Warrior('@', "Jon Snow", new Resource("Health", 300), 30, 4, 3));
+        playerHashMap.put('2', new Warrior('@', "The Hound", new Resource("Health",400), 20, 6, 5));
 
         /*playerHashMap.put(3, new Mage("Melisandra", 100, 5, 1, 300, 30, 15, 5, 6));
         playerHashMap.put(4, new Mage("Thoros of Myr", 250, 25, 4, 150, 20, 20, 3, 4));
@@ -50,8 +70,8 @@ public class Board {
         playerHashMap.put(5, new Rogue("Arya Stark", 150, 40, 2, 20));
         playerHashMap.put(6, new Rogue("Bronn", 250, 35, 3, 50));*/
 
-        /*enemyHashMap.put('s' ,new Monster("Lannister Soldier", 's', 80, 8, 3, 3, 25));
-        enemyHashMap.put('k' ,new Monster("Lannister Knight", 'k', 200, 14, 8, 4, 50));
+        enemyHashMap.put('s' ,new Monster('s', "Lannister Soldier", new Resource("Health", 80), 8, 3, 25, 3));
+        /*enemyHashMap.put('k' ,new Monster("Lannister Knight", 'k', 200, 14, 8, 4, 50));
         enemyHashMap.put('q' ,new Monster("Queen's Guard", 'q', 400, 20, 15, 5, 100));
         enemyHashMap.put('z' ,new Monster("Wright", 'z', 600, 30, 15, 3, 100));
         enemyHashMap.put('b' ,new Monster("Bear-Wright", 'b', 1000, 75, 30, 4, 250));
@@ -72,47 +92,83 @@ public class Board {
             for(int j = 0; j < map[i].length; j++){
                 if(map[i][j] != '@' && map[i][j] != '#' && map[i][j] != '.') {
                     enemyList.addFirst(enemyHashMap.get(map[i][j]));
-                    gameMap[i][j] = enemyList.getFirst();
-                    gameMap[i][j].init(new Position(j,i));
+                    gameMap.add(enemyList.getFirst());
+                    enemyList.getFirst().init(new Position(j,i));
                 }
                 else if(map[i][j] == '@') {
-                    player = playerHashMap.get(map[i][j]);
-                    gameMap[i][j] = player;
+                    player = playerHashMap.get(chosenPlayer);
+                    gameMap.add(player);
+                    player.init(new Position(j,i));
                 }
+                else if(map[i][j] == '#')
+                    gameMap.add(new Wall('#', new Position(j,i)));
+                else if(map[i][j] == '.')
+                    gameMap.add(new Empty('.', new Position(j,i)));
             }
         }
     }
 
     public void update(){
-        playerGo(im.getInput());
-    }
+        while (isGame) {
+            playerGo(im.getInput());
+            enemiesGo();
+
+            //after all updates
+            im.updateCLI(gameMap, width, height);
+        }
+     }
+
+     private void enemiesGo(){
+        enum action{w, a, s, d}
+         Random rand = new Random();
+         for (Enemy e: enemyList) {
+             int a = rand.nextInt(4) + 1;
+             switch (a){
+                 case 1 -> up(e);
+                 case 2 -> down(e);
+                 case 3 -> left(e);
+                 case 4 -> right(e);
+             }
+         }
+     }
+
 
     private void playerGo(char input){
-        if(input != 'q' && input != 'e'){
-            if(input == 'w')
-                up(player);
+        switch (input){
+            case 'w' -> up(player);
+            case 's' -> down(player);
+            case 'a' -> left(player);
+            case 'd' -> right(player);
         }
     }
 
+    private Tile find(Position p){
+        for (Tile t: gameMap) {
+            if(t.getPos().equals(p))
+                return t;
+        }
+        return null;
+    }
 
+    private void up(Tile u){
+        Position p = u.getPos().translate(0,-1);
+        u.interact(find(p));
 
-    private void up(Unit u){
-        Position p = u.pos.translate(0,1);
-        u.interact(gameMap[p.getxPos()][p.getyPos()]);
-
-        u.interact(list.find(p));
     }
 
     private void down(Unit u){
-
+        Position p = u.getPos().translate(0,1);
+        u.interact(find(p));
     }
 
     private void left(Unit u){
-
+        Position p = u.getPos().translate(-1,0);
+        u.interact(find(p));
     }
 
     private void right(Unit u){
-
+        Position p = u.getPos().translate(1,0);
+        u.interact(find(p));
     }
 
 

@@ -2,6 +2,7 @@ package BusinessLayer;
 
 import BusinessLayer.Interfaces.Visited;
 import BusinessLayer.Interfaces.Visitor;
+import BusinessLayer.Tiles.Unit;
 
 public abstract class Tile implements Visited, Visitor {
     protected char tile;
@@ -22,9 +23,17 @@ public abstract class Tile implements Visited, Visitor {
         return "Hi im " + tile;
     }
 
-    @Override
-    public void accept(Visitor visitor) {
+    public abstract void accept(Unit unit);
 
+    public Position getPos(){return pos;}
+
+    public void setPos(Position newPos){
+        pos = newPos;
     }
 
+    public abstract void interact(Tile tile);
+
+    public String toString(){
+        return String.valueOf(tile);
+    }
 }

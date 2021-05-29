@@ -1,7 +1,10 @@
 package BusinessLayer.Tiles.Enemy;
 
+import BusinessLayer.Interfaces.Visitor;
 import BusinessLayer.Position;
+import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Resource;
+import BusinessLayer.Tiles.Unit;
 
 public class Trap extends Enemy{
     private boolean isVisible;
@@ -20,5 +23,25 @@ public class Trap extends Enemy{
         if(isVisible)
             return "" + tile;
         return ".";
+    }
+//delete
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void accept(Unit unit) {
+
+    }
+
+    @Override
+    public void visit(Enemy e) {
+
+    }
+
+    @Override
+    public void visit(Player player) {
+
     }
 }

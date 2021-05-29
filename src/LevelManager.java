@@ -30,7 +30,7 @@ public class LevelManager {
     private char[][] loadNextLevel(){
         List<String> lines = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(levels.get(level)));
+            BufferedReader reader = new BufferedReader(new FileReader(levels.get(level-1)));
             String next;
             while ((next = reader.readLine()) != null) {
                 lines.add(next);
