@@ -1,4 +1,4 @@
-package BusinessLayer.GameObjects;
+package BusinessLayer.Utils;
 
 public class Resource{
     public int resourceAmount;
