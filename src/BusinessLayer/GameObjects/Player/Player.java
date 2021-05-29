@@ -3,6 +3,7 @@ package BusinessLayer.GameObjects.Player;
 import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Game_Tiles.Position;
 import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.callbacks.EnemyDeathCallback;
 import BusinessLayer.callbacks.MessageCallback;
 import BusinessLayer.callbacks.PlayerDeathCallback;
 
@@ -25,7 +26,9 @@ public abstract class Player extends Unit implements HeroicUnit {
         this.experience = 0;
         this.playerLevel = 1;
     }
-
+    public void setDeathCallback(PlayerDeathCallback playerDeathCallback){
+        this.deathCallback = playerDeathCallback;
+    }
     // public Player initialize(Position position, MessageCallback messageCallback, PlayerDeathCallback playerDeathCallback, InputProvider inputProvider){
 //        super.initialize(position, messageCallback);
 //        this.deathCallback = playerDeathCallback;
