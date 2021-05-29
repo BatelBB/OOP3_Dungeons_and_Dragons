@@ -1,4 +1,4 @@
 package BusinessLayer.callbacks;
 
-public class PositionChangedCallback {
+public interface PositionChangedCallback {
 }

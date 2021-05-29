@@ -1,6 +1,5 @@
 package BusinessLayer.callbacks;
 
-public class MessageCallback {
-    public void send(String format) {
-    }
+public interface MessageCallback {
+    public void send(String format);
 }
