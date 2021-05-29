@@ -4,6 +4,7 @@ import BusinessLayer.GameObjects.Enemies.Boss;
 import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Enemies.Monster;
 import BusinessLayer.GameObjects.Enemies.Trap;
+import BusinessLayer.GameObjects.Game_Tiles.Position;
 import BusinessLayer.GameObjects.Player.*;
 import BusinessLayer.GameObjects.Game_Tiles.Empty;
 import BusinessLayer.GameObjects.Game_Tiles.Tile;
@@ -79,8 +80,9 @@ public class GameController {
                         //Enemy enemy = enemyHashMap.get(line.charAt(j));
                         //enemy.setDeathCallback(()->removeEnemy());
                     }
-                    gameMap[i][j].getPosition().yPos = i;
-                    gameMap[i][j].getPosition().xPos = j;
+
+                    gameMap[i][j].setPosition(i,j);
+                    //gameMap[i][j].getPosition().xPos = j;
                 }
             }
         }

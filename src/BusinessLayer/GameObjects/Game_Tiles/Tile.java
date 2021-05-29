@@ -8,6 +8,7 @@ public abstract class Tile implements Visitor, Visited, Comparable<Tile> {
     protected Position position;
 
     protected Tile(char tile){
+        position = new Position();
         this.tile = tile;
     }
 
@@ -18,8 +19,9 @@ public abstract class Tile implements Visitor, Visited, Comparable<Tile> {
     public Position getPosition(){
         return position;
     }
-    public void setPosition(Position position){
-        this.position = position;
+    public void setPosition(int x, int y){
+        this.position.xPos = x;
+        this.position.yPos = y;
     }
     @Override
     public String toString() {//Returns the tile character. Use it to print the board

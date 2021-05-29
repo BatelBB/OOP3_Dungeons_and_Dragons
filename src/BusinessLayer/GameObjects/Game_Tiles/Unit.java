@@ -119,8 +119,8 @@ public abstract class Unit extends Tile {
 
     protected void switchPosition(Tile tile) {
         Position position = tile.getPosition();
-        tile.setPosition(this.getPosition());
-        this.setPosition(position);
+        tile.setPosition(this.getPosition().xPos,this.getPosition().yPos);
+        this.setPosition(position.xPos, position.yPos);
     }
 
 
