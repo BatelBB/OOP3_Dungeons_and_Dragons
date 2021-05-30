@@ -48,7 +48,7 @@ public abstract class Player extends Unit implements HeroicUnit {
         int healthGained = gainHealth();
         int attackGained = gainAttack();
         int defenseGained = gainDefense();
-        health.addCapacity(healthGained);
+        health.addAmount(healthGained);
         health.restore();
         attackPoints += attackGained;
         defensePoints += defenseGained;

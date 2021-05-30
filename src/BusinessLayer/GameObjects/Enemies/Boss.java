@@ -2,6 +2,7 @@ package BusinessLayer.GameObjects.Enemies;
 
 import BusinessLayer.GameObjects.Player.HeroicUnit;
 import BusinessLayer.GameObjects.Player.Player;
+import BusinessLayer.Utils.Resource;
 
 
 public class Boss extends Enemy implements HeroicUnit {
@@ -9,16 +10,9 @@ public class Boss extends Enemy implements HeroicUnit {
     public Integer abilityFrequency; //how often the boss will cast the ability during combat, constructor argument.
     public Integer combatTicks; //how long the boss remained in combat, initially 0.
 
-    public Boss(String name, char tile, int health, int attack, int defense, int visionRange, int experienceValue) {
-        super(tile, name, health, attack, defense);
-        this.name = name;
-        this.tile = tile;
-        this.healthAmount = health;
-        this.healthPool = health;
-        this.attackPoints = attack;
-        this.defensePoints = defense;
+    public Boss(String name, char tile, Resource resource, int attack, int defense, int visionRange, int experienceValue) {
+        super(tile, name, resource, attack, defense, experienceValue);
         this.visionRange = visionRange;
-        this.experienceValue = experienceValue;
         combatTicks = 0;
     }
 

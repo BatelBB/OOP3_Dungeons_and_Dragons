@@ -4,9 +4,10 @@ import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Player.Player;
 
 public class Empty extends Tile {
-    public Empty() {
-        super('.');
-        this.tile = '.';
+
+    public Empty(char c, Position position) {
+        super(c);
+        this.position = position;
     }
 
     @Override
@@ -44,6 +45,11 @@ public class Empty extends Tile {
 
     @Override
     public void visit(Empty empty) {
+
+    }
+
+    @Override
+    public void interact(Tile tile) {
 
     }
 

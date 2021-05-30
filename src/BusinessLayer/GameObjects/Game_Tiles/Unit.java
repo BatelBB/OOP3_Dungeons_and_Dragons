@@ -33,13 +33,13 @@ public abstract class Unit extends Tile {
         super(tile);
         this.tile = tile;
         this.name = name;
-        this.health = new Resource(healthCapacity, healthCapacity);
+        this.health = new Resource("health", healthCapacity);
         this.attackPoints = attack;
         this.defensePoints = defense;
     }
 
     protected void initialize(Position position, MessageCallback messageCallback) {
-        super.initialize(position);
+        super.init(position);
         this.messageCallback = messageCallback;
     }
 

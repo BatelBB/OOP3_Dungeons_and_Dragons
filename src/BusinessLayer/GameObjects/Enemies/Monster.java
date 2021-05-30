@@ -2,21 +2,17 @@ package BusinessLayer.GameObjects.Enemies;
 
 
 import BusinessLayer.GameObjects.Player.Player;
+import BusinessLayer.Utils.Resource;
 
 public class Monster extends Enemy{
     public Integer visionRange;
 
-    public Monster(String name, char tile, int health, int attack, int defense, int visionRange, int experienceValue){
-        super(tile, name, health, attack, defense);
-        this.name = name;
-        this.tile = tile;
-        this.healthAmount = health;
-        this.healthPool = health;
-        this.attackPoints = attack;
-        this.defensePoints = defense;
+    public Monster(char ch, String name, Resource resource, int attack, int defense, int visionRange, int experienceValue){
+        super(ch, name, resource, attack, defense, experienceValue);
         this.visionRange = visionRange;
-        this.experienceValue = experienceValue;
     }
+
+
 
     @Override
     public void onDeath() {
@@ -35,34 +31,30 @@ public class Monster extends Enemy{
     }
 
     public void monsterMove(Player player){
-        if(getPosition().range(this,player) < visionRange){
-            int dx = this.getPosition().xPos - player.getPosition().xPos;
-            int dy = this.getPosition().yPos - player.getPosition().yPos;
-            if(Math.abs(dx) > Math.abs(dy)) {
-                if(dx>0)
-                    moveLeft();
-                else
-                    moveRight();
-            }else
-                if(dy>0)
-                    moveUp();
-                else
-                    moveDown();
-        }else {
-            //Perform a random movement action: left, right, up, down or stay at the same place.
+//        if(getPosition().range(this,player) < visionRange){
+//            int dx = this.getPosition().xPos - player.getPosition().xPos;
+//            int dy = this.getPosition().yPos - player.getPosition().yPos;
+//            if(Math.abs(dx) > Math.abs(dy)) {
+//                if(dx>0)
+//                    moveLeft();
+//                else
+//                    moveRight();
+//            }else
+//                if(dy>0)
+//                    moveUp();
+//                else
+//                    moveDown();
+//        }else {
+//            //Perform a random movement action: left, right, up, down or stay at the same place.
+//        }
+
+    }
+
+    @Override
+    public void visit(Player player) {
+        super.battle(player);
+        if(!player.alive()){
+            switchPosition(player);
         }
-
-    }
-
-    private void moveUp() {
-    }
-
-    private void moveDown() {
-    }
-
-    private void moveRight() {
-    }
-
-    private void moveLeft() {
     }
 }

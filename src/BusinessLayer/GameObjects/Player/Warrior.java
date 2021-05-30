@@ -5,18 +5,14 @@ import BusinessLayer.GameObjects.Game_Tiles.Empty;
 import BusinessLayer.GameObjects.Game_Tiles.Unit;
 import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Game_Tiles.Wall;
+import BusinessLayer.Utils.Resource;
 
 public class Warrior extends Player {
     public Integer abilityCooldown; // Represents the number of game ticks required to pass before the warrior can cast the ability again.
     public Integer remainingCooldown; //Represents the number of ticks remained until the warrior can cast its special ability.
 
-    public Warrior(String name, int health, int attack, int defense, int cooldown){
-        super(name, health, attack, defense);
-        this.name = name;
-        this.healthAmount = health;
-        this.healthPool = health;
-        this.attackPoints = attack;
-        this.defensePoints = defense;
+    public Warrior(char ch, String name, Resource resource, int attack, int defense, int cooldown){
+        super(name, resource.getAmount(), attack, defense);
         this.abilityCooldown = cooldown;
         this.remainingCooldown = 0;
     }

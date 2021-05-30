@@ -4,9 +4,10 @@ import BusinessLayer.GameObjects.Enemies.Enemy;
 import BusinessLayer.GameObjects.Player.Player;
 
 public class Wall extends Tile{
-public Wall(){
-    super('#');
-    this.tile = '#';
+public Wall(char ch, Position position){
+    super(ch);
+    this.tile = ch;
+    this.position = position;
 }
     @Override
     public String toString() {
@@ -43,6 +44,11 @@ public Wall(){
 
     @Override
     public void visit(Empty empty) {
+
+    }
+
+    @Override
+    public void interact(Tile tile) {
 
     }
 

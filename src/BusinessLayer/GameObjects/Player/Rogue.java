@@ -12,11 +12,6 @@ public class Rogue extends Player {
 
     public Rogue(String name, int health, int attack, int defense, int cost){
         super(name, health, attack, defense);
-        this.name = name;
-        this.healthAmount = health;
-        this.healthPool = health;
-        this.attackPoints = attack;
-        this.defensePoints = defense;
         this.cost = cost;
         this.currentEnergy = 100;
     }

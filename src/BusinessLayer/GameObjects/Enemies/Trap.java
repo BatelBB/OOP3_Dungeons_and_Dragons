@@ -1,6 +1,7 @@
 package BusinessLayer.GameObjects.Enemies;
 
 import BusinessLayer.GameObjects.Player.Player;
+import BusinessLayer.Utils.Resource;
 
 public class Trap extends Enemy{
     public Integer visibilityTime; // amount of ticks that the trap remains visible, a constructor argument
@@ -8,17 +9,10 @@ public class Trap extends Enemy{
     public Integer ticksCount; //counts the number of ticks since last visibility state change. Initially 0.
     public boolean visible; //indicates whether the trap is currently visible. Initially true
 
-    public Trap(String name, char tile, int health, int attack, int defense, int experienceValue, int visibilityTime, int invisibilityTime){
-        super(tile, name, health, attack, defense);
-        this.name = name;
-        this.tile = tile;
-        this.healthAmount = health;
-        this.healthPool = health;
-        this.attackPoints = attack;
-        this.defensePoints = defense;
+    public Trap(String name, char tile, Resource resource, int attack, int defense, int experienceValue, int visibilityTime, int invisibilityTime){
+        super(tile, name, resource, attack, defense, experienceValue);
         this.visibilityTime = visibilityTime;
         this.invisibilityTime = invisibilityTime;
-        this.experienceValue = experienceValue;
         this.ticksCount = 0;
         this.visible = true;
     }
