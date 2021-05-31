@@ -14,8 +14,8 @@ public class Mage extends Player{
     public Integer hitCount;
     public Integer abilityRange;
 
-    public Mage(String name, int health, int attack, int defense, int manaPool, int manaCost, int spellPower, int hitCount, int range){
-        super(name, health, attack, defense);
+    public Mage(char ch, String name, int health, int attack, int defense, int manaPool, int manaCost, int spellPower, int hitCount, int range){
+        super(ch, name, health, attack, defense);
         this.manaPool = manaPool;
         this.manaCost = manaCost;
         this.spellPower = spellPower;

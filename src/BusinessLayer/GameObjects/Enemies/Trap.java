@@ -1,5 +1,7 @@
 package BusinessLayer.GameObjects.Enemies;
 
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Player.Player;
 import BusinessLayer.Utils.Resource;
 
@@ -32,7 +34,9 @@ public class Trap extends Enemy{
     }
 
     public String toString(){
-        return "Im a: " + name;
+        if(!visible)
+            return "" + tile;
+        return ".";
     }
 
 
@@ -42,7 +46,27 @@ public class Trap extends Enemy{
     }
 
     @Override
+    public void accept(Unit unit) {
+
+    }
+
+    @Override
+    public void visit(Player player) {
+
+    }
+
+    @Override
     public void processStep() {
+
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
 
     }
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CLI {
     Scanner s;
-
+    public char input;
     public CLI(){
         s = new Scanner(System.in);
     }
@@ -29,8 +29,11 @@ public class CLI {
         System.out.println(notification);
     }
 
+    public void setInput(){
+        input =  s.next().charAt(0);
+    }
     public char getInput(){
-        return s.next().charAt(0);
+        return input;
     }
 
     public char getInput(String msg){

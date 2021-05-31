@@ -17,6 +17,10 @@ public class InputManager {
         return cli.getInput();
     }
 
+    public void setCliInput(){
+        cli.setInput();
+    }
+
     public char getInput(String msg){
         return cli.getInput(msg);
     }
@@ -24,10 +28,11 @@ public class InputManager {
     public void updateCLI(LinkedList<Tile> b, int w, int h){
         char[][] map = new char[h][w];
         Iterator<Tile> iter = b.iterator();
-
+        Tile t = iter.next();
         while (iter.hasNext()) {
-            Tile t = iter.next();
+
             map[t.getPosition().getYPos()][t.getPosition().getxPos()] = t.toString().charAt(0);
+            t = iter.next();
         }
 
         cli.drawBoard(map);

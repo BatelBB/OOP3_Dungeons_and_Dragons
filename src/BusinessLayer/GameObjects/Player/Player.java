@@ -21,8 +21,8 @@ public abstract class Player extends Unit implements HeroicUnit {
     protected PlayerDeathCallback deathCallback;
     //protected InputProvider inputProvider;
 
-    protected Player(String name, int healthCapacity, int attack, int defense) {
-        super(PlayerTile, name, healthCapacity, attack, defense);
+    protected Player(char ch, String name, int healthCapacity, int attack, int defense) {
+        super(ch, name, healthCapacity, attack, defense);
         this.experience = 0;
         this.playerLevel = 1;
     }
@@ -132,27 +132,4 @@ public abstract class Player extends Unit implements HeroicUnit {
         return String.format("%s\t\tLevel: %d\t\tExperience: %d/%d", super.description(), getLevel(), getExperience(), levelUpRequirements());
     }
 
-    public void moveRight() {
-        System.out.println("Moved right");
-    }
-
-    public void moveDown() {
-        System.out.println("Moved down");
-    }
-
-    public void moveLeft() {
-        System.out.println("Moved left");
-    }
-
-    public void moveUp() {
-        System.out.println("Moved Up");
-    }
-
-    public void castAbility() {
-        System.out.println("Cast ability");
-    }
-
-    public void doNothing() {
-        System.out.println("Do Nothing");
-    }
 }

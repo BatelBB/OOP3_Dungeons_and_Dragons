@@ -10,8 +10,8 @@ public class Rogue extends Player {
     public Integer cost;
     public Integer currentEnergy; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
 
-    public Rogue(String name, int health, int attack, int defense, int cost){
-        super(name, health, attack, defense);
+    public Rogue(char ch, String name, int health, int attack, int defense, int cost){
+        super(ch, name, health, attack, defense);
         this.cost = cost;
         this.currentEnergy = 100;
     }

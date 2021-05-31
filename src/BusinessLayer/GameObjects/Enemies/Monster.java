@@ -1,6 +1,8 @@
 package BusinessLayer.GameObjects.Enemies;
 
 
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Player.Player;
 import BusinessLayer.Utils.Resource;
 
@@ -16,6 +18,11 @@ public class Monster extends Enemy{
 
     @Override
     public void onDeath() {
+
+    }
+
+    @Override
+    public void accept(Unit unit) {
 
     }
 
@@ -56,5 +63,15 @@ public class Monster extends Enemy{
         if(!player.alive()){
             switchPosition(player);
         }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
+
     }
 }

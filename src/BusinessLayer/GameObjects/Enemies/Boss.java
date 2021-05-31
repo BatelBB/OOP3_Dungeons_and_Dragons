@@ -1,5 +1,7 @@
 package BusinessLayer.GameObjects.Enemies;
 
+import BusinessLayer.GameObjects.Game_Tiles.Unit;
+import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Player.HeroicUnit;
 import BusinessLayer.GameObjects.Player.Player;
 import BusinessLayer.Utils.Resource;
@@ -30,8 +32,8 @@ public class Boss extends Enemy implements HeroicUnit {
                 castAbility();
             } else {
                 combatTicks += 1;
-                int dx = this.getPosition().xPos - player.getPosition().xPos;
-                int dy = this.getPosition().yPos - player.getPosition().yPos;
+                int dx = this.getPosition().getxPos() - player.getPosition().getxPos();
+                int dy = this.getPosition().getYPos() - player.getPosition().getYPos();
                 if (Math.abs(dx) > Math.abs(dy)) {
                     if (dx > 0)
                         moveLeft();
@@ -67,7 +69,27 @@ public class Boss extends Enemy implements HeroicUnit {
     }
 
     @Override
+    public void accept(Unit unit) {
+
+    }
+
+    @Override
+    public void visit(Player player) {
+
+    }
+
+    @Override
     public void processStep() {
+
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
+    }
+
+    @Override
+    public void visit(Unit unit) {
 
     }
 }

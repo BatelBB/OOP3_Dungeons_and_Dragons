@@ -12,7 +12,7 @@ public class Warrior extends Player {
     public Integer remainingCooldown; //Represents the number of ticks remained until the warrior can cast its special ability.
 
     public Warrior(char ch, String name, Resource resource, int attack, int defense, int cooldown){
-        super(name, resource.getAmount(), attack, defense);
+        super(ch, name, resource.getAmount(), attack, defense);
         this.abilityCooldown = cooldown;
         this.remainingCooldown = 0;
     }
@@ -38,37 +38,21 @@ public class Warrior extends Player {
 //        attackPoints = attackPoints + 2*playerLevel;
 //        defensePoints = defensePoints + playerLevel;
 //    }
+
+
+
+    @Override
+    public void processStep() {
+
+    }
+
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
-
-    @Override
-    public void visit(Wall wall) {
-    }
-
-    @Override
-    public void visit(Player player) {
-
-    }
-
-    @Override
-    public void visit(Enemy enemy) {
 
     }
 
     @Override
     public void visit(Unit unit) {
-        unit.visit(this);
-    }
-
-    @Override
-    public void visit(Empty empty) {
-        empty.visit(this);
-    }
-
-    @Override
-    public void processStep() {
 
     }
 }

@@ -39,7 +39,7 @@ public class Board {
 
         im = new InputManager();
 
-        chosenPlayer = im.getInput("choose wisely");
+        chosenPlayer = im.getInput("Select player:");
 
 
         enemyList = new LinkedList<>();
@@ -92,12 +92,12 @@ public class Board {
                 if(map[i][j] != '@' && map[i][j] != '#' && map[i][j] != '.') {
                     enemyList.addFirst(enemyHashMap.get(map[i][j]));
                     gameMap.add(enemyList.getFirst());
-                    enemyList.getFirst().init(new Position(j,i));
+                    enemyList.getFirst().initialize(new Position(j,i));
                 }
                 else if(map[i][j] == '@') {
                     player = playerHashMap.get(chosenPlayer);
                     gameMap.add(player);
-                    player.init(new Position(j,i));
+                    player.initialize(new Position(j,i));
                 }
                 else if(map[i][j] == '#')
                     gameMap.add(new Wall('#', new Position(j,i)));
@@ -109,6 +109,7 @@ public class Board {
 
     public void update(){
         while (isGame) {
+            im.setCliInput();
             playerGo(im.getInput());
             enemiesGo();
 

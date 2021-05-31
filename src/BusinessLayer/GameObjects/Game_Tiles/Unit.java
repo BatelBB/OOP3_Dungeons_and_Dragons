@@ -39,15 +39,11 @@ public abstract class Unit extends Tile {
     }
 
     protected void initialize(Position position, MessageCallback messageCallback) {
-        super.init(position);
+        super.initialize(position);
         this.messageCallback = messageCallback;
     }
 
     public abstract void onDeath();
-    @Override
-    public void accept(Unit unit) {
-
-    }
 
     // Returns the name of the unit. Use it to print the names upon combat engagement on ability cast.
     public String getName() {
@@ -88,29 +84,15 @@ public abstract class Unit extends Tile {
         return result;
     }
 
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
+
 
     @Override
     public void visit(Wall wall) {
     }
 
-    @Override
-    public void visit(Player player) {
 
-    }
+    public abstract void visit(Player player);
 
-    @Override
-    public void visit(Enemy enemy) {
-
-    }
-
-    @Override
-    public void visit(Unit unit) {
-
-    }
 
     @Override
     public void visit(Empty empty) {
@@ -119,15 +101,10 @@ public abstract class Unit extends Tile {
 
     protected void switchPosition(Tile tile) {
         Position position = tile.getPosition();
-        tile.setPosition(this.getPosition().xPos,this.getPosition().yPos);
-        this.setPosition(position.xPos, position.yPos);
+        tile.setPosition(this.getPosition());
+        this.setPosition(position);
     }
 
-
-    @Override
-    public int compareTo(Tile o) {
-        return 0;
-    }
 
     protected void battle(Unit unit) {
         messageCallback.send(String.format("%s engaged in combat with %s.\n%s\n%s", getName(), unit.getName(), description(), unit.description()));

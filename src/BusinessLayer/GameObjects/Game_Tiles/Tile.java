@@ -1,34 +1,29 @@
 package BusinessLayer.GameObjects.Game_Tiles;
 
-import BusinessLayer.GameObjects.Enemies.Enemy;
-import BusinessLayer.GameObjects.Player.Player;
-
-public abstract class Tile implements Visitor, Visited, Comparable<Tile> {
+public abstract class Tile implements Visitor, Visited {
     protected char tile;
     protected Position position;
 
-    protected Tile(char tile){
+    protected Tile(char tile) {
         this.tile = tile;
     }
 
-    public char getTile(){
+    public void initialize(Position position) {
+        this.position = position;
+    }
+
+    public char getTile() {
         return tile;
     }
 
-    public Position getPosition(){
+    public Position getPosition() {
         return position;
     }
-    public void setPosition(int x, int y){
-        this.position.xPos = x;
-        this.position.yPos = y;
+
+    public void setPosition(Position newPosition) {
+        position = newPosition;
     }
 
-    public void init(Position pos){
-        this.position = pos;
-    }
-    public int getYPos(){
-        return this.position.yPos;
-    }
     @Override
     public String toString() {//Returns the tile character. Use it to print the board
         return String.valueOf(tile);
@@ -36,25 +31,10 @@ public abstract class Tile implements Visitor, Visited, Comparable<Tile> {
 
     public abstract void accept(Unit unit);
 
-    @Override
-    public int compareTo(Tile tile) {
-        return getPosition().compareTo(tile.getPosition());
-    }
-
-    @Override
-    public void visit(Wall wall) {
-    }
-
-    public abstract void visit(Player player);
-    public abstract void visit(Enemy enemy);
-    @Override
-    public void visit(Unit unit) {
-    }
-
-    @Override
-    public void visit(Empty empty) {
-
-    }
+//    @Override
+//    public int compareTo(Tile tile) {
+//        return getPosition().compareTo(tile.getPosition());
+//    }
 
     public abstract void interact(Tile tile);
 }
