@@ -11,7 +11,7 @@ public class Trap extends Enemy{
     public Integer ticksCount; //counts the number of ticks since last visibility state change. Initially 0.
     public boolean visible; //indicates whether the trap is currently visible. Initially true
 
-    public Trap(String name, char tile, Resource resource, int attack, int defense, int experienceValue, int visibilityTime, int invisibilityTime){
+    public Trap(char tile,String name,  Resource resource, int attack, int defense, int experienceValue, int visibilityTime, int invisibilityTime){
         super(tile, name, resource, attack, defense, experienceValue);
         this.visibilityTime = visibilityTime;
         this.invisibilityTime = invisibilityTime;
@@ -35,8 +35,8 @@ public class Trap extends Enemy{
 
     public String toString(){
         if(!visible)
-            return "" + tile;
-        return ".";
+            return ".";
+        return String.valueOf(this.getTile());
     }
 
 

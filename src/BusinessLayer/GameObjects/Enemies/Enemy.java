@@ -8,7 +8,6 @@ import BusinessLayer.callbacks.EnemyDeathCallback;
 
 public abstract class Enemy extends Unit {
     protected int experienceValue;
-    protected Position position;
 
     protected EnemyDeathCallback enemyDeathCallback;
 

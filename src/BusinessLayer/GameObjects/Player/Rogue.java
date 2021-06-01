@@ -5,13 +5,14 @@ import BusinessLayer.GameObjects.Game_Tiles.Empty;
 import BusinessLayer.GameObjects.Game_Tiles.Unit;
 import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Game_Tiles.Wall;
+import BusinessLayer.Utils.Resource;
 
 public class Rogue extends Player {
     public Integer cost;
     public Integer currentEnergy; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
 
-    public Rogue(char ch, String name, int health, int attack, int defense, int cost){
-        super(ch, name, health, attack, defense);
+    public Rogue(char ch, String name, Resource resource, int attack, int defense, int cost){
+        super(ch, name, resource.getAmount(), attack, defense);
         this.cost = cost;
         this.currentEnergy = 100;
     }

@@ -5,6 +5,7 @@ import BusinessLayer.GameObjects.Game_Tiles.Empty;
 import BusinessLayer.GameObjects.Game_Tiles.Unit;
 import BusinessLayer.GameObjects.Game_Tiles.Visitor;
 import BusinessLayer.GameObjects.Game_Tiles.Wall;
+import BusinessLayer.Utils.Resource;
 
 public class Mage extends Player{
     public Integer manaPool;
@@ -14,8 +15,8 @@ public class Mage extends Player{
     public Integer hitCount;
     public Integer abilityRange;
 
-    public Mage(char ch, String name, int health, int attack, int defense, int manaPool, int manaCost, int spellPower, int hitCount, int range){
-        super(ch, name, health, attack, defense);
+    public Mage(char ch, String name, Resource resource, int attack, int defense, int manaPool, int manaCost, int spellPower, int hitCount, int range){
+        super(ch, name, resource.getAmount(), attack, defense);
         this.manaPool = manaPool;
         this.manaCost = manaCost;
         this.spellPower = spellPower;

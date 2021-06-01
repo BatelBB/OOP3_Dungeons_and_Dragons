@@ -18,7 +18,7 @@ public class Position {
         return new Position(this.getxPos() + dx, this.getYPos() + dy);
     }
     public boolean equals(Position p){
-        return this.xPos == p.xPos && this.yPos == p.yPos;
+        return this.xPos == p.getxPos() && this.yPos == p.getYPos();
     }
 
     public int getYPos() {

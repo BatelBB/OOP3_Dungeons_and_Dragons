@@ -31,7 +31,6 @@ public abstract class Unit extends Tile {
 
     protected Unit(char tile, String name, int healthCapacity, int attack, int defense) {
         super(tile);
-        this.tile = tile;
         this.name = name;
         this.health = new Resource("health", healthCapacity);
         this.attackPoints = attack;

@@ -12,7 +12,7 @@ public class Boss extends Enemy implements HeroicUnit {
     public Integer abilityFrequency; //how often the boss will cast the ability during combat, constructor argument.
     public Integer combatTicks; //how long the boss remained in combat, initially 0.
 
-    public Boss(String name, char tile, Resource resource, int attack, int defense, int visionRange, int experienceValue) {
+    public Boss(char tile,String name,  Resource resource, int attack, int defense, int visionRange, int experienceValue) {
         super(tile, name, resource, attack, defense, experienceValue);
         this.visionRange = visionRange;
         combatTicks = 0;
@@ -25,43 +25,31 @@ public class Boss extends Enemy implements HeroicUnit {
     }
 
 
-    public void monsterMove(Player player) {
-        if (getPosition().range(this, player) < visionRange) {
-            if (combatTicks == abilityFrequency) {
-                combatTicks = 0;
-                castAbility();
-            } else {
-                combatTicks += 1;
-                int dx = this.getPosition().getxPos() - player.getPosition().getxPos();
-                int dy = this.getPosition().getYPos() - player.getPosition().getYPos();
-                if (Math.abs(dx) > Math.abs(dy)) {
-                    if (dx > 0)
-                        moveLeft();
-                    else
-                        moveRight();
-                } else if (dy > 0)
-                    moveUp();
-                else
-                    moveDown();
-            }
+//    public void monsterMove(Player player) {
+//        if (getPosition().range(this, player) < visionRange) {
+//            if (combatTicks == abilityFrequency) {
+//                combatTicks = 0;
+//                castAbility();
+//            } else {
+//                combatTicks += 1;
+//                int dx = this.getPosition().getxPos() - player.getPosition().getxPos();
+//                int dy = this.getPosition().getYPos() - player.getPosition().getYPos();
+//                if (Math.abs(dx) > Math.abs(dy)) {
+//                    if (dx > 0)
+//                        moveLeft();
+//                    else
+//                        moveRight();
+//                } else if (dy > 0)
+//                    moveUp();
+//                else
+//                    moveDown();
+//            }
+//
+//        } else {
+//            //Perform a random movement action: left, right, up, down or stay at the same place.
+//        }
+//    }
 
-        } else {
-            //Perform a random movement action: left, right, up, down or stay at the same place.
-        }
-    }
-
-    private void moveDown() {
-    }
-
-    private void moveUp() {
-    }
-
-
-    private void moveLeft() {
-    }
-
-    private void moveRight() {
-    }
 
     @Override
     public void onDeath() {
