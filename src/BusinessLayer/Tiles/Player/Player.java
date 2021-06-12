@@ -85,5 +85,11 @@ public abstract class Player extends Unit {
         Random rnd = new Random();
         return rnd.nextInt(range);
     }
+
+    protected abstract int getAbilityDamage();
+
+    protected void abilityAttack(Enemy e){
+
+    }
 }
 
