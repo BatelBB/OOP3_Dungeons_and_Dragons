@@ -130,7 +130,6 @@ public class Board /*implements EnemyDeathCallback*/ {
      }
 
      private void enemiesGo(){
-        //enum action{w, a, s, d}
          Random rand = new Random();
          for (Enemy e: enemyList) {
              int a = rand.nextInt(4) + 1;
@@ -165,7 +164,6 @@ public class Board /*implements EnemyDeathCallback*/ {
     private void up(Tile u){
         Position p = u.getPos().translate(0,-1);
         u.interact(find(p));
-
     }
 
     private void down(Unit u){

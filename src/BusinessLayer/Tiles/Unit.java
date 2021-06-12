@@ -73,7 +73,6 @@ public abstract class Unit extends Tile {
         int atk = this.attack();
         int def = u.defend();
 
-
         if(atk < def)
             def = atk;
 
