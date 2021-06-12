@@ -101,10 +101,11 @@ public class Board /*implements EnemyDeathCallback*/ {
                     enemyList.getFirst().init(new Position(j,i));
                 }*/
                 if(map[i][j] == 's'){
-                    Enemy e = new Monster('s', "Lannister Soldier", new Resource("Health", 5), 8, 3, 25, 3);
+                    Enemy e = new Monster('s', "Lannister Soldier", new Resource("Health", 1), 8, 3, 25, 3);
                     gameMap.add(e);
                     e.init(new Position(j,i));
                     e.setEnemyDeathCallback(() -> this.onEnemyDeath(e));
+                    enemyList.add(e);
                 }
                 else if(map[i][j] == '@') {
                     player = playerHashMap.get(chosenPlayer);
@@ -149,7 +150,7 @@ public class Board /*implements EnemyDeathCallback*/ {
             case 's' -> down(player);
             case 'a' -> left(player);
             case 'd' -> right(player);
-            case 'p' -> castAbility();
+            case 'e' -> castAbility();
         }
     }
 

@@ -60,7 +60,6 @@ public abstract class Player extends Unit {
         if(!e.alive()){
             swichPos(e);
             onKill(e);
-            e.onDeath();
         }
     }
 
@@ -70,6 +69,7 @@ public abstract class Player extends Unit {
     }
 
     private void onKill(Enemy e){
+        e.onDeath();
         setExperience(e.getExperienceValue());
     }
 
@@ -93,6 +93,8 @@ public abstract class Player extends Unit {
         int dmgDealt=Math.max(0,this.getAbilityDamage()- defense);
         messanger.sendMessage(String.format("%s dealt %d damage to %s", this.getName(), dmgDealt, e.getName()));
         e.health.addAmount(-dmgDealt);
+        if(!e.alive())
+            onKill(e);
     }
 
     public abstract int getRange();

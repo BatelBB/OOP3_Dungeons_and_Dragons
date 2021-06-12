@@ -34,8 +34,10 @@ public class Warrior extends Player {
         messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth-health.getAmount()));
         health.addAmount(newHealth-health.getAmount());
 
-        int i = pickRandom(enemies.size());
-        abilityAttack(enemies.get(i));
+        if(!enemies.isEmpty()) {
+            int i = pickRandom(enemies.size());
+            abilityAttack(enemies.get(i));
+        }
     }
 
     @Override

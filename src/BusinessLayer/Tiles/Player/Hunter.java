@@ -58,4 +58,9 @@ public class Hunter extends Player {
     protected int getAbilityDamage() {
         return this.attackPoints;
     }
+
+    @Override
+    public int getRange() {
+        return 0;
+    }
 }
