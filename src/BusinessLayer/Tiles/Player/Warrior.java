@@ -12,6 +12,7 @@ import java.util.Random;
 public class Warrior extends Player {
 
     private WarriorAbility ability;
+    private static final int RANGE = 3;
 
     public Warrior(char c, String name, Resource health, int attack, int defense, int coolDownPool){
         super(c, name, health, attack, defense);
@@ -42,5 +43,7 @@ public class Warrior extends Player {
         return (int) (health.getPool() * 0.1);
     }
 
-
+    public int getRange(){
+        return RANGE;
+    }
 }

@@ -95,5 +95,7 @@ public abstract class Player extends Unit {
         e.health.addAmount(-dmgDealt);
     }
 
+    public abstract int getRange();
+
 }
 

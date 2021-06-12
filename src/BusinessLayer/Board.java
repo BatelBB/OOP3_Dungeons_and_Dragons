@@ -149,7 +149,19 @@ public class Board /*implements EnemyDeathCallback*/ {
             case 's' -> down(player);
             case 'a' -> left(player);
             case 'd' -> right(player);
+            case 'p' -> castAbility();
         }
+    }
+
+    private void castAbility(){
+        List<Enemy> enemiesInRange = new LinkedList<>();
+
+        for (Enemy e: enemyList) {
+            if(e.pos.Range(player.pos) <= player.getRange())
+                enemiesInRange.add(e);
+        }
+
+        player.onAbilityCast(enemiesInRange);
     }
 
     //goes over the board and finds the tile in wanted pos

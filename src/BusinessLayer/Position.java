@@ -23,6 +23,10 @@ public class Position {
         return(Math.sqrt(Math.pow(xPos-x,2) + Math.pow(yPos-y, 2)));
     }
 
+    public double Range(Position p){
+        return(Math.sqrt(Math.pow(xPos-p.xPos,2) + Math.pow(yPos-p.yPos, 2)));
+    }
+
     public boolean equals(Position p){
         return this.xPos == p.xPos && this.yPos == p.yPos;
     }
