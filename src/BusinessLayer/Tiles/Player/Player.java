@@ -54,6 +54,7 @@ public abstract class Player extends Unit {
         if(!e.alive()){
             swichPos(e);
             onKill(e);
+            e.onDeath();
         }
     }
 

@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Board implements EnemyDeathCallback {
+public class Board /*implements EnemyDeathCallback*/ {
     InputManager im;
 
     public boolean isGame;
@@ -101,9 +101,10 @@ public class Board implements EnemyDeathCallback {
                     enemyList.getFirst().init(new Position(j,i));
                 }*/
                 if(map[i][j] == 's'){
-                    Enemy e = new Monster('s', "Lannister Soldier", new Resource("Health", 80), 8, 3, 25, 3);
+                    Enemy e = new Monster('s', "Lannister Soldier", new Resource("Health", 5), 8, 3, 25, 3);
                     gameMap.add(e);
                     e.init(new Position(j,i));
+                    e.setEnemyDeathCallback(() -> this.onEnemyDeath(e));
                 }
                 else if(map[i][j] == '@') {
                     player = playerHashMap.get(chosenPlayer);
