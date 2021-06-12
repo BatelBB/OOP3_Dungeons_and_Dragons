@@ -37,4 +37,10 @@ public class Warrior extends Player {
         abilityAttack(enemies.get(i));
     }
 
+    @Override
+    protected int getAbilityDamage() {
+        return (int) (health.getPool() * 0.1);
+    }
+
+
 }
