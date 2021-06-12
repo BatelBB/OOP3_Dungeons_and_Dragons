@@ -29,11 +29,12 @@ public class Warrior extends Player {
         if(!ability.isAvailable())
             messanger.sendMessage(String.format("%s tried to cast %s, but there is a %s: %d", name, ability.getName(), ability.getPoolName(), ability.getAmount()));
 
-        int deltaHealth = Math.min()
+        int newHealth = Math.min(health.getAmount() + 10*defensePoints, health.getPool());
+        messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth-health.getAmount()));
+        health.addAmount(newHealth-health.getAmount());
 
         int i = pickRandom(enemies.size());
-
-
+        abilityAttack(enemies.get(i));
     }
 
 }
