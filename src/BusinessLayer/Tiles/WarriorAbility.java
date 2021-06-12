@@ -1,48 +1,19 @@
 package BusinessLayer.Tiles;
 
-import BusinessLayer.Interfaces.Ability;
+public class WarriorAbility extends AbilityIMP {
 
-public class WarriorAbility /*implements Ability*/ {
-    public String name;
-    public int cooldown;
-
-    public WarriorAbility(String name, int cooldown) {
-        this.name = name;
-        this.cooldown = cooldown;
-    }
-/*
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getPoolName() {
-        return null;
+    public WarriorAbility(String name, String poolName, int pool){
+        super(name, poolName, pool);
     }
 
     @Override
     public boolean isAvailable() {
-        return false;
+        return this.amount > 0;
     }
 
     @Override
-    public void fill() {
-
+    public void reset() {
+        this.amount = this.pool;
     }
 
-    @Override
-    public void addToPool() {
-
-    }
-
-    @Override
-    public int getAmount() {
-        return 0;
-    }
-
-    @Override
-    public int getPool() {
-        return 0;
-    }*/
 }

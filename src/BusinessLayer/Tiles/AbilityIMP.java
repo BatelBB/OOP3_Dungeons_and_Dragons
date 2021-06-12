@@ -1,17 +1,17 @@
 package BusinessLayer.Tiles;
 
-public class Ability implements BusinessLayer.Interfaces.Ability {
+public class AbilityIMP implements BusinessLayer.Interfaces.Ability {
 
-    private String name;
-    private String poolName;
-    private int pool;
-    private int amount;
+    protected String name;
+    protected String poolName;
+    protected int pool;
+    protected int amount;
 
-    public Ability(String name, String poolName, int pool, int addAmount){
+    public AbilityIMP(String name, String poolName, int pool){
         this.name = name;
         this.poolName = poolName;
         this.pool = pool;
-        this.fill();
+        this.reset();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Ability implements BusinessLayer.Interfaces.Ability {
     }
 
     @Override
-    public void fill() {
+    public void reset() {
         this.amount = this.pool;
     }
 

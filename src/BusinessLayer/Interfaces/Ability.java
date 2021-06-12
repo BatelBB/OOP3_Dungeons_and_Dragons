@@ -5,7 +5,7 @@ public interface Ability {
     public String getPoolName();
 
     public boolean isAvailable();
-    public void fill();
+    public void reset();
     public void addToPool(int delta);
     public int getAmount();
     public int getPool();
