@@ -9,6 +9,6 @@ public interface Ability {
     public void addToPool(int delta);
     public int getAmount();
     public int getPool();
-
+    public void addAmount(int delda);
 
 }

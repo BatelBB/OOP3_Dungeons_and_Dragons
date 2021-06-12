@@ -2,7 +2,7 @@ package BusinessLayer.Tiles;
 
 import BusinessLayer.Interfaces.Ability;
 
-public class WarriorAbility implements Ability {
+public class WarriorAbility /*implements Ability*/ {
     public String name;
     public int cooldown;
 
@@ -10,7 +10,7 @@ public class WarriorAbility implements Ability {
         this.name = name;
         this.cooldown = cooldown;
     }
-
+/*
     @Override
     public String getName() {
         return name;
@@ -44,5 +44,5 @@ public class WarriorAbility implements Ability {
     @Override
     public int getPool() {
         return 0;
-    }
+    }*/
 }

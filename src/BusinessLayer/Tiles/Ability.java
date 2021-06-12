@@ -48,4 +48,10 @@ public class Ability implements BusinessLayer.Interfaces.Ability {
     public int getPool() {
         return pool;
     }
+
+    @Override
+    public void addAmount(int delda) {
+        amount += delda;
+    }
+
 }
