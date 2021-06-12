@@ -87,7 +87,7 @@ public abstract class Unit extends Tile {
         return atk;
     }
 
-    private int defend(){
+    public int defend(){
         //this.name rolled int attack points
         Random rnd = new Random();
         int def = rnd.nextInt(this.defensePoints + 1);
