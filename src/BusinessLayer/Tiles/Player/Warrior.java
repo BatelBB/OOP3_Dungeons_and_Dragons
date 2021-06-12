@@ -30,7 +30,7 @@ public class Warrior extends Player {
 
         int i = pickRandom(enemies.size());
 
-        this.
+//        this.
     }
 
 }
