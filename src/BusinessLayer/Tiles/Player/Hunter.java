@@ -47,6 +47,9 @@ public class Hunter extends Player {
                 messanger.sendMessage(output);
                 this.abilityAttack(toAttackEnemy);
                 arrowsCount.addAmount(-1);
+            }else{
+                output = getName()+" tried to shoot an arrow but there were no enemies in range.";
+                messanger.sendMessage(output);
             }
         }
 

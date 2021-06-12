@@ -71,6 +71,7 @@ public abstract class Player extends Unit {
     private void onKill(Enemy e){
         e.onDeath();
         setExperience(e.getExperienceValue());
+        messanger.sendMessage(String.format("%s died. %s gained %s experience.", e.getName(), this.getName(), e.getExperienceValue()));
     }
 
 
