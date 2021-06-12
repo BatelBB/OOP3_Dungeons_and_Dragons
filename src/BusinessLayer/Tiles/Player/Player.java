@@ -6,6 +6,8 @@ import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 import BusinessLayer.Tiles.Wall;
 
+import java.util.List;
+
 public abstract class Player extends Unit {
     protected int experience = 0;
     protected int playerLevel = 1;
@@ -76,6 +78,6 @@ public abstract class Player extends Unit {
         visitor.visit(this);
     }
 
-    public abstract void onAbilityCast();
+    public abstract void onAbilityCast(List<Enemy> enemies);
 }
 
