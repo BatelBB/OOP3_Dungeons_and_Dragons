@@ -30,4 +30,6 @@ public class Resource {
     public String toString(){
         return name + ": " + amount + "/" + pool;
     }
+
+    public boolean isFull(){ return pool == amount; }
 }

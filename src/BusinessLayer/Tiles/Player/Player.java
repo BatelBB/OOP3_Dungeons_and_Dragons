@@ -7,6 +7,7 @@ import BusinessLayer.Tiles.Unit;
 import BusinessLayer.Tiles.Wall;
 
 import java.util.List;
+import java.util.Random;
 
 public abstract class Player extends Unit {
     protected int experience = 0;
@@ -79,5 +80,10 @@ public abstract class Player extends Unit {
     }
 
     public abstract void onAbilityCast(List<Enemy> enemies);
+
+    protected int pickRandom(int range){
+        Random rnd = new Random();
+        return rnd.nextInt(range);
+    }
 }
 

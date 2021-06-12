@@ -1,5 +1,6 @@
 package BusinessLayer.Tiles.Player;
 
+import BusinessLayer.Messenger;
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Resource;
 
@@ -13,20 +14,23 @@ public class Warrior extends Player {
 
     public Warrior(char c, String name, Resource health, int attack, int defense, int coolDownPool){
         super(c, name, health, attack, defense);
-        coolDown = new Resource("Cooldown", coolDownPool);
+        coolDown = new Resource("Avenger's Shield", coolDownPool);
     }
 
     public String description(){
         String tab = "\t";
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
                 "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab +
-                coolDown.toString();
+                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab + coolDown.toString();
     }
 
     public void onAbilityCast(List<Enemy> enemies){
-        Random rnd = new Random();
-        //int i =
+        if(!coolDown.isFull())
+            messanger.sendMessage("");
+
+        int i = pickRandom(enemies.size());
+
+        this.
     }
 
 }
