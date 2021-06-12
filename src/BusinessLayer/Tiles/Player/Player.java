@@ -75,5 +75,7 @@ public abstract class Player extends Unit {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    public abstract void onAbilityCast();
 }
 

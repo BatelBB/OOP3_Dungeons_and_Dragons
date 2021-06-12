@@ -1,6 +1,11 @@
 package BusinessLayer.Tiles.Player;
 
+import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Resource;
+
+import java.security.SecureRandomSpi;
+import java.util.List;
+import java.util.Random;
 
 public class Warrior extends Player {
 
@@ -19,6 +24,9 @@ public class Warrior extends Player {
                 coolDown.toString();
     }
 
-
+    public void onAbilityCast(List<Enemy> enemies){
+        Random rnd = new Random();
+        //int i =
+    }
 
 }
