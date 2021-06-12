@@ -57,6 +57,9 @@ public class Board implements EnemyDeathCallback {
         update();
     }
 
+
+
+
     private void loadHashMaps(){
         //public Warrior(char c, String name, Health health, int attack, int defense, Resource resource){
 
@@ -92,10 +95,15 @@ public class Board implements EnemyDeathCallback {
     private void init(char[][] map){
         for (int i = 0; i < map.length; i++){
             for(int j = 0; j < map[i].length; j++){
-                if(map[i][j] != '@' && map[i][j] != '#' && map[i][j] != '.') {
+                /*if(map[i][j] != '@' && map[i][j] != '#' && map[i][j] != '.') {
                     enemyList.addFirst(enemyHashMap.get(map[i][j]));
                     gameMap.add(enemyList.getFirst());
                     enemyList.getFirst().init(new Position(j,i));
+                }*/
+                if(map[i][j] == 's'){
+                    Enemy e = new Monster('s', "Lannister Soldier", new Resource("Health", 80), 8, 3, 25, 3);
+                    gameMap.add(e);
+                    e.init(new Position(j,i));
                 }
                 else if(map[i][j] == '@') {
                     player = playerHashMap.get(chosenPlayer);
@@ -121,7 +129,7 @@ public class Board implements EnemyDeathCallback {
      }
 
      private void enemiesGo(){
-        enum action{w, a, s, d}
+        //enum action{w, a, s, d}
          Random rand = new Random();
          for (Enemy e: enemyList) {
              int a = rand.nextInt(4) + 1;

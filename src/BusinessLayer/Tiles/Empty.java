@@ -29,10 +29,10 @@ public class Empty extends Tile {
 
     }
 
-    @Override
-    public String toString() {
+    //@Override
+    /*public String toString() {
         return ".";
-    }
+    }*/
 
 
     @Override

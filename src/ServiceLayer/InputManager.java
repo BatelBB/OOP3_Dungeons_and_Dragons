@@ -29,7 +29,6 @@ public class InputManager {
         }
 
         cli.drawBoard(map);
-        //cli.getInput();
     }
 
     public void showMessage(String msg){
