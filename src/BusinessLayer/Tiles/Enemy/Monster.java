@@ -1,6 +1,7 @@
 package BusinessLayer.Tiles.Enemy;
 
 import BusinessLayer.Interfaces.Visitor;
+import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
@@ -20,7 +21,7 @@ public class Monster extends Enemy{
 
     @Override
     public void accept(Unit unit) {
-
+        unit.visit(this);
     }
 
     @Override
@@ -34,5 +35,14 @@ public class Monster extends Enemy{
         if(!player.alive()){
             swichPos(player);
         }
+    }
+
+    public void onDeath(){
+
+    }
+
+    @Override
+    public String description() {
+        return "null";
     }
 }

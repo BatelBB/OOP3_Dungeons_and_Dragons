@@ -1,5 +1,6 @@
 package BusinessLayer.Tiles;
 
+import BusinessLayer.Interfaces.EnemyDeathCallback;
 import BusinessLayer.Interfaces.Visitor;
 import BusinessLayer.Position;
 import BusinessLayer.Tile;

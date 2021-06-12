@@ -1,5 +1,6 @@
 package BusinessLayer;
 
+import BusinessLayer.Interfaces.EnemyDeathCallback;
 import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Enemy.Monster;
@@ -15,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Board {
+public class Board implements EnemyDeathCallback {
     InputManager im;
 
     public boolean isGame;
@@ -32,6 +33,7 @@ public class Board {
 
     private int height;
     private int width;
+
 
     public Board(char[][] map){
         isGame = true;
@@ -111,7 +113,7 @@ public class Board {
     public void update(){
         while (isGame) {
             playerGo(im.getInput());
-            enemiesGo();
+    //        enemiesGo();
 
             //after all updates
             im.updateCLI(gameMap, width, height);
@@ -132,7 +134,7 @@ public class Board {
          }
      }
 
-
+    //translate UserInput to gameLogic
     private void playerGo(char input){
         switch (input){
             case 'w' -> up(player);
@@ -142,6 +144,7 @@ public class Board {
         }
     }
 
+    //goes over the board and finds the tile in wanted pos
     private Tile find(Position p){
         for (Tile t: gameMap) {
             if(t.getPos().equals(p))
@@ -171,5 +174,15 @@ public class Board {
         u.interact(find(p));
     }
 
+    public void handleEnemyDeath(Tile e){
+        e = new Empty('.', e.pos);
+    }
+
+    public void onEnemyDeath(Enemy e){
+        Position pos = e.pos;
+        enemyList.remove(e);
+        gameMap.remove(e);
+        gameMap.add(new Empty('.', pos));
+    }
 
 }

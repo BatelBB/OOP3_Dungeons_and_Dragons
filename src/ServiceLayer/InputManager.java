@@ -13,9 +13,7 @@ public class InputManager {
         cli = new CLI();
     }
 
-    public char getInput(){
-        return cli.getInput();
-    }
+    public char getInput(){ return cli.getInput(); }
 
     public char getInput(String msg){
         return cli.getInput(msg);
@@ -31,7 +29,11 @@ public class InputManager {
         }
 
         cli.drawBoard(map);
-        cli.getInput();
+        //cli.getInput();
+    }
+
+    public void showMessage(String msg){
+        cli.pringMessage(msg);
     }
 
 }

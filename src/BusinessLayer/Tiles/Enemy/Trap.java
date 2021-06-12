@@ -44,4 +44,9 @@ public class Trap extends Enemy{
     public void visit(Player player) {
 
     }
+
+    @Override
+    public String description() {
+        return "";
+    }
 }

@@ -1,6 +1,8 @@
 package BusinessLayer.Tiles.Enemy;
 
 import BusinessLayer.Position;
+import BusinessLayer.Tile;
+import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 
@@ -17,4 +19,6 @@ public abstract class Enemy extends Unit {
     public int getExperienceValue() {
         return experienceValue;
     }
+
+
 }

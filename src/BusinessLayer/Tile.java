@@ -1,7 +1,9 @@
 package BusinessLayer;
 
+import BusinessLayer.Interfaces.EnemyDeathCallback;
 import BusinessLayer.Interfaces.Visited;
 import BusinessLayer.Interfaces.Visitor;
+import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Unit;
 
 public abstract class Tile implements Visited, Visitor {
@@ -19,9 +21,9 @@ public abstract class Tile implements Visited, Visitor {
         return tile;
     }
 
-    public String description(){
+    /*public String description(){
         return "Hi im " + tile;
-    }
+    }*/
 
     public abstract void accept(Unit unit);
 
@@ -36,4 +38,5 @@ public abstract class Tile implements Visited, Visitor {
     public String toString(){
         return String.valueOf(tile);
     }
+
 }

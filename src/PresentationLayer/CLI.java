@@ -37,4 +37,8 @@ public class CLI {
         System.out.println(msg);
         return s.next().charAt(0);
     }
+
+    public void pringMessage(String msg){
+        System.out.println(msg);
+    }
 }

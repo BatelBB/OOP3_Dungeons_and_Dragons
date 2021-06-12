@@ -6,7 +6,7 @@ import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 import BusinessLayer.Tiles.Wall;
 
-public class Player extends Unit {
+public abstract class Player extends Unit {
     protected int experience = 0;
     protected int playerLevel = 1;
 
@@ -66,9 +66,10 @@ public class Player extends Unit {
         setExperience(e.getExperienceValue());
     }
 
+
     @Override
     public void accept(Visitor visitor) {
-
+        visitor.visit(this);
     }
 }
 
