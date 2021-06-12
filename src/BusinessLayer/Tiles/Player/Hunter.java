@@ -22,7 +22,10 @@ public class Hunter extends Player {
     }
     @Override
     public String description() {
-        return null;
+        String tab = "\t";
+        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
+                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
+                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
     }
 
     @Override
