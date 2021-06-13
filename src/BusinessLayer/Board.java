@@ -5,6 +5,7 @@ import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Enemy.Monster;
 import BusinessLayer.Tiles.Player.Player;
+import BusinessLayer.Tiles.Player.Rogue;
 import BusinessLayer.Tiles.Player.Warrior;
 import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
@@ -68,7 +69,7 @@ public class Board /*implements EnemyDeathCallback*/ {
 
         playerHashMap.put('1', new Warrior('@', "Jon Snow", new Resource("Health", 300), 30, 4, 3));
         playerHashMap.put('2', new Warrior('@', "The Hound", new Resource("Health",400), 20, 6, 5));
-
+        playerHashMap.put('5', new Rogue('@', "Arya Stark", new Resource("Health", 150), 40, 2, 20));
         /*playerHashMap.put(3, new Mage("Melisandra", 100, 5, 1, 300, 30, 15, 5, 6));
         playerHashMap.put(4, new Mage("Thoros of Myr", 250, 25, 4, 150, 20, 20, 3, 4));
 
