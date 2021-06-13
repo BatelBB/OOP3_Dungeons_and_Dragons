@@ -50,8 +50,10 @@ public class AbilityIMP implements BusinessLayer.Interfaces.Ability {
     }
 
     @Override
-    public void addAmount(int delda) {
-        amount += delda;
+    public void addAmount(int delta) {
+        amount += delta;
     }
-
+    public String toString(){
+        return getAmount() + "/" +getPool();
+    }
 }
