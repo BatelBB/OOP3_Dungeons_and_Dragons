@@ -92,7 +92,7 @@ public abstract class Player extends Unit {
     protected void abilityAttack(Enemy e){
         int defense = e.defend();
         int dmgDealt=Math.max(0,this.getAbilityDamage()- defense);
-        messanger.sendMessage(String.format("%s dealt %d damage to %s", this.getName(), dmgDealt, e.getName()));
+        messanger.sendMessage(String.format("%s dealt %d ability damage to %s", this.getName(), dmgDealt, e.getName()));
         e.health.addAmount(-dmgDealt);
         if(!e.alive())
             onKill(e);
@@ -100,5 +100,10 @@ public abstract class Player extends Unit {
 
     public abstract int getRange();
 
+    public void onTick(){
+        abilityTick();
+    }
+
+    public abstract void abilityTick();
 }
 

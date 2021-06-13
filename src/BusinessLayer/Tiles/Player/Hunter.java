@@ -2,23 +2,22 @@ package BusinessLayer.Tiles.Player;
 
 import BusinessLayer.Tiles.AbilityIMP;
 import BusinessLayer.Tiles.Enemy.Enemy;
+import BusinessLayer.Tiles.HunterAbility;
 import BusinessLayer.Tiles.Resource;
 
 import java.util.List;
 
 public class Hunter extends Player {
     public Integer range;
-    public AbilityIMP arrowsCount;
+    public HunterAbility ability;
     public Integer ticksCount;
     private final int ARROWSADDCOUNT = 10;
-    private final int TICKSCOUNT = 0;
+    private final int TICKSCOUNTFORREFILL = 10;
 
     public Hunter(char ch, String name, Resource health, int attack, int defense, int range){
         super(ch, name, health, attack, defense);
         this.range = range;
-        arrowsCount = new AbilityIMP("Shoot", "Arrows", ARROWSADDCOUNT*playerLevel);
-        arrowsCount.addToPool(ARROWSADDCOUNT*playerLevel);
-        ticksCount = TICKSCOUNT;
+        ability = new HunterAbility("Shoot", "Arrows", ARROWSADDCOUNT*playerLevel);
     }
     @Override
     public String description() {
@@ -31,8 +30,8 @@ public class Hunter extends Player {
     @Override
     public void onAbilityCast(List<Enemy> enemiesInRange) {
         String output="";
-        if(!arrowsCount.isAvailable()){//no arrows left
-            output=getName()+" tried to cast "+arrowsCount.getName()+", but there are no arrows left.\n";
+        if(!ability.isAvailable()){//no arrows left
+            output=getName()+" tried to cast "+ability.getName()+", but there are no arrows left.\n";
             messanger.sendMessage(output);
         }else{ //there are arrows
             Enemy toAttackEnemy = null;
@@ -49,15 +48,12 @@ public class Hunter extends Player {
                 output = getName() + " fired an arrow at " + toAttackEnemy.getName();
                 messanger.sendMessage(output);
                 this.abilityAttack(toAttackEnemy);
-                arrowsCount.addAmount(-1);
+                ability.use();
             }else{
                 output = getName()+" tried to shoot an arrow but there were no enemies in range.";
                 messanger.sendMessage(output);
             }
         }
-
-
-
     }
 
     @Override
@@ -67,6 +63,12 @@ public class Hunter extends Player {
 
     @Override
     public int getRange() {
-        return 0;
+        return range;
+    }
+
+    @Override
+    public void abilityTick() {
+        if(ability.getPool() >= TICKSCOUNTFORREFILL)
+            ability.addAmount(10*playerLevel);
     }
 }

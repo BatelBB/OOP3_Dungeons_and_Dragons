@@ -63,9 +63,6 @@ public abstract class Unit extends Tile {
 
 
     protected void battle(Unit u){
-        //this.name engaged in combat with u.name;
-        //this.full name and stats
-        //u.  full name and stats
         messanger.sendMessage(String.format("%s engaged in combat with %s", this.name, u.name));
         messanger.sendMessage((this.description()));
         messanger.sendMessage((u.description()));
@@ -88,7 +85,6 @@ public abstract class Unit extends Tile {
     }
 
     public int defend(){
-        //this.name rolled int attack points
         Random rnd = new Random();
         int def = rnd.nextInt(this.defensePoints + 1);
         messanger.sendMessage(String.format("%s rolled %d defence points", this.name, def));

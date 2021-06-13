@@ -1,6 +1,6 @@
 package BusinessLayer.Tiles;
 
-public class AbilityIMP implements BusinessLayer.Interfaces.Ability {
+public abstract class AbilityIMP implements BusinessLayer.Interfaces.Ability {
 
     protected String name;
     protected String poolName;
@@ -25,10 +25,7 @@ public class AbilityIMP implements BusinessLayer.Interfaces.Ability {
     }
 
     @Override
-    public boolean isAvailable() {
-        return amount > 0;
-    }
-
+    public abstract boolean isAvailable();
     @Override
     public void reset() {
         this.amount = this.pool;
@@ -53,6 +50,24 @@ public class AbilityIMP implements BusinessLayer.Interfaces.Ability {
     public void addAmount(int delta) {
         amount += delta;
     }
+
+    @Override
+    public void onTick() {
+
+    }
+
+    @Override
+    public void setAmount(int newAmount) {
+        if(newAmount > pool)
+            amount = pool;
+        else
+            amount = newAmount;
+    }
+
+    @Override
+    public abstract void use();
+
+
     public String toString(){
         return getAmount() + "/" +getPool();
     }

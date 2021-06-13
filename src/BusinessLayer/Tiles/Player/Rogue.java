@@ -3,28 +3,30 @@ package BusinessLayer.Tiles.Player;
 import BusinessLayer.Tiles.AbilityIMP;
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Resource;
+import BusinessLayer.Tiles.RougueAbility;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class Rogue extends Player {
-    public Integer cost;
-    public AbilityIMP currentEnergy; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
+    //public Integer cost;
+    public RougueAbility ability; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
     private final int ENERGY = 100;
+    private final int RANGE = 2;
 
     public Rogue(char ch, String name, Resource health, int attack, int defense, int cost){
         super(ch, name, health, attack, defense);
-        this.cost = cost;
-        currentEnergy = new AbilityIMP("Fan of Knives", "energy", ENERGY);
+        //this.cost = cost;
+        ability = new RougueAbility("Fan of Knives", "energy", ENERGY, cost);
     }
 
     @Override
     public void onAbilityCast(List<Enemy> enemiesInRange) {
-        if(!currentEnergy.isAvailable())
+        if(!ability.isAvailable())
             messanger.sendMessage(String.format("%s tried to cast %s, but there was not enough %s: %d/%d",
-                    this.getName(), currentEnergy.getName(), currentEnergy.getPoolName(),currentEnergy.getAmount(), currentEnergy.getPool()));
+                    this.getName(), ability.getName(), ability.getPoolName(),ability.getAmount(), ability.getPool()));
         else{
-            messanger.sendMessage(String.format("%s cast %s.", this.getName(), currentEnergy.getName()));
+            messanger.sendMessage(String.format("%s cast %s.", this.getName(), ability.getName()));
             List<Enemy> closerEnemy = new LinkedList<>();
             for (Enemy enemy: enemiesInRange) {
                 if(this.getPos().Range(enemy.getPos().getxPos(),enemy.getPos().getyPos())<2)
@@ -36,9 +38,7 @@ public class Rogue extends Player {
 
                 }
             }
-            int amount = currentEnergy.getAmount();
-            currentEnergy.addAmount(amount - cost);
-
+            ability.use();
         }
     }
 
@@ -49,7 +49,12 @@ public class Rogue extends Player {
 
     @Override
     public int getRange() {
-        return 0;
+        return RANGE;
+    }
+
+    @Override
+    public void abilityTick() {
+        //currentEnergy.addAmount();
     }
 
     @Override
@@ -57,6 +62,6 @@ public class Rogue extends Player {
         String tab = "\t";
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
                 "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab + "Energy: " + currentEnergy.toString();
+                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab + "Energy: " + ability.toString();
     }
 }

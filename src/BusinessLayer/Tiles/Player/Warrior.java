@@ -12,7 +12,7 @@ import java.util.Random;
 public class Warrior extends Player {
 
     private WarriorAbility ability;
-    private static final int RANGE = 3;
+    private final int RANGE = 3;
 
     public Warrior(char c, String name, Resource health, int attack, int defense, int coolDownPool){
         super(c, name, health, attack, defense);
@@ -29,6 +29,8 @@ public class Warrior extends Player {
     public void onAbilityCast(List<Enemy> enemies){
         if(!ability.isAvailable())
             messanger.sendMessage(String.format("%s tried to cast %s, but there is a %s: %d", name, ability.getName(), ability.getPoolName(), ability.getAmount()));
+
+        ability.use();
 
         int newHealth = Math.min(health.getAmount() + 10*defensePoints, health.getPool());
         messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth-health.getAmount()));
@@ -47,5 +49,10 @@ public class Warrior extends Player {
 
     public int getRange(){
         return RANGE;
+    }
+
+    @Override
+    public void abilityTick() {
+        ability.onTick();
     }
 }

@@ -10,5 +10,7 @@ public interface Ability {
     public int getAmount();
     public int getPool();
     public void addAmount(int delda);
-
+    public void onTick();
+    public void setAmount(int newAmount);
+    public void use();
 }
