@@ -22,6 +22,7 @@ public abstract class Enemy extends Unit {
     public int getExperienceValue() {
         return experienceValue;
     }
+    public int getVisionRange(){return visionRange;}
 
     public void setEnemyDeathCallback(EnemyDeathCallback enemyDeathCallback) {
         this.enemyDeathCallback = enemyDeathCallback;
