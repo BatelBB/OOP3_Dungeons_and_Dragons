@@ -14,8 +14,8 @@ public class Rogue extends Player {
     private final int ENERGY = 100;
     private final int RANGE = 2;
 
-    public Rogue(char ch, String name, Resource health, int attack, int defense, int cost){
-        super(ch, name, health, attack, defense);
+    public Rogue(String name, int health, int attack, int defense, int cost){
+        super(name, health, attack, defense);
         //this.cost = cost;
         ability = new RougueAbility("Fan of Knives", "energy", ENERGY, cost);
     }

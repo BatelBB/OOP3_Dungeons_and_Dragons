@@ -15,8 +15,8 @@ public abstract class Player extends Unit {
 
     protected static final int LEVEL_UP_EXP = 50;
 
-    public Player(Character c, String name, Resource health, int attack, int def) {
-        super(c, name, health, attack, def);
+    public Player(String name, int health, int attack, int def) {
+        super('@', name, health, attack, def);
         experience = 0;
         playerLevel = 1;
     }

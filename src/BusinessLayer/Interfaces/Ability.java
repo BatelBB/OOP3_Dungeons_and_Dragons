@@ -6,6 +6,8 @@ public interface Ability {
 
     public boolean isAvailable();
     public void reset();
+
+    
     public void addToPool(int delta);
     public int getAmount();
     public int getPool();

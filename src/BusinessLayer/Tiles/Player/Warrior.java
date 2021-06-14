@@ -14,8 +14,8 @@ public class Warrior extends Player {
     private WarriorAbility ability;
     private final int RANGE = 3;
 
-    public Warrior(char c, String name, Resource health, int attack, int defense, int coolDownPool){
-        super(c, name, health, attack, defense);
+    public Warrior(String name, int health, int attack, int defense, int coolDownPool){
+        super(name, health, attack, defense);
         ability = new WarriorAbility("Avenger's Shield", "CoolDown", 0);
     }
 

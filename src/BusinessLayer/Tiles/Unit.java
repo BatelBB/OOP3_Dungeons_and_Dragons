@@ -19,10 +19,10 @@ public abstract class Unit extends Tile {
 
     public Messenger messanger;
 
-    public Unit(Character c, String name, Resource health, int attackPoints, int defensePoints) {
+    public Unit(Character c, String name, int health, int attackPoints, int defensePoints) {
         super(c);
         this.name = name;
-        this.health = health;
+        this.health = new Resource("Health", health);
         this.attackPoints = attackPoints;
         this.defensePoints = defensePoints;
         this.messanger = new Messenger();

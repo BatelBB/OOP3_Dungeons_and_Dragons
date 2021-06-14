@@ -39,4 +39,8 @@ public abstract class Tile implements Visited, Visitor {
         return String.valueOf(tile);
     }
 
+    public char getTile(){
+        return tile;
+    }
+
 }

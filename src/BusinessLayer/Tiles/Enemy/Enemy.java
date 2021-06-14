@@ -13,7 +13,7 @@ public abstract class Enemy extends Unit {
 
     protected EnemyDeathCallback enemyDeathCallback;
 
-    public Enemy(Character c, String name, Resource health, int attackPoints, int defensePoints,int visionRange, int experienceValue) {
+    public Enemy(Character c, String name, int health, int attackPoints, int defensePoints,int visionRange, int experienceValue) {
         super(c, name, health, attackPoints, defensePoints);
         this.visionRange = visionRange;
         this.experienceValue = experienceValue;

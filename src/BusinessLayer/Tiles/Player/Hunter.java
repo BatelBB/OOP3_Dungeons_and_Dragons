@@ -14,8 +14,8 @@ public class Hunter extends Player {
     private final int ARROWSADDCOUNT = 10;
     private final int TICKSCOUNTFORREFILL = 10;
 
-    public Hunter(char ch, String name, Resource health, int attack, int defense, int range){
-        super(ch, name, health, attack, defense);
+    public Hunter(String name, int health, int attack, int defense, int range){
+        super(name, health, attack, defense);
         this.range = range;
         ability = new HunterAbility("Shoot", "Arrows", ARROWSADDCOUNT*playerLevel);
     }

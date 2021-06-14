@@ -16,8 +16,8 @@ public class Mage extends Player {
     private int range;
     private int hitCount;
 
-    public Mage(char c, String name, Resource health, int attack, int def, int manaPool, int manaCost, int spellPower, int hitCount, int range) {
-        super(c, name, health, attack, def);
+    public Mage(String name, int health, int attack, int def, int manaPool, int manaCost, int spellPower, int hitCount, int range) {
+        super(name, health, attack, def);
         this.ability = new MageAbility(ABILITYNAME, ABILITYPOOLNAME, manaPool, manaCost);
         this.range = range;
         this.hitCount = hitCount;
