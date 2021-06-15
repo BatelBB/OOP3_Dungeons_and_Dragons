@@ -1,4 +1,5 @@
 package BusinessLayer.Tiles.Player;
+import BusinessLayer.Interfaces.PlayerDeathCallBack;
 import BusinessLayer.Interfaces.Visitor;
 import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Enemy.Enemy;
@@ -14,7 +15,7 @@ public abstract class Player extends Unit {
     protected int playerLevel = 1;
 
     protected static final int LEVEL_UP_EXP = 50;
-
+    protected PlayerDeathCallBack playerDeathCallBack;
     public Player(String name, int health, int attack, int def) {
         super('@', name, health, attack, def);
         experience = 0;
@@ -105,5 +106,14 @@ public abstract class Player extends Unit {
     }
 
     public abstract void abilityTick();
+
+    public void died(){
+        playerDeathCallBack.call();
+        messanger.sendMessage("You lost.");
+    }
+
+    public void setPlayerDeathCallBack(PlayerDeathCallBack playerDeathCallBack){
+        this.playerDeathCallBack = playerDeathCallBack;
+    }
 }
 

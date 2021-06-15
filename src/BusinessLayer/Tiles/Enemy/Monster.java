@@ -34,6 +34,7 @@ public class Monster extends Enemy{
         super.battle(player);
         if(!player.alive()){
             swichPos(player);
+            player.died();
         }
     }
 

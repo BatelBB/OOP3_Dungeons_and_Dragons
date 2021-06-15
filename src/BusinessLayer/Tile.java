@@ -43,4 +43,8 @@ public abstract class Tile implements Visited, Visitor {
         return tile;
     }
 
+    public void setTile(char c){
+        this.tile = c;
+    }
+
 }

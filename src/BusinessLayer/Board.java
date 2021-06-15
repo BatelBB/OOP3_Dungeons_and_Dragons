@@ -56,6 +56,7 @@ public class Board /*implements EnemyDeathCallback*/ {
                     player = tileFactory.getPlayer(chosenPlayer);
                     gameMap.add(player);
                     player.init(new Position(j,i));
+                    player.setPlayerDeathCallBack(() -> this.onPlayerDeath(player));
                 }
                 else if(map[i][j] == '#')
                     gameMap.add(new Wall('#', new Position(j,i)));
@@ -75,7 +76,7 @@ public class Board /*implements EnemyDeathCallback*/ {
     public void update(){
         while (isGame) {
             playerGo(im.getInput());
-    //        enemiesGo();
+           enemiesGo();
 
             //after all updates
             im.updateCLI(gameMap, width, height);
@@ -156,6 +157,11 @@ public class Board /*implements EnemyDeathCallback*/ {
         enemyList.remove(e);
         gameMap.remove(e);
         gameMap.add(new Empty('.', pos));
+    }
+
+    public void onPlayerDeath(Player p){
+        p.setTile('X');
+        isGame = false;
     }
 
 }
