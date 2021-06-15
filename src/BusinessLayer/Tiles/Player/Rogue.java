@@ -54,8 +54,11 @@ public class Rogue extends Player {
 
     @Override
     public void abilityTick() {
-        //currentEnergy.addAmount();
+        ability.onTick();
     }
+
+    @Override
+    public void levelUp(){}
 
     @Override
     public String description() {

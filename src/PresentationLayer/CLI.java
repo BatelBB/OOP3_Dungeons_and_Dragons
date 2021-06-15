@@ -1,4 +1,4 @@
-package BusinessLayer.PresentationLayer;
+package PresentationLayer;
 
 import java.util.Scanner;
 
