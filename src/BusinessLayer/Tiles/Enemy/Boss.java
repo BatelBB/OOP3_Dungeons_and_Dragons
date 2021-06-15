@@ -35,6 +35,6 @@ public class Boss extends Enemy{
 
     @Override
     public String description() {
-        return null;
+        return getDescription();
     }
 }

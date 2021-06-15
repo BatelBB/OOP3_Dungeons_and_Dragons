@@ -32,4 +32,13 @@ public abstract class Enemy extends Unit {
         enemyDeathCallback.call();
 
     }
+
+    public String getDescription() {
+        String tab = "\t";
+        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
+                "Defense: " + defensePoints + tab +
+                "Experience Value: " + this.getExperienceValue() + tab + "Vision Range:" + this.getVisionRange();
+    }
+
+
 }

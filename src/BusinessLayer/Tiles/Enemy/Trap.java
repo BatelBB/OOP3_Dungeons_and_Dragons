@@ -53,7 +53,7 @@ public class Trap extends Enemy{
 
     @Override
     public String description() {
-        return "";
+        return getDescription();
     }
 
 
