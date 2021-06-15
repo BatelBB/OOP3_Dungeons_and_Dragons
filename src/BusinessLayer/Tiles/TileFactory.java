@@ -22,7 +22,7 @@ public class TileFactory {
 
     private Map<Character, Supplier<Enemy>> initEnemies() {
         List<Supplier<Enemy>> enemies = Arrays.asList(
-                () -> new Monster('s', "Lannister Solider", 500, 8, 3,25, 10)
+                () -> new Monster('s', "Lannister Solider", 5, 8, 3,25, 10)
                 /*() -> new Monster('k', "Lannister Knight", 200, 14, 8, 50,   4),
                 () -> new Monster('q', "Queen's Guard", 400, 20, 15, 100,  5),
                 () -> new Boss('M', "The Mountain", 1000, 60, 25,  500, 6, 5),
@@ -43,7 +43,7 @@ public class TileFactory {
 
     private List<Supplier<Player>> initPlayers() {
         return Arrays.asList(
-                () -> new Warrior("Jon Snow", 3, 30, 4, 3),
+                () -> new Warrior("Jon Snow", 500, 30, 4, 3),
                 () -> new Warrior("The Hound", 400, 20, 6, 5),
                 () -> new Mage("Melisandre", 100, 5, 1, 300, 30, 15, 5, 6),
                 () -> new Mage("Thoros of Myr", 250, 25, 4, 150, 20, 20, 3, 4),

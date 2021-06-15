@@ -29,11 +29,7 @@ public class Board /*implements EnemyDeathCallback*/ {
 
 
 
-    public Board(char[][] map){
-        tileFactory = new TileFactory();
-        isGame = true;
-        height = map.length;
-        width = map[0].length;
+    public Board(){
 
         im = new InputManager();
 
@@ -41,15 +37,21 @@ public class Board /*implements EnemyDeathCallback*/ {
 
         enemyList = new LinkedList<>();
         gameMap = new LinkedList<>();
+    }
 
-        init(map);
+    public void startLevel(char[][] map, int level){
+        im.showMessage(String.format("Level %d", level));
+        tileFactory = new TileFactory();
+        isGame = true;
+        height = map.length;
+        width = map[0].length;
 
-        im.updateCLI(gameMap, width, height);
+        initMap(map);
+
         update();
     }
 
-
-    private void init(char[][] map){
+    private void initMap(char[][] map){
         for (int i = 0; i < map.length; i++){
             for(int j = 0; j < map[i].length; j++){
                 if(map[i][j] == '@') {
@@ -75,11 +77,16 @@ public class Board /*implements EnemyDeathCallback*/ {
 
     public void update(){
         while (isGame) {
+            im.updateCLI(gameMap, width, height);
             playerGo(im.getInput());
             enemiesGo();
 
             //after all updates
             im.updateCLI(gameMap, width, height);
+
+            if(enemyList.isEmpty()){
+                isGame = false;
+            }
         }
      }
 
@@ -174,8 +181,6 @@ public class Board /*implements EnemyDeathCallback*/ {
     public void onEnemyDeath(Enemy e){
         Position pos = e.pos;
         enemyList.remove(e);
-        if(enemyList.isEmpty())
-            updateLevelMap();
         gameMap.remove(e);
         gameMap.add(new Empty('.', pos));
     }
