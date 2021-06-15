@@ -55,4 +55,9 @@ public class Warrior extends Player {
     public void abilityTick() {
         ability.onTick();
     }
+
+    @Override
+    public void accept(Player player) {
+
+    }
 }

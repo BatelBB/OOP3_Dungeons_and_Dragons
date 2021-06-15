@@ -77,8 +77,8 @@ public abstract class Player extends Unit {
 
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public void accept(Enemy enemy) {
+        enemy.visit(this);
     }
 
     public abstract void onAbilityCast(List<Enemy> enemies);

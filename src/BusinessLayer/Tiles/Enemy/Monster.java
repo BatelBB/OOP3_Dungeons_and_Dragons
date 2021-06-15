@@ -13,11 +13,7 @@ public class Monster extends Enemy{
         super(c, name, health, attackPoints, defensePoints, visionRnge, experienceValue);
 
     }
-//delete
-    @Override
-    public void accept(Visitor visitor) {
 
-    }
 
     @Override
     public void accept(Unit unit) {
@@ -46,5 +42,15 @@ public class Monster extends Enemy{
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
                 "Defense: " + defensePoints + tab +
                 "Experience Value: " + this.getExperienceValue() + tab + "Vision Range:" + this.getVisionRange();
+    }
+
+    @Override
+    public void accept(Enemy enemy) {
+
+    }
+
+    @Override
+    public void accept(Player player) {
+
     }
 }

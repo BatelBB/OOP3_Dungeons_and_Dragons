@@ -64,4 +64,9 @@ public class Rogue extends Player {
                 "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
                 "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab + "Energy: " + ability.toString();
     }
+
+    @Override
+    public void accept(Player player) {
+
+    }
 }

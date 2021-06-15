@@ -33,10 +33,6 @@ public class Wall extends Tile{
     }
 
 
-    @Override
-    public void accept(Visitor visitor) {
-
-    }
 
     @Override
     public void visit(Enemy e) {
@@ -55,6 +51,16 @@ public class Wall extends Tile{
 
     @Override
     public void visit(Empty emp) {
+
+    }
+
+    @Override
+    public void accept(Enemy enemy) {
+
+    }
+
+    @Override
+    public void accept(Player player) {
 
     }
 }

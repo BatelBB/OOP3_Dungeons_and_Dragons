@@ -15,24 +15,30 @@ public class Trap extends Enemy{
         super(c, name, health, attackPoints, defensePoints, 1, experienceValue);
         this.visibilityTime = visibilityTime;
         this.invisibilityTime = invisibilityTime;
+        isVisible = true;
     }
 
+    @Override
+    public void accept(Enemy enemy) {
+
+    }
+
+    @Override
+    public void accept(Player player) {
+        player.battle(this);
+    }
+
+
+    @Override
+    public void accept(Unit unit) {
+        unit.visit(this);
+    }
 
     @Override
     public String toString() {
         if(isVisible)
             return "" + tile;
         return ".";
-    }
-//delete
-    @Override
-    public void accept(Visitor visitor) {
-
-    }
-
-    @Override
-    public void accept(Unit unit) {
-
     }
 
     @Override
@@ -49,4 +55,6 @@ public class Trap extends Enemy{
     public String description() {
         return "";
     }
+
+
 }

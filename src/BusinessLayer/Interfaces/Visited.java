@@ -1,5 +1,9 @@
 package BusinessLayer.Interfaces;
 
+import BusinessLayer.Tiles.Enemy.Enemy;
+import BusinessLayer.Tiles.Player.Player;
+
 public interface Visited {
-    void accept(Visitor visitor);
+    void accept(Enemy enemy);
+    void accept(Player player);
 }

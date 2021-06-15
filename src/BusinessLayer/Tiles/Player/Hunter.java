@@ -71,4 +71,14 @@ public class Hunter extends Player {
         if(ability.getPool() >= TICKSCOUNTFORREFILL)
             ability.addAmount(10*playerLevel);
     }
+
+    @Override
+    public void accept(Enemy enemy) {
+
+    }
+
+    @Override
+    public void accept(Player player) {
+
+    }
 }

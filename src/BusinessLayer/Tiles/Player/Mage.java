@@ -75,4 +75,14 @@ public class Mage extends Player {
         ability.addToPool(25*playerLevel);
         ability.setAmount(Math.min(ability.getAmount() + (int)(0.25*ability.getPool()), ability.getPool()));
     }
+
+    @Override
+    public void accept(Enemy enemy) {
+
+    }
+
+    @Override
+    public void accept(Player player) {
+
+    }
 }

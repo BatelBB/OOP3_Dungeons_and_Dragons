@@ -174,8 +174,8 @@ public class Board /*implements EnemyDeathCallback*/ {
     public void onEnemyDeath(Enemy e){
         Position pos = e.pos;
         enemyList.remove(e);
-        if(enemyList.isEmpty())
-            updateLevelMap();
+        //if(enemyList.isEmpty())
+            //updateLevelMap();
         gameMap.remove(e);
         gameMap.add(new Empty('.', pos));
     }

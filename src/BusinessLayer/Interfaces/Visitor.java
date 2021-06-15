@@ -7,9 +7,9 @@ import BusinessLayer.Tiles.Unit;
 import BusinessLayer.Tiles.Wall;
 
 public interface Visitor {
-    public void visit(Enemy e);
-    public void visit(Player player);
-    public void visit(Wall w);
-    public void visit(Empty emp);
+    void visit(Enemy e);
+    void visit(Player player);
+    void visit(Wall w);
+    void visit(Empty emp);
 
 }

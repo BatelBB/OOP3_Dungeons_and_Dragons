@@ -62,7 +62,7 @@ public abstract class Unit extends Tile {
     }
 
 
-    protected void battle(Unit u){
+    public void battle(Unit u){
         messanger.sendMessage(String.format("%s engaged in combat with %s", this.name, u.name));
         messanger.sendMessage((this.description()));
         messanger.sendMessage((u.description()));
