@@ -28,8 +28,7 @@ public class Board /*implements EnemyDeathCallback*/ {
     private TileFactory tileFactory;
 
 
-
-    public Board(){
+    public Board() {
 
         im = new InputManager();
 
@@ -38,7 +37,7 @@ public class Board /*implements EnemyDeathCallback*/ {
 
     }
 
-    public void startLevel(char[][] map, int level){
+    public void startLevel(char[][] map, int level) {
         im.showMessage(String.format("Level %d", level));
         tileFactory = new TileFactory();
         isGame = true;
@@ -49,27 +48,26 @@ public class Board /*implements EnemyDeathCallback*/ {
         gameMap = new LinkedList<>();
 
         initMap(map);
-
+        im.updateCLI(gameMap, width, height);
         update();
     }
 
-    private void initMap(char[][] map){
-        for (int i = 0; i < map.length; i++){
-            for(int j = 0; j < map[i].length; j++){
-                if(map[i][j] == '@') {
+    private void initMap(char[][] map) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == '@') {
                     player = tileFactory.getPlayer(chosenPlayer);
                     gameMap.add(player);
-                    player.init(new Position(j,i));
+                    player.init(new Position(j, i));
                     player.setPlayerDeathCallBack(() -> this.onPlayerDeath(player));
-                }
-                else if(map[i][j] == '#')
-                    gameMap.add(new Wall('#', new Position(j,i)));
-                else if(map[i][j] == '.')
-                    gameMap.add(new Empty('.', new Position(j,i)));
-                else{
+                } else if (map[i][j] == '#')
+                    gameMap.add(new Wall('#', new Position(j, i)));
+                else if (map[i][j] == '.')
+                    gameMap.add(new Empty('.', new Position(j, i)));
+                else {
                     Enemy e = tileFactory.getEnemy(map[i][j]);
                     gameMap.add(e);
-                    e.init(new Position(j,i));
+                    e.init(new Position(j, i));
                     e.setEnemyDeathCallback(() -> this.onEnemyDeath(e));
                     enemyList.add(e);
                 }
@@ -77,56 +75,57 @@ public class Board /*implements EnemyDeathCallback*/ {
         }
     }
 
-    public void update(){
+    public void update() {
         while (isGame) {
-            im.updateCLI(gameMap, width, height);
-            playerGo(im.getInput());
-            enemiesGo();
+            char input = im.getInput();
+            if (validInput(input)){
+                playerGo(input);
+                enemiesGo();
 
-            //after all updates
-            im.updateCLI(gameMap, width, height);
 
-            if(enemyList.isEmpty()){
-                isGame = false;
+                if (enemyList.isEmpty()) {
+                    isGame = false;
+                }
+                im.updateCLI(gameMap, width, height);
             }
         }
-     }
+    }
+    private boolean validInput(char c){
+        return (c == 'd' || c == 'q' || c == 'w' || c == 'a' || c == 's' || c == 'e');
+    }
+    private void enemiesGo() {
+        for (Enemy e : enemyList) {
+            int dir = pickDirectionForEnemy(e);
+            switch (dir) {
+                case 1 -> up(e);
+                case 2 -> down(e);
+                case 3 -> left(e);
+                case 4 -> right(e);
+            }
+        }
+    }
 
-     private void enemiesGo(){
-         for (Enemy e: enemyList) {
-             int dir = pickDirectionForEnemy(e);
-             switch (dir){
-                 case 1 -> up(e);
-                 case 2 -> down(e);
-                 case 3 -> left(e);
-                 case 4 -> right(e);
-             }
-         }
-     }
-
-     private int pickDirectionForEnemy(Enemy e){
-        if(e.pos.Range(player.pos) <= e.getVisionRange()){
+    private int pickDirectionForEnemy(Enemy e) {
+        if (e.pos.Range(player.pos) <= e.getVisionRange()) {
             double xDiff = e.pos.getxPos() - player.pos.getxPos();
             double yDiff = e.pos.getyPos() - player.pos.getyPos();
 
-            if(Math.abs(xDiff) > Math.abs(yDiff)){
-                if(xDiff < 0)
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff < 0)
                     return 4;
                 return 3;
-            }
-            else {
+            } else {
                 if (yDiff < 0)
                     return 2;
                 return 1;
             }
-        }
-        else
+        } else
             return new Random().nextInt(4) + 1;
-     }
+    }
 
     //translate UserInput to gameLogic
-    private void playerGo(char input){
-        switch (input){
+    private void playerGo(char input) {
+        switch (input) {
             case 'w' -> up(player);
             case 's' -> down(player);
             case 'a' -> left(player);
@@ -136,11 +135,11 @@ public class Board /*implements EnemyDeathCallback*/ {
         player.onTick();
     }
 
-    private void castAbility(){
+    private void castAbility() {
         List<Enemy> enemiesInRange = new LinkedList<>();
 
-        for (Enemy e: enemyList) {
-            if(e.pos.Range(player.pos) < player.getRange())
+        for (Enemy e : enemyList) {
+            if (e.pos.Range(player.pos) < player.getRange())
                 enemiesInRange.add(e);
         }
 
@@ -148,46 +147,46 @@ public class Board /*implements EnemyDeathCallback*/ {
     }
 
     //goes over the board and finds the tile in wanted pos
-    private Tile find(Position p){
-        for (Tile t: gameMap) {
-            if(t.getPos().equals(p))
+    private Tile find(Position p) {
+        for (Tile t : gameMap) {
+            if (t.getPos().equals(p))
                 return t;
         }
         return null;
     }
 
-    private void up(Tile u){
-        Position p = u.getPos().translate(0,-1);
+    private void up(Tile u) {
+        Position p = u.getPos().translate(0, -1);
         u.interact(find(p));
     }
 
-    private void down(Unit u){
-        Position p = u.getPos().translate(0,1);
+    private void down(Unit u) {
+        Position p = u.getPos().translate(0, 1);
         u.interact(find(p));
     }
 
-    private void left(Unit u){
-        Position p = u.getPos().translate(-1,0);
+    private void left(Unit u) {
+        Position p = u.getPos().translate(-1, 0);
         u.interact(find(p));
     }
 
-    private void right(Unit u){
-        Position p = u.getPos().translate(1,0);
+    private void right(Unit u) {
+        Position p = u.getPos().translate(1, 0);
         u.interact(find(p));
     }
 
-    public void handleEnemyDeath(Tile e){
+    public void handleEnemyDeath(Tile e) {
         e = new Empty('.', e.pos);
     }
 
-    public void onEnemyDeath(Enemy e){
+    public void onEnemyDeath(Enemy e) {
         Position pos = e.pos;
         enemyList.remove(e);
         gameMap.remove(e);
         gameMap.add(new Empty('.', pos));
     }
 
-    public void onPlayerDeath(Player p){
+    public void onPlayerDeath(Player p) {
         p.setTile('X');
         isGame = false;
     }
