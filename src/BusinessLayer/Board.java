@@ -76,7 +76,7 @@ public class Board /*implements EnemyDeathCallback*/ {
     public void update(){
         while (isGame) {
             playerGo(im.getInput());
-           enemiesGo();
+            enemiesGo();
 
             //after all updates
             im.updateCLI(gameMap, width, height);
@@ -84,16 +84,35 @@ public class Board /*implements EnemyDeathCallback*/ {
      }
 
      private void enemiesGo(){
-         Random rand = new Random();
          for (Enemy e: enemyList) {
-             int a = rand.nextInt(4) + 1;
-             switch (a){
+             int dir = pickDirectionForEnemy(e);
+             switch (dir){
                  case 1 -> up(e);
                  case 2 -> down(e);
                  case 3 -> left(e);
                  case 4 -> right(e);
              }
          }
+     }
+
+     private int pickDirectionForEnemy(Enemy e){
+        if(e.pos.Range(player.pos) <= e.getVisionRange()){
+            double xDiff = e.pos.getxPos() - player.pos.getxPos();
+            double yDiff = e.pos.getyPos() - player.pos.getyPos();
+
+            if(Math.abs(xDiff) > Math.abs(yDiff)){
+                if(xDiff < 0)
+                    return 4;
+                return 3;
+            }
+            else {
+                if (yDiff < 0)
+                    return 2;
+                return 1;
+            }
+        }
+        else
+            return new Random().nextInt(4) + 1;
      }
 
     //translate UserInput to gameLogic
