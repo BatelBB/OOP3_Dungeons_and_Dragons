@@ -1,7 +1,7 @@
 package ServiceLayer;
 
 import BusinessLayer.Tile;
-import BusinessLayer.PresentationLayer.CLI;
+import PresentationLayer.CLI;
 
 import java.util.Iterator;
 import java.util.LinkedList;

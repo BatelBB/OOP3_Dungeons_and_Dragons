@@ -12,11 +12,10 @@ public class LevelManager {
     private File[] levelsDir;
     List<File> levels;
     private Board b;
-    
-    public LevelManager(){
-        
-    }
+    private boolean keepGoing;
+
     public LevelManager(String levelsDirPath){
+        keepGoing = true;
         this.level = 1;
         getLevels(levelsDirPath);
         start();
@@ -58,15 +57,21 @@ public class LevelManager {
     }
 
     private void start(){
-        b = new Board(loadNextLevel());
+        b = new Board();
+        update();
     }
 
     private void update(){
-        while (isLevel){
-            b.update();
+        while (keepGoing) {
+            try {
+                char[][] lvl = loadNextLevel();
+                b.startLevel(lvl, level);
+                level++;
+            } catch (Exception e) {
+                keepGoing = false;
+            }
         }
-        level++;
-        start();
+
     }
 
 }
