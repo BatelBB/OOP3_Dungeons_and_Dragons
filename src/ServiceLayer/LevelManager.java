@@ -1,3 +1,5 @@
+package ServiceLayer;
+
 import BusinessLayer.Board;
 
 import java.io.*;
@@ -10,7 +12,10 @@ public class LevelManager {
     private File[] levelsDir;
     List<File> levels;
     private Board b;
-
+    
+    public LevelManager(){
+        
+    }
     public LevelManager(String levelsDirPath){
         this.level = 1;
         getLevels(levelsDirPath);
@@ -27,7 +32,7 @@ public class LevelManager {
         }
     }
 
-    private char[][] loadNextLevel(){
+    public char[][] loadNextLevel(){
         List<String> lines = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(levels.get(level-1)));

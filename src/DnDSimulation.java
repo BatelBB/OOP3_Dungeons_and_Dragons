@@ -1,7 +1,9 @@
+import ServiceLayer.LevelManager;
+
 public class DnDSimulation {
 
     public static void main(String[] args) {
-        LevelManager lm = new LevelManager(args[0]);
+        new LevelManager(args[0]);
     }
 
 }
