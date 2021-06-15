@@ -35,8 +35,7 @@ public class Board /*implements EnemyDeathCallback*/ {
 
         chosenPlayer = im.getInput("choose wisely");
 
-        enemyList = new LinkedList<>();
-        gameMap = new LinkedList<>();
+
     }
 
     public void startLevel(char[][] map, int level){
@@ -45,6 +44,9 @@ public class Board /*implements EnemyDeathCallback*/ {
         isGame = true;
         height = map.length;
         width = map[0].length;
+
+        enemyList = new LinkedList<>();
+        gameMap = new LinkedList<>();
 
         initMap(map);
 
