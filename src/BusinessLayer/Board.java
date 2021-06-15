@@ -125,6 +125,7 @@ public class Board /*implements EnemyDeathCallback*/ {
 
     //translate UserInput to gameLogic
     private void playerGo(char input) {
+        player.onTick();
         switch (input) {
             case 'w' -> up(player);
             case 's' -> down(player);
@@ -132,7 +133,6 @@ public class Board /*implements EnemyDeathCallback*/ {
             case 'd' -> right(player);
             case 'e' -> castAbility();
         }
-        player.onTick();
     }
 
     private void castAbility() {

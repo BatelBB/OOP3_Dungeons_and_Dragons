@@ -13,13 +13,15 @@ import java.util.Random;
 public abstract class Player extends Unit {
     protected int experience;
     protected int playerLevel;
+    private final int STARTING_LEVEL = 1;
+    private final int STARTING_EXPERIENCE = 0;
 
     protected static final int LEVEL_UP_EXP = 50;
     protected PlayerDeathCallBack playerDeathCallBack;
     public Player(String name, int health, int attack, int def) {
         super('@', name, health, attack, def);
-        experience = 0;
-        playerLevel = 1;
+        experience = STARTING_EXPERIENCE;
+        playerLevel = STARTING_LEVEL;
     }
 
 
@@ -33,7 +35,7 @@ public abstract class Player extends Unit {
 
     public void setExperience(int expGain){
         experience += expGain;
-        if(experience >= LEVEL_UP_EXP * playerLevel)
+        while(experience >= LEVEL_UP_EXP * playerLevel)
             levelUp();
     }
 
