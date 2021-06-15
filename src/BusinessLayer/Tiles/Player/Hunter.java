@@ -13,6 +13,7 @@ public class Hunter extends Player {
     public Integer ticksCount;
     private final int ARROWSADDCOUNT = 10;
     private final int TICKSCOUNTFORREFILL = 10;
+    private int tickCount;
 
     public Hunter(String name, int health, int attack, int defense, int range){
         super(name, health, attack, defense);
@@ -80,5 +81,25 @@ public class Hunter extends Player {
     @Override
     public void accept(Player player) {
 
+    }
+
+    @Override
+    public void levelUp(){
+        super.levelUp();
+        ability.addAmount(10*playerLevel);
+        attackPoints += 2*playerLevel;
+        defensePoints += playerLevel;
+    }
+
+    @Override
+    public void onTick(){
+        super.onTick();
+        tickCount ++;
+        if(tickCount == 10){
+            ability.addAmount(playerLevel);
+            tickCount = 0;
+        }
+        else
+            tickCount += 1;
     }
 }

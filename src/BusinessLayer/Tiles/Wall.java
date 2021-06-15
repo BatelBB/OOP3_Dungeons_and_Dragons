@@ -32,6 +32,10 @@ public class Wall extends Tile{
         return "#";
     }
 
+    @Override
+    public void onTick() {
+
+    }
 
 
     @Override

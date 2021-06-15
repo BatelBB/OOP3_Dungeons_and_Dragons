@@ -1,5 +1,6 @@
 package BusinessLayer.Tiles;
 
+import BusinessLayer.Interfaces.Observer;
 import BusinessLayer.Messenger;
 import BusinessLayer.Position;
 import BusinessLayer.Tile;
@@ -9,7 +10,7 @@ import BusinessLayer.Tiles.Player.Player;
 import javax.annotation.processing.Messager;
 import java.util.Random;
 
-public abstract class Unit extends Tile {
+public abstract class Unit extends Tile implements Observer {
     public String name;
 
     public Resource health;
@@ -97,5 +98,10 @@ public abstract class Unit extends Tile {
 
     public abstract String description();
 
+    public abstract void onTick();
+
+    public void notice(){
+        this.onTick();
+    }
 
 }

@@ -1,12 +1,13 @@
 package BusinessLayer;
 
 import BusinessLayer.Interfaces.EnemyDeathCallback;
+import BusinessLayer.Interfaces.Observer;
 import BusinessLayer.Interfaces.Visited;
 import BusinessLayer.Interfaces.Visitor;
 import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Unit;
 
-public abstract class Tile implements Visited, Visitor {
+public abstract class Tile implements Visited, Visitor, Observer {
     protected char tile;
     protected Position pos;
 
@@ -45,6 +46,12 @@ public abstract class Tile implements Visited, Visitor {
 
     public void setTile(char c){
         this.tile = c;
+    }
+
+    public abstract void onTick();
+
+    public void notice(){
+        this.onTick();
     }
 
 }
