@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Player extends Unit {
-    protected int experience = 0;
-    protected int playerLevel = 1;
+    protected int experience;
+    protected int playerLevel;
 
     protected static final int LEVEL_UP_EXP = 50;
     protected PlayerDeathCallBack playerDeathCallBack;
@@ -38,7 +38,7 @@ public abstract class Player extends Unit {
     }
 
     public void levelUp(){
-        experience -= LEVEL_UP_EXP * 50;
+        experience = experience - LEVEL_UP_EXP * playerLevel;
 
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense", this.name, this.getPlayerLevel()+1, 10*playerLevel,
                 4*playerLevel, playerLevel));
@@ -114,6 +114,13 @@ public abstract class Player extends Unit {
 
     public void setPlayerDeathCallBack(PlayerDeathCallBack playerDeathCallBack){
         this.playerDeathCallBack = playerDeathCallBack;
+    }
+
+    protected String getDescription(){
+        String tab = "\t";
+        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
+                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
+                "Experience: " + getExperience() + "/" + LEVEL_UP_EXP*playerLevel + tab;
     }
 }
 

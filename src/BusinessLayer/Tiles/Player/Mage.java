@@ -66,7 +66,7 @@ public class Mage extends Player {
 
     @Override
     public String description() {
-        return null;
+        return getDescription();
     }
 
     @Override

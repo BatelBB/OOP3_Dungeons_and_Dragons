@@ -20,7 +20,7 @@ public class Boss extends Enemy{
 
     @Override
     public void accept(Unit unit) {
-
+        unit.visit(this);
     }
 
     @Override
@@ -30,7 +30,11 @@ public class Boss extends Enemy{
 
     @Override
     public void visit(Player player) {
-
+        super.battle(player);
+        if(!player.alive()){
+            swichPos(player);
+            player.died();
+        }
     }
 
     @Override

@@ -20,10 +20,7 @@ public class Warrior extends Player {
     }
 
     public String description(){
-        String tab = "\t";
-        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
-                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
+        return getDescription();
     }
 
     public void onAbilityCast(List<Enemy> enemies){
