@@ -13,7 +13,8 @@ public class Trap extends Enemy{
     private int tickCount;
 
 
-    public Trap(Character c, String name, int health, int attackPoints, int defensePoints, int experienceValue, int visibilityTime, int invisibilityTime) {
+    public Trap(Character c, String name, int health, int attackPoints, int defensePoints,
+                int experienceValue, int visibilityTime, int invisibilityTime) {
         super(c, name, health, attackPoints, defensePoints, 1, experienceValue);
         this.visibilityTime = visibilityTime;
         this.invisibilityTime = invisibilityTime;
