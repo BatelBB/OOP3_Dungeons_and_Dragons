@@ -58,7 +58,11 @@ public class Rogue extends Player {
     }
 
     @Override
-    public void levelUp(){}
+    public void levelUp(){
+        super.levelUp();
+        ability.reset();
+        attackPoints += 3*playerLevel;
+    }
 
     @Override
     public String description() {

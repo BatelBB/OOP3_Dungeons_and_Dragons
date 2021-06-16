@@ -69,6 +69,7 @@ public class LevelManager {
                 level++;
             } catch (Exception e) {
                 keepGoing = false;
+                new InputManager().showMessage("You Won!");
             }
         }
 

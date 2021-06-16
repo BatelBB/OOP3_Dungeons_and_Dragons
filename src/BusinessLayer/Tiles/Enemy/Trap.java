@@ -10,6 +10,8 @@ public class Trap extends Enemy{
     private boolean isVisible;
     private int visibilityTime;
     private int invisibilityTime;
+    private int tickCount;
+
 
     public Trap(Character c, String name, int health, int attackPoints, int defensePoints, int experienceValue, int visibilityTime, int invisibilityTime) {
         super(c, name, health, attackPoints, defensePoints, 1, experienceValue);
@@ -56,5 +58,12 @@ public class Trap extends Enemy{
         return getDescription();
     }
 
-
+    @Override
+    public void onTick() {
+        isVisible = tickCount < visibilityTime;
+        if(tickCount == visibilityTime + invisibilityTime)
+            tickCount = 0;
+        else
+            tickCount++;
+    }
 }

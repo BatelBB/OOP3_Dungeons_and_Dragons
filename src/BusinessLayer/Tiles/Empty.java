@@ -29,6 +29,11 @@ public class Empty extends Tile {
 
     }
 
+    @Override
+    public void onTick() {
+
+    }
+
     //@Override
     /*public String toString() {
         return ".";

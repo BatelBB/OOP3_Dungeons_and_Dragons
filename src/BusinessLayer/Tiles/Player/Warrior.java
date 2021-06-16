@@ -52,6 +52,16 @@ public class Warrior extends Player {
     }
 
     @Override
+    public void levelUp(){
+        super.levelUp();
+        ability.reset();
+        health.addToPool(5*playerLevel);
+        attackPoints += 2*playerLevel;
+        defensePoints += playerLevel;
+    }
+
+
+    @Override
     public void abilityTick() {
         ability.onTick();
     }

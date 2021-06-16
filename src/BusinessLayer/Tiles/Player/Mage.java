@@ -85,4 +85,5 @@ public class Mage extends Player {
     public void accept(Player player) {
 
     }
+
 }
