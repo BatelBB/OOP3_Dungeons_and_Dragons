@@ -33,12 +33,12 @@ public abstract class Player extends Unit {
 
     public void setExperience(int expGain){
         experience += expGain;
-        if(experience >= LEVEL_UP_EXP * playerLevel)
+        while(experience >= LEVEL_UP_EXP * playerLevel)
             levelUp();
     }
 
     public void levelUp(){
-        experience -= LEVEL_UP_EXP * 50;
+        experience -= LEVEL_UP_EXP * playerLevel;
 
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense", this.name, this.getPlayerLevel()+1, 10*playerLevel,
                 4*playerLevel, playerLevel));
