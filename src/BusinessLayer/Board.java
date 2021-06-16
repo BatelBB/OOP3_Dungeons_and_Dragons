@@ -205,6 +205,7 @@ public class Board implements Observable {
         observers.remove(e);
         Position pos = e.pos;
         enemyList.remove(e);
+        movingEnemyList.remove(e);
         gameMap.remove(e);
         gameMap.add(new Empty('.', pos));
     }
