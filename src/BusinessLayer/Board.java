@@ -22,6 +22,7 @@ public class Board implements Observable {
     private char chosenPlayer;
 
     private LinkedList<Enemy> enemyList;
+    private LinkedList<Enemy> movingEnemyList;
     private Player player;
 
     private int height;
@@ -34,8 +35,15 @@ public class Board implements Observable {
     public Board(){
 
         im = new InputManager();
+        String output = "Select player:\n1. Jon Snow             Health: 300/300         Attack: 30              Defense: 4              Level: 1                Experience: 0/50                Cooldown: 0/3\n" +
+                "2. The Hound            Health: 400/400         Attack: 20              Defense: 6              Level: 1                Experience: 0/50                Cooldown: 0/5\n" +
+                "3. Melisandre           Health: 100/100         Attack: 5               Defense: 1              Level: 1                Experience: 0/50                Mana: 75/300            Spell Power: 15\n" +
+                "4. Thoros of Myr        Health: 250/250         Attack: 25              Defense: 4              Level: 1                Experience: 0/50                Mana: 37/150            Spell Power: 20\n" +
+                "5. Arya Stark           Health: 150/150         Attack: 40              Defense: 2              Level: 1                Experience: 0/50                Energy: 100/100\n" +
+                "6. Bronn                Health: 250/250         Attack: 35              Defense: 3              Level: 1                Experience: 0/50                Energy: 100/100\n" +
+                "7. Ygritte              Health: 220/220         Attack: 30              Defense: 2              Level: 1                Experience: 0/50                Arrows: 10              Range: 6 ";
 
-        chosenPlayer = im.getInput("choose wisely");
+        chosenPlayer = im.getInput(output);
 
 
     }
@@ -48,6 +56,7 @@ public class Board implements Observable {
         width = map[0].length;
 
         enemyList = new LinkedList<>();
+        movingEnemyList = new LinkedList<>();
         gameMap = new LinkedList<>();
 
         observers = new LinkedList<>();
@@ -78,6 +87,8 @@ public class Board implements Observable {
                     e.setEnemyDeathCallback(() -> this.onEnemyDeath(e));
                     enemyList.add(e);
                     observers.add(e);
+                    if(!(e.tile == 'Q' || e.tile == 'B' || e.tile == 'D'))
+                        movingEnemyList.add(e);
                 }
             }
         }
@@ -85,20 +96,25 @@ public class Board implements Observable {
 
     public void update(){
         while (isGame) {
+            char input = im.getInput();
+            if (validInput(input)){
+                playerGo(input);
+                enemiesGo();
 
 
-            playerGo(im.getInput());
-            enemiesGo();
-            im.updateCLI(gameMap, width, height);
-
-            if(enemyList.isEmpty()){
-                isGame = false;
+                if (enemyList.isEmpty()) {
+                    isGame = false;
+                }
+                im.updateCLI(gameMap, width, height);
             }
         }
-     }
+    }
+    private boolean validInput(char c){
+        return (c == 'd' || c == 'q' || c == 'w' || c == 'a' || c == 's' || c == 'e');
+    }
 
      private void enemiesGo(){
-         for (Enemy e: enemyList) {
+         for (Enemy e: movingEnemyList) {
              int dir = pickDirectionForEnemy(e);
              switch (dir){
                  case 1 -> up(e);
@@ -131,6 +147,7 @@ public class Board implements Observable {
 
     //translate UserInput to gameLogic
     private void playerGo(char input){
+        player.onTick();
         switch (input){
             case 'w' -> up(player);
             case 's' -> down(player);
@@ -138,7 +155,6 @@ public class Board implements Observable {
             case 'd' -> right(player);
             case 'e' -> castAbility();
         }
-        player.onTick();
     }
 
     private void castAbility(){
