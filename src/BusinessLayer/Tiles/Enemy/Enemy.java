@@ -36,8 +36,8 @@ public abstract class Enemy extends Unit {
     public void onTick(){
 
     }
-
-    public String getDescription() {
+    @Override
+    public String description() {
         String tab = "\t";
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
                 "Defense: " + defensePoints + tab +

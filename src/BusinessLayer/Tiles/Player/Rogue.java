@@ -9,14 +9,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Rogue extends Player {
-    //public Integer cost;
     public RougueAbility ability; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
     private final int ENERGY = 100;
     private final int RANGE = 2;
 
     public Rogue(String name, int health, int attack, int defense, int cost){
         super(name, health, attack, defense);
-        //this.cost = cost;
         ability = new RougueAbility("Fan of Knives", "energy", ENERGY, cost);
     }
 
@@ -35,7 +33,6 @@ public class Rogue extends Player {
             if (!closerEnemy.isEmpty()) {
                 for (Enemy enemy: closerEnemy) {
                     this.abilityAttack(enemy);
-
                 }
             }
             ability.use();
@@ -69,10 +66,12 @@ public class Rogue extends Player {
 
     @Override
     public String description() {
-        String tab = "\t";
-        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
-                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab + "Energy: " + ability.toString();
+        return super.description();
+    }
+
+    @Override
+    public int getAbilityAmount() {
+        return ability.getAmount();
     }
 
     @Override
