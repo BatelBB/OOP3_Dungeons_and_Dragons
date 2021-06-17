@@ -1,12 +1,7 @@
 package BusinessLayer.Tiles.Player;
-import BusinessLayer.Interfaces.Ability;
-import BusinessLayer.Interfaces.PlayerDeathCallBack;
-import BusinessLayer.Interfaces.Visitor;
-import BusinessLayer.Tiles.Empty;
+import BusinessLayer.Interfaces.CallBacks.PlayerDeathCallBack;
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
-import BusinessLayer.Tiles.Wall;
 
 import java.util.List;
 import java.util.Random;

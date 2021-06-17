@@ -1,10 +1,8 @@
 package BusinessLayer;
 
-import BusinessLayer.Interfaces.EnemyDeathCallback;
-import BusinessLayer.Interfaces.Observer;
-import BusinessLayer.Interfaces.Visited;
-import BusinessLayer.Interfaces.Visitor;
-import BusinessLayer.Tiles.Empty;
+import BusinessLayer.Interfaces.ObserverPattern.Observer;
+import BusinessLayer.Interfaces.VisitorPattern.Visited;
+import BusinessLayer.Interfaces.VisitorPattern.Visitor;
 import BusinessLayer.Tiles.Unit;
 
 public abstract class Tile implements Visited, Visitor, Observer {

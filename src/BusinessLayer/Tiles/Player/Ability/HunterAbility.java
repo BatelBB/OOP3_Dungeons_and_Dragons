@@ -1,8 +1,8 @@
-package BusinessLayer.Tiles;
+package BusinessLayer.Tiles.Player.Ability;
 
-import BusinessLayer.Interfaces.CallBack;
+import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
 
-public class HunterAbility extends AbilityIMP{
+public class HunterAbility extends AbilityIMP {
 
     public HunterAbility(String name, String poolName, int amount) {
         super(name, poolName, 0);

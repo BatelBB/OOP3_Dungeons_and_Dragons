@@ -1,4 +1,4 @@
-package BusinessLayer.Interfaces;
+package BusinessLayer.Interfaces.CallBacks;
 
 
 public interface EnemyDeathCallback {

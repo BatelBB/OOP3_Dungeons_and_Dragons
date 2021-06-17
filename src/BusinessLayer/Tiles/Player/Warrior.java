@@ -1,13 +1,9 @@
 package BusinessLayer.Tiles.Player;
 
-import BusinessLayer.Messenger;
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.Resource;
-import BusinessLayer.Tiles.WarriorAbility;
+import BusinessLayer.Tiles.Player.Ability.WarriorAbility;
 
-import java.security.SecureRandomSpi;
 import java.util.List;
-import java.util.Random;
 
 public class Warrior extends Player {
 

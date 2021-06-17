@@ -1,7 +1,7 @@
 package BusinessLayer.Tiles.Player;
 
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.MageAbility;
+import BusinessLayer.Tiles.Player.Ability.MageAbility;
 import java.util.List;
 
 public class Mage extends Player {

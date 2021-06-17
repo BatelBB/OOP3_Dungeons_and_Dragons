@@ -1,9 +1,6 @@
 package BusinessLayer.Tiles.Enemy;
 
-import BusinessLayer.Interfaces.Visitor;
-import BusinessLayer.Position;
 import BusinessLayer.Tiles.Player.Player;
-import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 
 public class Trap extends Enemy{

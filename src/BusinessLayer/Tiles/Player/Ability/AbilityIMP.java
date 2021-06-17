@@ -1,4 +1,4 @@
-package BusinessLayer.Tiles;
+package BusinessLayer.Tiles.Player.Ability;
 
 public abstract class AbilityIMP implements BusinessLayer.Interfaces.Ability {
 

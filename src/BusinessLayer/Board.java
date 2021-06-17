@@ -1,18 +1,13 @@
 package BusinessLayer;
 
-import BusinessLayer.Interfaces.EnemyDeathCallback;
-import BusinessLayer.Interfaces.Observable;
-import BusinessLayer.Interfaces.Observer;
+import BusinessLayer.Interfaces.ObserverPattern.Observable;
+import BusinessLayer.Interfaces.ObserverPattern.Observer;
 import BusinessLayer.Tiles.*;
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.Enemy.Monster;
 import BusinessLayer.Tiles.Player.*;
 import ServiceLayer.InputManager;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class Board implements Observable {
     InputManager im;

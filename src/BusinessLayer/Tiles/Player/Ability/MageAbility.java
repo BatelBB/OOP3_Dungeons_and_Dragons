@@ -1,8 +1,12 @@
-package BusinessLayer.Tiles;
+package BusinessLayer.Tiles.Player.Ability;
 
-public class RougueAbility extends AbilityIMP {
+import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
+
+public class MageAbility extends AbilityIMP {
+
     private int cost;
-    public RougueAbility(String name, String poolName, int pool, int cost){
+
+    public MageAbility(String name, String poolName, int pool, int cost) {
         super(name, poolName, pool);
         this.cost = cost;
     }
@@ -14,7 +18,7 @@ public class RougueAbility extends AbilityIMP {
 
     @Override
     public void onTick() {
-        setAmount(Math.min(amount+10, 100));
+        throw new IllegalArgumentException("cant use");
     }
 
     @Override
@@ -22,5 +26,4 @@ public class RougueAbility extends AbilityIMP {
         super.use();
         amount -= cost;
     }
-
 }

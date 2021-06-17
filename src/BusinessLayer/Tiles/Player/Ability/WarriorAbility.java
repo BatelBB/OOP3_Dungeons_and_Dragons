@@ -1,4 +1,6 @@
-package BusinessLayer.Tiles;
+package BusinessLayer.Tiles.Player.Ability;
+
+import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
 
 public class WarriorAbility extends AbilityIMP {
 

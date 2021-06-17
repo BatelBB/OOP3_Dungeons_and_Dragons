@@ -1,13 +1,12 @@
 package BusinessLayer.Tiles;
 
-import BusinessLayer.Interfaces.Observer;
+import BusinessLayer.Interfaces.ObserverPattern.Observer;
 import BusinessLayer.Messenger;
 import BusinessLayer.Position;
 import BusinessLayer.Tile;
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.Player.Player;
 
-import javax.annotation.processing.Messager;
 import java.util.Random;
 
 public abstract class Unit extends Tile implements Observer {

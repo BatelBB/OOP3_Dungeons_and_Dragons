@@ -1,11 +1,7 @@
 package BusinessLayer.Tiles.Enemy;
 
-import BusinessLayer.Interfaces.EnemyDeathCallback;
-import BusinessLayer.Position;
-import BusinessLayer.Tile;
-import BusinessLayer.Tiles.Empty;
+import BusinessLayer.Interfaces.CallBacks.EnemyDeathCallback;
 import BusinessLayer.Tiles.Player.Player;
-import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 
 public abstract class Enemy extends Unit {

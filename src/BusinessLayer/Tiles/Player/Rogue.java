@@ -1,9 +1,7 @@
 package BusinessLayer.Tiles.Player;
 
-import BusinessLayer.Tiles.AbilityIMP;
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.Resource;
-import BusinessLayer.Tiles.RougueAbility;
+import BusinessLayer.Tiles.Player.Ability.RougueAbility;
 
 import java.util.LinkedList;
 import java.util.List;

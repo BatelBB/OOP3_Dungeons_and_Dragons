@@ -1,9 +1,7 @@
 package BusinessLayer.Tiles.Player;
 
-import BusinessLayer.Tiles.AbilityIMP;
 import BusinessLayer.Tiles.Enemy.Enemy;
-import BusinessLayer.Tiles.HunterAbility;
-import BusinessLayer.Tiles.Resource;
+import BusinessLayer.Tiles.Player.Ability.HunterAbility;
 
 import java.util.List;
 
