@@ -28,7 +28,7 @@ public class PlayerTest {
         closeEnemyList = new LinkedList<>();
         farEnemyList = new LinkedList<>();
 
-        hunter = new Hunter("Hunter",1000,1000,1000, 10);
+        hunter = new Hunter("Hunter",1000,1000,1000, 1);
         warrior = new Warrior("Warrior", 200,30,100,3);
         mage = new Mage("Mage", 200, 100, 10, 100, 1, 100, 3, 4);
         rogue = new Rogue("Rogue", 200, 100,100,10);
@@ -37,13 +37,11 @@ public class PlayerTest {
         mage.setPos(new Position(1,1));
         rogue.setPos(new Position(1,1));
 
-        monsterClose = new Monster('W', "White Walker", 1000, 1000, 1000, 10, 10);
+        monsterClose = new Monster('W', "White Walker", 10, 10, 100, 10, 10);
         monsterClose.setPos(new Position(2,2));
         closeEnemyList.add(monsterClose);
+        monsterClose.setEnemyDeathCallback(() -> System.out.println("MONSTER DEAD"));
 
-        monsterFar = new Monster('W', "White Walker", 1000, 1000, 1000, 10, 10);
-        monsterFar.setPos(new Position(100,100));
-        farEnemyList.add(monsterFar);
     }
 
     @Test
@@ -109,30 +107,41 @@ public class PlayerTest {
     
 
     @Test
-    public void onAbilityCast1() {
+    public void onAbilityCastClose() {
         hunter.onAbilityCast(closeEnemyList);
         int abilityHunterClose = hunter.getAbilityAmount();
         assertEquals(9, abilityHunterClose);
 
+        warrior.onAbilityCast(closeEnemyList);
+        int abilityWarriorClose = warrior.getAbilityAmount();
+        assertEquals(3, abilityWarriorClose);
+
+        mage.onAbilityCast(closeEnemyList);
+        int abilityMageClose = mage.getAbilityAmount();
+        assertEquals(99, abilityMageClose);
+
+        rogue.onAbilityCast(closeEnemyList);
+        int abilityRogueClose = rogue.getAbilityAmount();
+        assertEquals(90, abilityRogueClose);
+
     }
 
-    @Test
-    public void onAbilityCast2() {
-        hunter.onAbilityCast(farEnemyList);
-        int abilityHunterFar = hunter.getAbilityAmount();
-        assertEquals(10, abilityHunterFar);
 
-    }
 
-    @Test
-    public void abilityAttack() {
-    }
 
     @Test
     public void onTick() {
+        for(int i=0; i<10; i++) {
+            hunter.onTick();
+        }
+        int abilityHunter = hunter.getAbilityAmount();
+        assertEquals(10,abilityHunter);
+
+        mage.onTick();
+        int abilityMage = mage.getAbilityAmount();
+        assertEquals(100, abilityMage);
+
     }
 
-    @Test
-    public void abilityTick() {
-    }
+
 }
