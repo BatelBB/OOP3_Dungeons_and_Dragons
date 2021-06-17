@@ -8,7 +8,7 @@ import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Wall;
 import org.junit.*;
 
-public class Tests {
+public class VisitorTests {
     Player dragon;
     Player fluffy;
     Monster whiteWalker;
