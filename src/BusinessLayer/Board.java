@@ -129,6 +129,7 @@ public class Board implements Observable {
 
      private int pickDirectionForEnemy(Enemy e){
         if(e.pos.Range(player.pos) <= e.getVisionRange()){
+
             double xDiff = e.pos.getxPos() - player.pos.getxPos();
             double yDiff = e.pos.getyPos() - player.pos.getyPos();
 
@@ -142,8 +143,7 @@ public class Board implements Observable {
                     return 2;
                 return 1;
             }
-        }
-        else
+        }else
             return new Random().nextInt(4) + 1;
      }
 

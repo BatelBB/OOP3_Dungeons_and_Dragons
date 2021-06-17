@@ -43,6 +43,6 @@ public abstract class Enemy extends Unit {
                 "Defense: " + defensePoints + tab +
                 "Experience Value: " + this.getExperienceValue() + tab + "Vision Range:" + this.getVisionRange();
     }
-
+    public abstract boolean checkHeroic();
 
 }

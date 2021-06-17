@@ -1,11 +1,17 @@
 package BusinessLayer.Tiles.Enemy;
 
+import BusinessLayer.Interfaces.HeroicUnit;
 import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Unit;
 
-public class Boss extends Enemy{
-    public Boss(char tile, String name,  int health, int attack, int defense, int experienceValue, int  visionRange) {
+public class Boss extends Enemy implements HeroicUnit {
+    private int abilityFreq;
+    private int combatTicks;
+
+    public Boss(char tile, String name,  int health, int attack, int defense, int experienceValue, int  visionRange, int abilityFreq) {
         super(tile, name, health, attack, defense, visionRange, experienceValue);
+        this.abilityFreq = abilityFreq;
+        this.combatTicks = 0;
     }
 
     @Override
@@ -40,5 +46,23 @@ public class Boss extends Enemy{
     @Override
     public String description() {
         return super.description();
+    }
+
+    @Override
+    public boolean checkHeroic() {
+        if(combatTicks == abilityFreq){
+            combatTicks=0;
+            castSpecialAbility();
+            return true;
+        }else{
+            combatTicks++;
+            return false;
+        }
+
+    }
+
+    @Override
+    public void castSpecialAbility() {
+
     }
 }

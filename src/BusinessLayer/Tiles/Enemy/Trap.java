@@ -62,6 +62,11 @@ public class Trap extends Enemy{
     }
 
     @Override
+    public boolean checkHeroic() {
+        return false;
+    }
+
+    @Override
     public void onTick() {
         tickCount++;
         if(tickCount>visibilityTime && isVisible){
