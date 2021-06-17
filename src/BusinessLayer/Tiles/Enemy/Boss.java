@@ -8,6 +8,8 @@ public class Boss extends Enemy implements HeroicUnit {
     private int abilityFreq;
     private int combatTicks;
 
+    private boolean playerinRange;
+
     public Boss(char tile, String name,  int health, int attack, int defense, int experienceValue, int  visionRange, int abilityFreq) {
         super(tile, name, health, attack, defense, visionRange, experienceValue);
         this.abilityFreq = abilityFreq;

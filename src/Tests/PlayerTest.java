@@ -47,7 +47,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void levelUp() {
+    public void levelUp_hunter() {
         hunter.levelUp();
         int hunterLevel = hunter.getPlayerLevel();
         int attackPointsHunter = hunter.getAttackPoints();
@@ -59,31 +59,10 @@ public class PlayerTest {
         assertEquals(1004, defensePointsHunter);
         assertEquals(30, abilityHunter);
         assertEquals(1020, healthHunter);
+    }
 
-        warrior.levelUp();
-        int warriorLevel = warrior.getPlayerLevel();
-        int attackPointsWarrior = warrior.getAttackPoints();
-        int defensePointsWarrior = warrior.getDefensePoints();
-        int abilityWarrior = warrior.getAbilityAmount();
-        int healthWarrior = warrior.getHealthAmount();
-        assertEquals(2, warriorLevel);
-        assertEquals(42,attackPointsWarrior);
-        assertEquals(104, defensePointsWarrior);
-        assertEquals(3, abilityWarrior);
-        assertEquals(220, healthWarrior);
-
-        mage.levelUp();
-        int MageLevel = mage.getPlayerLevel();
-        int attackPointsMage = mage.getAttackPoints();
-        int defensePointsMage = mage.getDefensePoints();
-        int abilityMage = mage.getAbilityAmount();
-        int healthMage = mage.getHealthAmount();
-        assertEquals(2, MageLevel);
-        assertEquals(108, attackPointsMage);
-        assertEquals(12, defensePointsMage);
-        assertEquals(137, abilityMage);
-        assertEquals(220, healthMage);
-
+    @Test
+    public void levelUp_rogue() {
         rogue.levelUp();
         int RogueLevel = rogue.getPlayerLevel();
         int attackPointsRogue = rogue.getAttackPoints();
@@ -95,25 +74,39 @@ public class PlayerTest {
         assertEquals(102, defensePointsRogue);
         assertEquals(100, abilityRogue);
         assertEquals(220, healthRogue);
-
-
     }
 
     @Test
-    public void accept() {
+    public void levelUp_mage() {
+        mage.levelUp();
+        int MageLevel = mage.getPlayerLevel();
+        int attackPointsMage = mage.getAttackPoints();
+        int defensePointsMage = mage.getDefensePoints();
+        int abilityMage = mage.getAbilityAmount();
+        int healthMage = mage.getHealthAmount();
+        assertEquals(2, MageLevel);
+        assertEquals(108, attackPointsMage);
+        assertEquals(12, defensePointsMage);
+        assertEquals(137, abilityMage);
+        assertEquals(220, healthMage);
     }
 
     @Test
-    public void visit() {
+    public void levelUp_warrior() {
+        warrior.levelUp();
+        int warriorLevel = warrior.getPlayerLevel();
+        int attackPointsWarrior = warrior.getAttackPoints();
+        int defensePointsWarrior = warrior.getDefensePoints();
+        int abilityWarrior = warrior.getAbilityAmount();
+        int healthWarrior = warrior.getHealthAmount();
+        assertEquals(2, warriorLevel);
+        assertEquals(42,attackPointsWarrior);
+        assertEquals(104, defensePointsWarrior);
+        assertEquals(3, abilityWarrior);
+        assertEquals(220, healthWarrior);
     }
 
-    @Test
-    public void testVisit() {
-    }
-
-    @Test
-    public void testAccept() {
-    }
+    
 
     @Test
     public void onAbilityCast1() {
