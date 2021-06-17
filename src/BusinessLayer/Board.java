@@ -44,8 +44,6 @@ public class Board implements Observable {
                 "7. Ygritte              Health: 220/220         Attack: 30              Defense: 2              Level: 1                Experience: 0/50                Arrows: 10              Range: 6 ";
 
         chosenPlayer = im.getInput(output);
-
-
     }
 
     public void startLevel(char[][] map, int level){

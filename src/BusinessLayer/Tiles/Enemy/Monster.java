@@ -34,8 +34,6 @@ public class Monster extends Enemy{
         }
     }
 
-
-
     @Override
     public String description() {
         return super.description();
