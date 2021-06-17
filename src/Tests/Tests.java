@@ -3,6 +3,7 @@ package Tests;
 import BusinessLayer.Position;
 import BusinessLayer.Tiles.Empty;
 import BusinessLayer.Tiles.Enemy.Monster;
+import BusinessLayer.Tiles.Player.Hunter;
 import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Wall;
 import org.junit.*;
@@ -17,7 +18,7 @@ public class Tests {
 
     @Before
     public void initTests() {
-        dragon = new TestPlayer("Vhagar",1000,1000,1000);
+        dragon = new Hunter("Vhagar",1000,1000,1000, 10);
         fluffy = new TestPlayer("Fluffy", 0,0,1);
         dragon.setPos(new Position(1,1));
         fluffy.setPos(new Position(1,1));

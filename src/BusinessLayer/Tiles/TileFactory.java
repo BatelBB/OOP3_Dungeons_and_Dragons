@@ -29,8 +29,8 @@ public class TileFactory {
                 () -> new Monster('q', "Queen's Guard", 4, 20, 15, 100,  5),
                 () -> new Boss('M', "The Mountain", 1, 60, 25,  500, 6),
                 () -> new Boss('C', "Queen Cersei", 1, 10, 10,1000, 1),
-                () -> new Trap('B', "Bonus Trap", 1, 1, 1, 250,  1, 10),
-                () -> new Trap('Q', "Queen's Trap", 250, 50, 10, 100, 3, 10),
+                () -> new Trap('B', "Bonus Trap", 1, 1, 1, 250,  1, 5),
+                () -> new Trap('Q', "Queen's Trap", 250, 50, 10, 100, 3, 7),
 
                 () -> new Monster('z', "Wright", 600, 30, 15,100, 3),
                 () -> new Monster('b', "Bear-Wright", 1000, 75, 30, 250,  4),

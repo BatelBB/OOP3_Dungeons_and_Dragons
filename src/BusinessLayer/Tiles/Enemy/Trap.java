@@ -11,6 +11,7 @@ public class Trap extends Enemy{
     private int visibilityTime;
     private int invisibilityTime;
     private int tickCount;
+    private final int INIT_TICKS = 0;
 
 
     public Trap(Character c, String name, int health, int attackPoints, int defensePoints,
@@ -19,6 +20,7 @@ public class Trap extends Enemy{
         this.visibilityTime = visibilityTime;
         this.invisibilityTime = invisibilityTime;
         isVisible = true;
+        tickCount = INIT_TICKS;
     }
 
     @Override
@@ -61,10 +63,19 @@ public class Trap extends Enemy{
 
     @Override
     public void onTick() {
-        isVisible = tickCount < visibilityTime;
-        if(tickCount == visibilityTime + invisibilityTime)
+        tickCount++;
+        if(tickCount>visibilityTime && isVisible){
+            isVisible = false;
             tickCount = 0;
-        else
-            tickCount++;
+        }else if(!isVisible && tickCount > invisibilityTime){
+            isVisible = true;
+            tickCount = 0;
+        }
+
+//        isVisible = tickCount < visibilityTime;
+//        if(tickCount == visibilityTime + invisibilityTime)
+//            tickCount = 0;
+//        else
+//            tickCount++;
     }
 }

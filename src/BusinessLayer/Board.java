@@ -201,9 +201,6 @@ public class Board implements Observable {
         u.interact(find(p));
     }
 
-    public void handleEnemyDeath(Tile e){
-        e = new Empty('.', e.pos);
-    }
 
     public void onEnemyDeath(Enemy e){
         observers.remove(e);
