@@ -2,19 +2,18 @@ package BusinessLayer.Tiles.Player;
 
 import BusinessLayer.Tiles.Enemy.Enemy;
 import BusinessLayer.Tiles.MageAbility;
-import BusinessLayer.Tiles.Resource;
-
-import java.lang.reflect.Field;
 import java.util.List;
 
 public class Mage extends Player {
     private int spellPower;
-    //private
     private MageAbility ability;
     private final String ABILITYNAME = "Blizzard";
     private final String ABILITYPOOLNAME = "Mana";
     private int range;
     private int hitCount;
+
+    private final int ABILITY_POOL = 25;
+    private final double ABILITY_PRECENT = 0.25;
 
     public Mage(String name, int health, int attack, int def, int manaPool, int manaCost, int spellPower, int hitCount, int range) {
         super(name, health, attack, def);
@@ -69,14 +68,19 @@ public class Mage extends Player {
 
     @Override
     public String description() {
-        return null;
+        return super.description();
+    }
+
+    @Override
+    public int getAbilityAmount() {
+        return ability.getAmount();
     }
 
     @Override
     public void levelUp(){
         super.levelUp();
-        ability.addToPool(25*playerLevel);
-        ability.setAmount(Math.min(ability.getAmount() + (int)(0.25*ability.getPool()), ability.getPool()));
+        ability.addToPool(ABILITY_POOL*playerLevel);
+        ability.setAmount(Math.min(ability.getAmount() + (int)(ABILITY_PRECENT*ability.getPool()), ability.getPool()));
     }
 
     @Override

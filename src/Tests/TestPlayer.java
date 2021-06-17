@@ -39,4 +39,9 @@ public class TestPlayer extends Player {
     public String description() {
         return null;
     }
+
+    @Override
+    public int getAbilityAmount() {
+        return 0;
+    }
 }

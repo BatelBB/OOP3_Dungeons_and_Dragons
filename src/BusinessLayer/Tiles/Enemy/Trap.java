@@ -58,7 +58,7 @@ public class Trap extends Enemy{
 
     @Override
     public String description() {
-        return getDescription();
+        return super.description();
     }
 
     @Override
@@ -71,11 +71,5 @@ public class Trap extends Enemy{
             isVisible = true;
             tickCount = 0;
         }
-
-//        isVisible = tickCount < visibilityTime;
-//        if(tickCount == visibilityTime + invisibilityTime)
-//            tickCount = 0;
-//        else
-//            tickCount++;
     }
 }

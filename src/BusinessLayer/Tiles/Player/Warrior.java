@@ -13,17 +13,20 @@ public class Warrior extends Player {
 
     private WarriorAbility ability;
     private final int RANGE = 3;
+    private final int NEW_HEALTH = 10;
 
     public Warrior(String name, int health, int attack, int defense, int coolDownPool){
         super(name, health, attack, defense);
-        ability = new WarriorAbility("Avenger's Shield", "CoolDown", 3);
+        ability = new WarriorAbility("Avenger's Shield", "CoolDown", coolDownPool);
     }
 
     public String description(){
-        String tab = "\t";
-        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
-                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
+        return super.description();
+    }
+
+    @Override
+    public int getAbilityAmount() {
+        return ability.getAmount();
     }
 
     public void onAbilityCast(List<Enemy> enemies){
@@ -32,7 +35,7 @@ public class Warrior extends Player {
         else {
             ability.use();
 
-            int newHealth = Math.min(health.getAmount() + 10 * defensePoints, health.getPool());
+            int newHealth = Math.min(health.getAmount() + NEW_HEALTH * defensePoints, health.getPool());
             messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth - health.getAmount()));
             health.addAmount(newHealth - health.getAmount());
 

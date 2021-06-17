@@ -10,7 +10,7 @@ import java.util.List;
 public class Hunter extends Player {
     public Integer range;
     public HunterAbility ability;
-    public Integer ticksCount;
+    private final int ADD_ATTACK_POINTS = 2;
     private final int ARROWSADDCOUNT = 10;
     private final int TICKSCOUNTFORREFILL = 10;
     private int tickCount;
@@ -22,10 +22,12 @@ public class Hunter extends Player {
     }
     @Override
     public String description() {
-        String tab = "\t";
-        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
-                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
-                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
+        return super.description();
+    }
+
+    @Override
+    public int getAbilityAmount() {
+        return ability.getAmount();
     }
 
     @Override
@@ -88,8 +90,8 @@ public class Hunter extends Player {
     @Override
     public void levelUp(){
         super.levelUp();
-        ability.addAmount(10*playerLevel);
-        attackPoints += 2*playerLevel;
+        ability.addAmount(ARROWSADDCOUNT*playerLevel);
+        attackPoints += ADD_ATTACK_POINTS*playerLevel;
         defensePoints += playerLevel;
     }
 
@@ -97,11 +99,11 @@ public class Hunter extends Player {
     public void onTick(){
         super.onTick();
         tickCount ++;
-        if(tickCount == 10){
+        if(tickCount == TICKSCOUNTFORREFILL){
             ability.addAmount(playerLevel);
             tickCount = 0;
         }
         else
-            tickCount += 1;
+            tickCount++;
     }
 }

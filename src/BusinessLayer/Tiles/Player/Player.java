@@ -25,7 +25,13 @@ public abstract class Player extends Unit {
         playerLevel = 1;
     }
 
-
+    @Override
+    public String description() {
+        String tab = "\t";
+        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
+                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
+                "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
+    }
     public int getExperience(){
         return experience;
     }
@@ -33,6 +39,17 @@ public abstract class Player extends Unit {
     public int getPlayerLevel() {
         return playerLevel;
     }
+
+    public int getAttackPoints() {
+        return attackPoints;
+    }
+    public int getDefensePoints(){
+        return defensePoints;
+    }
+    public int getHealthAmount(){
+        return health.getAmount();
+    }
+    public abstract int getAbilityAmount();
 
     public void setExperience(int expGain){
         experience += expGain;
@@ -42,8 +59,9 @@ public abstract class Player extends Unit {
 
     public void levelUp(){
         experience -= LEVEL_UP_EXP * playerLevel;
-
-        messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense", this.name, this.getPlayerLevel()+1, 10*playerLevel,
+        playerLevel ++;
+        messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
+                this.name, this.getPlayerLevel(), 10*playerLevel,
                 4*playerLevel, playerLevel));
 
         health.addToPool(10*playerLevel);
@@ -52,7 +70,7 @@ public abstract class Player extends Unit {
         attackPoints += 4*playerLevel;
         defensePoints += playerLevel;
 
-        playerLevel ++;
+
     }
 
     public void accept(Unit u){
