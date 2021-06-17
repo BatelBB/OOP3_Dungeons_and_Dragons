@@ -45,12 +45,6 @@ public class MonsterTest {
         monsterE = new Monster('s', "nicetert", HEALTH, 5, 0, 25, 10);
         monster2E = new Monster('s', "nicetert", HEALTH, 5, 0, 25, 10);
         playerP = new Warrior("warIsNice", HEALTH, 5, 0, 1);
-
-        Wall walle = new Wall('#');
-        Empty nothing = new Empty('.');
-
-        //board = new Board('1');
-
     }
 
     @After
@@ -108,7 +102,9 @@ public class MonsterTest {
 
     @Test
     public void trap_accept_Unit_enemy(){
-        trap.accept(monster);
+        for(int i = 0; i < 5; i++) {
+            trap.accept(monster);
+        }
 
         if(!monster.health.isFull() || !trap.health.isFull())
             Assert.fail("monster attacked trap on trap.accept(Unit == monster)");
@@ -116,7 +112,9 @@ public class MonsterTest {
 
     @Test
     public void trap_accept_unit_player(){
-        trap.accept(player);
+        for(int i = 0; i < 5; i++) {
+            trap.accept(player);
+        }
 
         if(trap.health.isFull())
             Assert.fail("player unit failed to attack trap on trap.accept(Unit == player)");
@@ -124,7 +122,9 @@ public class MonsterTest {
 
     @Test
     public void trap_accept_Enemy_enemy(){
-        trap.accept(monsterE);
+        for(int i = 0; i < 5; i++) {
+            trap.accept(monsterE);
+        }
 
         if(!monsterE.health.isFull() || !trap.health.isFull())
             Assert.fail("monster attacked trap on trap.accept(Unit == monster)");
@@ -132,17 +132,13 @@ public class MonsterTest {
 
     @Test
     public void trap_accept_Player_player(){
+        for(int i = 0; i < 5; i++) {
+            trap.accept(playerP);
+        }
 
+        if(trap.health.isFull())
+            Assert.fail("player faild to attack trap on trao.accept(Player)");
     }
 
-    @Test
-    public void empty_accept_unit(){
-
-    }
-
-    @Test
-    public void wall_accept_unit(){
-
-    }
 
 }
