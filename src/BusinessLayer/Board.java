@@ -129,19 +129,21 @@ public class Board implements Observable {
 
      private int pickDirectionForEnemy(Enemy e){
         if(e.pos.Range(player.pos) <= e.getVisionRange()){
-
-            double xDiff = e.pos.getxPos() - player.pos.getxPos();
-            double yDiff = e.pos.getyPos() - player.pos.getyPos();
-
-            if(Math.abs(xDiff) > Math.abs(yDiff)){
-                if(xDiff < 0)
-                    return 4;
-                return 3;
-            }
+            if(e.checkHeroic(player))
+                return -1;
             else {
-                if (yDiff < 0)
-                    return 2;
-                return 1;
+                double xDiff = e.pos.getxPos() - player.pos.getxPos();
+                double yDiff = e.pos.getyPos() - player.pos.getyPos();
+
+                if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                    if (xDiff < 0)
+                        return 4;
+                    return 3;
+                } else {
+                    if (yDiff < 0)
+                        return 2;
+                    return 1;
+                }
             }
         }else
             return new Random().nextInt(4) + 1;
@@ -149,7 +151,6 @@ public class Board implements Observable {
 
     //translate UserInput to gameLogic
     private void playerGo(char input){
-        //player.onTick();
         switch (input){
             case 'w' -> up(player);
             case 's' -> down(player);

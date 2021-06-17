@@ -4,6 +4,7 @@ import BusinessLayer.Interfaces.EnemyDeathCallback;
 import BusinessLayer.Position;
 import BusinessLayer.Tile;
 import BusinessLayer.Tiles.Empty;
+import BusinessLayer.Tiles.Player.Player;
 import BusinessLayer.Tiles.Resource;
 import BusinessLayer.Tiles.Unit;
 
@@ -43,6 +44,8 @@ public abstract class Enemy extends Unit {
                 "Defense: " + defensePoints + tab +
                 "Experience Value: " + this.getExperienceValue() + tab + "Vision Range:" + this.getVisionRange();
     }
-    public abstract boolean checkHeroic();
+    public boolean checkHeroic(Player player){
+        return false;
+    }
 
 }

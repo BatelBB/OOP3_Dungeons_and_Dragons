@@ -39,10 +39,10 @@ public class Monster extends Enemy{
         return super.description();
     }
 
-    @Override
+    /*@Override
     public boolean checkHeroic() {
         return false;
-    }
+    }*/
 
     @Override
     public void accept(Enemy enemy) {

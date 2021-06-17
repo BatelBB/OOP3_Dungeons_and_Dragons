@@ -8,7 +8,7 @@ public class Boss extends Enemy implements HeroicUnit {
     private int abilityFreq;
     private int combatTicks;
 
-    private boolean playerinRange;
+    private boolean playerInRange;
 
     public Boss(char tile, String name,  int health, int attack, int defense, int experienceValue, int  visionRange, int abilityFreq) {
         super(tile, name, health, attack, defense, visionRange, experienceValue);
@@ -51,10 +51,11 @@ public class Boss extends Enemy implements HeroicUnit {
     }
 
     @Override
-    public boolean checkHeroic() {
+    public boolean checkHeroic(Player player) {
+        playerInRange = true;
         if(combatTicks == abilityFreq){
             combatTicks=0;
-            castSpecialAbility();
+            castSpecialAbility(player);
             return true;
         }else{
             combatTicks++;
@@ -64,7 +65,18 @@ public class Boss extends Enemy implements HeroicUnit {
     }
 
     @Override
-    public void castSpecialAbility() {
+    public void onTick(){
+        if (!playerInRange)
+            combatTicks = 0;
+        playerInRange = false;
+    }
 
+    @Override
+    public void castSpecialAbility(Player player) {
+
+        int defense = player.defend();
+        int dmgDealt=Math.max(0,attackPoints - defense);
+        messanger.sendMessage(String.format("%s dealt %d heroic damage to %s", this.getName(), dmgDealt, player.getName()));
+        player.health.addAmount(-dmgDealt);
     }
 }

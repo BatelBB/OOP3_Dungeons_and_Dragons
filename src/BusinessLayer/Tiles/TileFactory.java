@@ -24,6 +24,9 @@ public class TileFactory {
 
     private Map<Character, Supplier<Enemy>> initEnemies() {
         List<Supplier<Enemy>> enemies = Arrays.asList(
+                () -> new Boss('s', "Lannister Solider", 8, 8, 3,25, 3, 2)
+                /*
+
                 () -> new Monster('s', "Lannister Solider", 8, 8, 3,25, 10),
                 () -> new Monster('k', "Lannister Knight", 2, 14, 8, 50,   4),
                 () -> new Monster('q', "Queen's Guard", 4, 20, 15, 100,  5),
@@ -37,7 +40,7 @@ public class TileFactory {
                 () -> new Monster('g', "Giant-Wright",1500, 100, 40,500,   5),
                 () -> new Monster('w', "White Walker", 2000, 150, 50, 1000, 6),
                 () -> new Boss('K', "Night's King", 5000, 300, 150, 5000, 8,3),
-                () -> new Trap('D', "Death Trap", 500, 100, 20, 250, 1, 10)
+                () -> new Trap('D', "Death Trap", 500, 100, 20, 250, 1, 10)*/
         );
 
         return enemies.stream().collect(Collectors.toMap(s -> s.get().getTile(), Function.identity()));
