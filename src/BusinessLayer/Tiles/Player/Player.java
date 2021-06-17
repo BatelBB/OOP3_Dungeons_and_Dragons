@@ -1,4 +1,5 @@
 package BusinessLayer.Tiles.Player;
+import BusinessLayer.Interfaces.Ability;
 import BusinessLayer.Interfaces.PlayerDeathCallBack;
 import BusinessLayer.Interfaces.Visitor;
 import BusinessLayer.Tiles.Empty;
@@ -16,6 +17,8 @@ public abstract class Player extends Unit {
 
     protected static final int LEVEL_UP_EXP = 50;
     protected PlayerDeathCallBack playerDeathCallBack;
+
+
     public Player(String name, int health, int attack, int def) {
         super('@', name, health, attack, def);
         experience = 0;

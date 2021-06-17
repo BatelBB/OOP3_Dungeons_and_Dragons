@@ -21,6 +21,7 @@ public class MageAbility extends AbilityIMP{
 
     @Override
     public void use() {
+        super.use();
         amount -= cost;
     }
 }

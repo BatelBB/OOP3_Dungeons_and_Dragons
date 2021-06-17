@@ -69,7 +69,9 @@ public class Hunter extends Player {
 
     @Override
     public void abilityTick() {
-        if(ability.getPool() >= TICKSCOUNTFORREFILL)
+        if(ability.isUsedThisTurn())
+            ability.isUsed = false;
+        else if(ability.getPool() >= TICKSCOUNTFORREFILL)
             ability.addAmount(10*playerLevel);
     }
 

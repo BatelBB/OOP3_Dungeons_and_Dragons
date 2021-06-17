@@ -61,7 +61,10 @@ public class Mage extends Player {
 
     @Override
     public void abilityTick() {
-        ability.setAmount(Math.min(ability.getPool(), ability.getAmount() + playerLevel));
+        if(ability.isUsedThisTurn())
+            ability.isUsed = false;
+        else
+            ability.setAmount(Math.min(ability.getPool(), ability.getAmount() + playerLevel));
     }
 
     @Override

@@ -35,6 +35,7 @@ public class WarriorAbility extends AbilityIMP {
 
     @Override
     public void use() {
+        super.use();
         this.amount = pool;
     }
 }

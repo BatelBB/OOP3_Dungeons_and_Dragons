@@ -54,7 +54,10 @@ public class Rogue extends Player {
 
     @Override
     public void abilityTick() {
-        ability.onTick();
+        if(ability.isUsedThisTurn())
+            ability.isUsed = false;
+        else
+            ability.onTick();
     }
 
     @Override

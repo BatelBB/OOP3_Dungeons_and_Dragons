@@ -6,6 +6,7 @@ public abstract class AbilityIMP implements BusinessLayer.Interfaces.Ability {
     protected String poolName;
     protected int pool;
     protected int amount;
+    public boolean isUsed;
 
     public AbilityIMP(String name, String poolName, int pool){
         this.name = name;
@@ -65,8 +66,14 @@ public abstract class AbilityIMP implements BusinessLayer.Interfaces.Ability {
     }
 
     @Override
-    public abstract void use();
+    public void use() {
+        isUsed = true;
+    }
 
+    @Override
+    public boolean isUsedThisTurn(){
+        return isUsed;
+    }
 
     public String toString(){
         return getAmount() + "/" +getPool();

@@ -16,6 +16,7 @@ public class HunterAbility extends AbilityIMP{
 
     @Override
     public void use() {
+        super.use();
         amount--;
     }
 

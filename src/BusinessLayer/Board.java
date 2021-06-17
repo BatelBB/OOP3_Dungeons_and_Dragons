@@ -105,8 +105,12 @@ public class Board implements Observable {
                 if (enemyList.isEmpty()) {
                     isGame = false;
                 }
+                this.NotifyObservers();
+
                 im.updateCLI(gameMap, width, height);
+
             }
+
         }
     }
     private boolean validInput(char c){
@@ -147,7 +151,7 @@ public class Board implements Observable {
 
     //translate UserInput to gameLogic
     private void playerGo(char input){
-        player.onTick();
+        //player.onTick();
         switch (input){
             case 'w' -> up(player);
             case 's' -> down(player);
@@ -222,7 +226,7 @@ public class Board implements Observable {
     }
 
     @Override
-    public void Notify() {
+    public void NotifyObservers() {
         for (Observer o: observers) {
             o.notice();
         }

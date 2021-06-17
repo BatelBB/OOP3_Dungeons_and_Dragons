@@ -16,7 +16,7 @@ public class Warrior extends Player {
 
     public Warrior(String name, int health, int attack, int defense, int coolDownPool){
         super(name, health, attack, defense);
-        ability = new WarriorAbility("Avenger's Shield", "CoolDown", 0);
+        ability = new WarriorAbility("Avenger's Shield", "CoolDown", 3);
     }
 
     public String description(){
@@ -29,16 +29,17 @@ public class Warrior extends Player {
     public void onAbilityCast(List<Enemy> enemies){
         if(!ability.isAvailable())
             messanger.sendMessage(String.format("%s tried to cast %s, but there is a %s: %d", name, ability.getName(), ability.getPoolName(), ability.getAmount()));
+        else {
+            ability.use();
 
-        ability.use();
+            int newHealth = Math.min(health.getAmount() + 10 * defensePoints, health.getPool());
+            messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth - health.getAmount()));
+            health.addAmount(newHealth - health.getAmount());
 
-        int newHealth = Math.min(health.getAmount() + 10*defensePoints, health.getPool());
-        messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth-health.getAmount()));
-        health.addAmount(newHealth-health.getAmount());
-
-        if(!enemies.isEmpty()) {
-            int i = pickRandom(enemies.size());
-            abilityAttack(enemies.get(i));
+            if (!enemies.isEmpty()) {
+                int i = pickRandom(enemies.size());
+                abilityAttack(enemies.get(i));
+            }
         }
     }
 
@@ -63,7 +64,10 @@ public class Warrior extends Player {
 
     @Override
     public void abilityTick() {
-        ability.onTick();
+        if(ability.isUsedThisTurn())
+            ability.isUsed = false;
+        else
+            ability.onTick();
     }
 
     @Override

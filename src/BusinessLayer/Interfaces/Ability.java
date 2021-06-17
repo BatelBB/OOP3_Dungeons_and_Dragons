@@ -7,6 +7,8 @@ public interface Ability {
     public boolean isAvailable();
     public void reset();
 
+    public boolean isUsedThisTurn();
+
     
     public void addToPool(int delta);
     public int getAmount();
