@@ -20,7 +20,7 @@ public class Hunter extends Player {
     }
     @Override
     public String description() {
-        return super.description();
+        return super.description() + "\tRange: " + getRange();
     }
 
     @Override

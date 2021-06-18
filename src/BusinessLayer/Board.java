@@ -101,7 +101,7 @@ public class Board implements Observable {
                 this.NotifyObservers();
 
                 im.updateCLI(gameMap, width, height);
-
+                im.showMessage(player.description());
             }
 
         }

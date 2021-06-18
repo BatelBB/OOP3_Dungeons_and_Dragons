@@ -4,7 +4,7 @@ import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
 
 public class WarriorAbility extends AbilityIMP {
 
-    public WarriorAbility(String name, String poolName, int pool){
+    public WarriorAbility(String name, String poolName, int pool) {
         super(name, poolName, pool);
         amount = 0;
     }
@@ -32,7 +32,8 @@ public class WarriorAbility extends AbilityIMP {
 
     @Override
     public void onTick() {
-        amount -= 1;
+        if (amount > 0)
+            amount -= 1;
     }
 
     @Override

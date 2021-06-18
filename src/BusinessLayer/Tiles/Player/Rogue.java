@@ -42,6 +42,7 @@ public class Rogue extends Player {
         return this.attackPoints;
     }
 
+
     @Override
     public int getRange() {
         return RANGE;
@@ -64,7 +65,7 @@ public class Rogue extends Player {
 
     @Override
     public String description() {
-        return super.description();
+        return super.description() + "\tEnergy: " + ability.toString();
     }
 
     @Override

@@ -54,6 +54,10 @@ public class Mage extends Player {
         return range;
     }
 
+    private int getSpellPower(){
+        return spellPower;
+    }
+
     public void onTick(){
         abilityTick();
     }
@@ -68,7 +72,7 @@ public class Mage extends Player {
 
     @Override
     public String description() {
-        return super.description();
+        return super.description() +"\tMana: " + ability.toString() + "\tSpell Power: " + getSpellPower();
     }
 
     @Override
