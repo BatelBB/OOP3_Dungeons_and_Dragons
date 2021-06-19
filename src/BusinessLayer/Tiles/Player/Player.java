@@ -55,9 +55,7 @@ public abstract class Player extends Unit {
     public void levelUp(){
         experience -= LEVEL_UP_EXP * playerLevel;
         playerLevel ++;
-        messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
-                this.name, this.getPlayerLevel(), 10*playerLevel,
-                4*playerLevel, 2*playerLevel));
+
 
         health.addToPool(10*playerLevel);
         health.fill();

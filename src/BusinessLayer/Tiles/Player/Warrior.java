@@ -54,6 +54,9 @@ public class Warrior extends Player {
     @Override
     public void levelUp(){
         super.levelUp();
+        messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
+                this.name, this.getPlayerLevel(), 10*playerLevel,
+                4*playerLevel, 2*playerLevel));
         ability.reset();
         health.addToPool(5*playerLevel);
         attackPoints += 2*playerLevel;

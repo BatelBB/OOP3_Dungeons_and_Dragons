@@ -14,6 +14,7 @@ public class Mage extends Player {
 
     private final int ABILITY_POOL = 25;
     private final double ABILITY_PRECENT = 0.25;
+    private final int ADDITION_SPELL_POWER = 10;
 
     public Mage(String name, int health, int attack, int def, int manaPool, int manaCost, int spellPower, int hitCount, int range) {
         super(name, health, attack, def);
@@ -84,8 +85,13 @@ public class Mage extends Player {
     @Override
     public void levelUp(){
         super.levelUp();
+        messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense, +%d maximum mana," +
+                        " +%d spell power",
+                this.name, this.getPlayerLevel(), 10*playerLevel,
+                4*playerLevel, 2*playerLevel, ABILITY_POOL*playerLevel, ADDITION_SPELL_POWER*playerLevel));
         ability.addToPool(ABILITY_POOL*playerLevel);
         ability.setAmount(Math.min(ability.getAmount() + (int)(ABILITY_PRECENT*ability.getPool()), ability.getPool()));
+        this.spellPower = spellPower + (ADDITION_SPELL_POWER*playerLevel);
     }
 
     @Override
