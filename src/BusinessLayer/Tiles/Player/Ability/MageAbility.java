@@ -1,6 +1,5 @@
 package BusinessLayer.Tiles.Player.Ability;
 
-import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
 
 public class MageAbility extends AbilityIMP {
 

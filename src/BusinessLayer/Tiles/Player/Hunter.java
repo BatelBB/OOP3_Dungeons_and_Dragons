@@ -6,8 +6,8 @@ import BusinessLayer.Tiles.Player.Ability.HunterAbility;
 import java.util.List;
 
 public class Hunter extends Player {
-    public Integer range;
-    public HunterAbility ability;
+    private int range;
+    private HunterAbility ability;
     private final int ADD_ATTACK_POINTS = 2;
     private final int ARROWSADDCOUNT = 10;
     private final int TICKSCOUNTFORREFILL = 10;
@@ -20,7 +20,7 @@ public class Hunter extends Player {
     }
     @Override
     public String description() {
-        return super.description() + "\tRange: " + getRange();
+        return super.description() + "\t\tArrows: "+ ability.getAmount() +"\t\tRange: " + getRange();
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Hunter extends Player {
         super.levelUp();
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
                 this.name, this.getPlayerLevel(), 10*playerLevel,
-                4*playerLevel, 2*playerLevel));
+                (4+ADD_ATTACK_POINTS)*playerLevel, 2*playerLevel));
         ability.addAmount(ARROWSADDCOUNT*playerLevel);
         attackPoints += ADD_ATTACK_POINTS*playerLevel;
         defensePoints += playerLevel;

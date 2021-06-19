@@ -17,17 +17,6 @@ public class CLI {
         }
     }
 
-    public void printPlayerStats(String ps){
-        System.out.println(ps);
-    }
-
-    public void printCombatInfo(String ci){
-        System.out.println(ci);
-    }
-
-    public void lvlUpNotify(String notification){
-        System.out.println(notification);
-    }
 
     public char getInput(){
         return s.next().charAt(0);

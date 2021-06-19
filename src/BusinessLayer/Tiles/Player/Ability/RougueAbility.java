@@ -1,6 +1,5 @@
 package BusinessLayer.Tiles.Player.Ability;
 
-import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
 
 public class RougueAbility extends AbilityIMP {
     private int cost;
@@ -24,5 +23,9 @@ public class RougueAbility extends AbilityIMP {
         super.use();
         amount -= cost;
     }
+    public int getCost(){
+        return cost;
+    }
+
 
 }

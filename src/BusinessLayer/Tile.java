@@ -16,13 +16,7 @@ public abstract class Tile implements Visited, Visitor, Observer {
     public void init(Position pos){
         this.pos = pos;
     }
-    public int getChar() {
-        return tile;
-    }
 
-    /*public String description(){
-        return "Hi im " + tile;
-    }*/
 
     public abstract void accept(Unit unit);
 

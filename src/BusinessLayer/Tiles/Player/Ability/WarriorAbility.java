@@ -1,7 +1,5 @@
 package BusinessLayer.Tiles.Player.Ability;
 
-import BusinessLayer.Tiles.Player.Ability.AbilityIMP;
-
 public class WarriorAbility extends AbilityIMP {
 
     public WarriorAbility(String name, String poolName, int pool) {

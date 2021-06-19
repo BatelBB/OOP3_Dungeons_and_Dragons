@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Rogue extends Player {
-    public RougueAbility ability; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
+    private RougueAbility ability; // Using energy as resource. Starting energy equals to the rogue’s maximum energy which is 100
     private final int ENERGY = 100;
     private final int RANGE = 2;
 
@@ -20,7 +20,7 @@ public class Rogue extends Player {
     public void onAbilityCast(List<Enemy> enemiesInRange) {
         if(!ability.isAvailable())
             messanger.sendMessage(String.format("%s tried to cast %s, but there was not enough %s: %d/%d",
-                    this.getName(), ability.getName(), ability.getPoolName(),ability.getAmount(), ability.getPool()));
+                    this.getName(), ability.getName(), ability.getPoolName(),ability.getAmount(), ability.getCost()));
         else{
             messanger.sendMessage(String.format("%s cast %s.", this.getName(), ability.getName()));
             List<Enemy> closerEnemy = new LinkedList<>();
@@ -61,14 +61,14 @@ public class Rogue extends Player {
         super.levelUp();
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
                 this.name, this.getPlayerLevel(), 10*playerLevel,
-                4*playerLevel, 2*playerLevel));
+                7*playerLevel, playerLevel));
         ability.reset();
         attackPoints += 3*playerLevel;
     }
 
     @Override
     public String description() {
-        return super.description() + "\tEnergy: " + ability.toString();
+        return super.description() + "\t\tEnergy: " + ability.toString() ;
     }
 
     @Override

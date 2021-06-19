@@ -7,9 +7,6 @@ import BusinessLayer.Tiles.Player.Player;
 
 public class Wall extends Tile{
 
-    public Wall(Character c) {
-        super(c);
-    }
 
     public Wall(Character c, Position p) {
         super(c);

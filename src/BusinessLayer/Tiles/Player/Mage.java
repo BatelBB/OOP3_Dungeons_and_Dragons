@@ -74,7 +74,7 @@ public class Mage extends Player {
 
     @Override
     public String description() {
-        return super.description() +"\tMana: " + ability.toString() + "\tSpell Power: " + getSpellPower();
+        return super.description() +"\t\tMana: " + ability.toString() + "\t\tSpell Power: " + getSpellPower();
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Mage extends Player {
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense, +%d maximum mana," +
                         " +%d spell power",
                 this.name, this.getPlayerLevel(), 10*playerLevel,
-                4*playerLevel, 2*playerLevel, ABILITY_POOL*playerLevel, ADDITION_SPELL_POWER*playerLevel));
+                4*playerLevel, playerLevel, ABILITY_POOL*playerLevel, ADDITION_SPELL_POWER*playerLevel));
         ability.addToPool(ABILITY_POOL*playerLevel);
         ability.setAmount(Math.min(ability.getAmount() + (int)(ABILITY_PRECENT*ability.getPool()), ability.getPool()));
         this.spellPower = spellPower + (ADDITION_SPELL_POWER*playerLevel);

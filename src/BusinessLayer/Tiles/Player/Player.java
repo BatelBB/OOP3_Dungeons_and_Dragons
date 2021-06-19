@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Player extends Unit {
-    protected int experience = 0;
-    protected int playerLevel = 1;
+    protected int experience;
+    protected int playerLevel;
 
     protected static final int LEVEL_UP_EXP = 50;
     protected PlayerDeathCallBack playerDeathCallBack;
@@ -22,13 +22,10 @@ public abstract class Player extends Unit {
 
     @Override
     public String description() {
-        String tab = "\t";
+        String tab = "\t\t";
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
                 "Defense: " + defensePoints + tab + "Level: " + playerLevel + tab +
                 "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
-    }
-    public int getExperience(){
-        return experience;
     }
 
     public int getPlayerLevel() {

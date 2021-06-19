@@ -17,7 +17,7 @@ public class Warrior extends Player {
     }
 
     public String description(){
-        return super.description() + "\tCooldown: " + ability.toString();
+        return super.description() + "\t\tCooldown: " + ability.toString();
     }
 
     @Override

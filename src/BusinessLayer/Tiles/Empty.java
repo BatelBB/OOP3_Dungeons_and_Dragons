@@ -7,9 +7,6 @@ import BusinessLayer.Tiles.Player.Player;
 
 public class Empty extends Tile {
 
-    public Empty(Character c) {
-        super(c);
-    }
 
     public Empty(Character c, Position p) {
         super(c);
@@ -31,11 +28,6 @@ public class Empty extends Tile {
     public void onTick() {
 
     }
-
-    //@Override
-    /*public String toString() {
-        return ".";
-    }*/
 
 
 

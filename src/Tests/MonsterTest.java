@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 
 public class MonsterTest {
 
-    private Board board;
     private final int HEALTH = 100;
 
     private Unit monster;
@@ -36,7 +35,7 @@ public class MonsterTest {
     private Player playerP;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         monster = new Monster('s', "nicetert", HEALTH, 5, 0, 25, 10);
         monster2 = new Monster('s', "nicetert", HEALTH, 5, 0, 25, 10);
         player = new Warrior("warIsNice", HEALTH, 5, 0, 1);
@@ -47,9 +46,6 @@ public class MonsterTest {
         playerP = new Warrior("warIsNice", HEALTH, 5, 0, 1);
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
 
     @Test
     public void monster_accept_unit_player() {

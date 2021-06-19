@@ -18,7 +18,6 @@ public class PlayerTest {
     Player mage;
     Player rogue;
     Monster monsterClose;
-    Monster monsterFar;
     List<Enemy> closeEnemyList;
     List<Enemy> farEnemyList;
 
