@@ -24,7 +24,7 @@ public abstract class Player extends Unit {
     public String description() {
         String tab = "\t";
         return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
-                "Defence: " + defensePoints + tab + "Level: " + playerLevel + tab +
+                "Defense: " + defensePoints + tab + "Level: " + playerLevel + tab +
                 "Experience: " + experience + "/" + LEVEL_UP_EXP*playerLevel + tab;
     }
     public int getExperience(){
@@ -57,7 +57,7 @@ public abstract class Player extends Unit {
         playerLevel ++;
         messanger.sendMessage(String.format("%s reached level %d: +%d Health, +%d Attack, +%d Defense",
                 this.name, this.getPlayerLevel(), 10*playerLevel,
-                4*playerLevel, playerLevel));
+                4*playerLevel, 2*playerLevel));
 
         health.addToPool(10*playerLevel);
         health.fill();

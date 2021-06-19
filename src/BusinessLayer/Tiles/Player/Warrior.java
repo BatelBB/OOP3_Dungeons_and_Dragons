@@ -31,8 +31,8 @@ public class Warrior extends Player {
         else {
             ability.use();
 
-            int newHealth = Math.min(health.getAmount() + NEW_HEALTH * defensePoints, health.getPool());
-            messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth - health.getAmount()));
+            int newHealth = Math.min(health.getAmount() + (NEW_HEALTH * defensePoints), health.getPool());
+            messanger.sendMessage(String.format("%s used %s, healing for %d", name, ability.getName(), newHealth));
             health.addAmount(newHealth - health.getAmount());
 
             if (!enemies.isEmpty()) {

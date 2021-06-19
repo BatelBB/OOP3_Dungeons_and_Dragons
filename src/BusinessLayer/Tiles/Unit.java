@@ -87,7 +87,7 @@ public abstract class Unit extends Tile implements Observer {
     public int defend(){
         Random rnd = new Random();
         int def = rnd.nextInt(this.defensePoints + 1);
-        messanger.sendMessage(String.format("%s rolled %d defence points", this.name, def));
+        messanger.sendMessage(String.format("%s rolled %d defense points", this.name, def));
         return def;
     }
 

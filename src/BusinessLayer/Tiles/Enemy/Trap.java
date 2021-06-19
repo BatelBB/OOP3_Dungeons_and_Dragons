@@ -55,7 +55,10 @@ public class Trap extends Enemy{
 
     @Override
     public String description() {
-        return super.description();
+        String tab = "\t";
+        return name + tab + health.toString() + tab + "Attack: " + attackPoints + tab +
+                "Defense: " + defensePoints + tab +
+                "Experience Value: " + this.getExperienceValue();
     }
 
 
