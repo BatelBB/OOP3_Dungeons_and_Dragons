@@ -57,7 +57,7 @@ public class Warrior extends Player {
         ability.reset();
         health.addToPool(5*playerLevel);
         attackPoints += 2*playerLevel;
-        defensePoints += playerLevel;
+        defensePoints = defensePoints + playerLevel;
     }
 
 

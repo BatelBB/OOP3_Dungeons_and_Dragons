@@ -63,7 +63,7 @@ public abstract class Player extends Unit {
         health.fill();
 
         attackPoints += 4*playerLevel;
-        defensePoints += playerLevel;
+        defensePoints = defensePoints + playerLevel;
 
 
     }

@@ -28,7 +28,7 @@ public class Board implements Observable {
     private List<Observer> observers;
 
     public Board(){
-
+        tileFactory = new TileFactory();
         im = new InputManager();
         String output = "Select player:\n1. Jon Snow             Health: 300/300         Attack: 30              Defense: 4              Level: 1                Experience: 0/50                Cooldown: 0/3\n" +
                 "2. The Hound            Health: 400/400         Attack: 20              Defense: 6              Level: 1                Experience: 0/50                Cooldown: 0/5\n" +
@@ -39,11 +39,12 @@ public class Board implements Observable {
                 "7. Ygritte              Health: 220/220         Attack: 30              Defense: 2              Level: 1                Experience: 0/50                Arrows: 10              Range: 6 ";
 
         chosenPlayer = im.getInput(output);
+        player = tileFactory.getPlayer(chosenPlayer);
     }
 
     public void startLevel(char[][] map, int level){
         im.showMessage(String.format("Level %d", level));
-        tileFactory = new TileFactory();
+
         isGame = true;
         height = map.length;
         width = map[0].length;
@@ -54,6 +55,7 @@ public class Board implements Observable {
 
         observers = new LinkedList<>();
 
+
         initMap(map);
         im.updateCLI(gameMap, width, height);
         update();
@@ -63,7 +65,6 @@ public class Board implements Observable {
         for (int i = 0; i < map.length; i++){
             for(int j = 0; j < map[i].length; j++){
                 if(map[i][j] == '@') {
-                    player = tileFactory.getPlayer(chosenPlayer);
                     gameMap.add(player);
                     player.init(new Position(j,i));
                     player.setPlayerDeathCallBack(() -> this.onPlayerDeath(player));
