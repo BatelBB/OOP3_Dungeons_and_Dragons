@@ -30,6 +30,7 @@ public class Mage extends Player {
                     this.getName(), ability.getName(), ability.getPoolName(),ability.getAmount(), ability.getPool()));
         else {
             int hits = 0;
+            messanger.sendMessage(String.format("%s cast %s.",this.getName(), ability.getName()));
             while (hits < hitCount && !enemies.isEmpty()){
                 int i = pickRandom(enemies.size());
                 abilityAttack(enemies.get(i));
@@ -37,7 +38,7 @@ public class Mage extends Player {
                 if(!enemies.get(i).alive())
                     enemies.remove(enemies.get(i));
 
-                hits--;
+                hits++;
             }
 
             ability.use();
